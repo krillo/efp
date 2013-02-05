@@ -1,0 +1,1059 @@
+
+2013-01-23 09:01:31 [INFO] Ny kund 
+stdClass Object
+(
+    [fname] => Kristian Patrik
+    [lname] => Erendi
+    [phone] => 042-11111
+    [mobile] => 0707-11111
+    [street] => Finjagatan 6
+    [zip] => 252 51
+    [city] => Helsingborg
+    [email] => krillo@gmail.com
+    [rut] => JA
+    [o2] => on
+    [o3] => 
+    [o4] => 
+    [comments] => test igen på skarpa
+    [ss] => 196703033933
+    [ex_fname] => kapten
+    [ex_lname] => kaka
+    [ex_phone] => 042-222222
+    [ex_mobile] => 0707-22222
+    [ex_street] => putsgatan 6
+    [ex_zip] => 88888
+    [ex_city] => Burg
+    [ex_email] => kapten@erendi.se
+)
+
+2013-01-23 12:01:04 [INFO] Ny kund 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 042-3335335
+    [mobile] => 0730-888333
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => adrian@wallenholm.se
+    [rut] => JA
+    [o2] => on
+    [o3] => on
+    [o4] => on
+    [comments] => 
+    [ss] => 19790908-4019
+    [ex_fname] => Adrian
+    [ex_lname] => Wallenholm
+    [ex_phone] => 042-333533
+    [ex_mobile] => 0730-888333
+    [ex_street] => Tärnvägen 3
+    [ex_zip] => 26358
+    [ex_city] => Strandbaden
+    [ex_email] => adrian@wallenholm.se
+)
+
+2013-01-23 14:01:26 [INFO] Ny kund 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 042-333533
+    [mobile] => 0730-888333
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => adrian@wallenholm.se
+    [rut] => JA
+    [o2] => on
+    [o3] => on
+    [o4] => on
+    [comments] => xxxxxxxxxxxxxx
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+)
+
+2013-01-23 18:01:21 [INFO] Ny kund 
+stdClass Object
+(
+    [fname] => Kristian Patrik
+    [lname] => Erendi
+    [phone] => 042-11111
+    [mobile] => 0707-11111
+    [street] => Finjagatan 6
+    [zip] => 252 51
+    [city] => Helsingborg
+    [email] => krillo@gmail.com
+    [rut] => JA
+    [o2] => Ja
+    [o3] => Ja
+    [o4] => 
+    [comments] => lite extra info
+    [ss] => 19670303-3933
+    [ex_fname] => kapten
+    [ex_lname] => kaka
+    [ex_phone] => 042-222222
+    [ex_mobile] => 0707-22222
+    [ex_street] => putsgatan 6
+    [ex_zip] => 88888
+    [ex_city] => Burg
+    [ex_email] => kapten@erendi.se
+)
+
+2013-01-24 16:01:13 [INFO] Ny kund 
+stdClass Object
+(
+    [fname] => 
+    [lname] => 
+    [phone] => 
+    [mobile] => 
+    [street] => 
+    [zip] => 
+    [city] => 
+    [email] => 
+    [rut] => 
+    [o2] => 
+    [o3] => 
+    [o4] => 
+    [comments] => 
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+)
+
+2013-01-24 16:01:46 [INFO] Ny kund 
+stdClass Object
+(
+    [fname] => 
+    [lname] => 
+    [phone] => 
+    [mobile] => 
+    [street] => 
+    [zip] => 
+    [city] => 
+    [email] => 
+    [rut] => 
+    [o2] => 
+    [o3] => 
+    [o4] => 
+    [comments] => 
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+)
+
+2013-01-26 19:01:28 [INFO] Förändring - Detaljerat VARJE ÅR 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 042-333533
+    [mobile] => 0730-888333
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => Kan ni ringa mig så vi stämmer av vilken period det blir?
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op1
+    [customernbr] => 12345
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval2
+)
+
+2013-01-26 19:01:28 [INFO] Skickar email: Förändring - Detaljerat VARJE ÅR,  adrian@jobbasmart.com 
+2013-01-28 07:01:33 [INFO] Förändring - Detaljerat VARJE ÅR 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => Xyz
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op1
+    [customernbr] => 1234
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval2
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 07:01:34 [INFO] Skickar email: Förändring - Detaljerat VARJE ÅR, till: adrian@jobbasmart.com 
+2013-01-28 07:01:48 [INFO] Tillfällig avbokning 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => Skit i att putsa hos mig
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op2
+    [customernbr] => 1234
+    [rutchange] => NEJ
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 5
+            [3] => 6
+            [4] => 7
+            [5] => 8
+        )
+
+    [from] => 2013-02-04
+    [to] => 2013-02-28
+)
+
+2013-01-28 07:01:48 [INFO] Skickar email: Tillfällig avbokning, till: adrian@jobbasmart.com 
+2013-01-28 07:01:22 [INFO] Förändring - Permanent LÄGGER TILL 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 042-333533
+    [mobile] => 0730-888333
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => 
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op1
+    [customernbr] => 1234
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 07:01:22 [INFO] Skickar email: Förändring - Permanent LÄGGER TILL, till: adrian@jobbasmart.com 
+2013-01-28 08:01:47 [INFO] Ny registrering
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 042-333533
+    [mobile] => 0730888333
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => adrian@wallenholm.se
+    [rut] => JA
+    [o2] => Ja
+    [o3] => Nej
+    [o4] => Ja
+    [comments] => Jättebra
+    [ss] => 19790908-4019
+    [ex_fname] => Bengt
+    [ex_lname] => Bengtsson
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => Gatan 1
+    [ex_zip] => 12345
+    [ex_city] => Staden
+    [ex_email] => 
+    [option] => op5
+    [customernbr] => 
+    [rutchange] => 
+    [period] => 
+    [tillval] => 
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 08:01:47 [INFO] Skickar email: Ny registrering, till: adrian@jobbasmart.com 
+2013-01-28 08:01:47 [INFO] Skickar email: Välkommen till Eriks Fönsterputs, till: adrian@wallenholm.se 
+2013-01-28 08:01:26 [INFO] Förändring - Detaljerat VARJE ÅR 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => xyz
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op1
+    [customernbr] => 1234
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval2
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 08:01:26 [INFO] Skickar email: Förändring - Detaljerat VARJE ÅR, till: adrian@jobbasmart.com 
+2013-01-28 08:01:56 [INFO] Tillfällig avbokning 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => bla bla bla
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op2
+    [customernbr] => 1234
+    [rutchange] => JA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => Array
+        (
+            [0] => 1
+            [1] => 2
+            [2] => 3
+            [3] => 4
+            [4] => 5
+            [5] => 6
+            [6] => 7
+            [7] => 8
+        )
+
+    [from] => 2013-06-01
+    [to] => 2013-06-30
+)
+
+2013-01-28 08:01:56 [INFO] Skickar email: Tillfällig avbokning, till: adrian@jobbasmart.com 
+2013-01-28 08:01:53 [INFO] Ändra uppgifter 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => xyz
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op3
+    [customernbr] => 1234
+    [rutchange] => JA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 2013-02-11
+    [to] => 
+)
+
+2013-01-28 08:01:53 [INFO] Skickar email: Ändra uppgifter, till: adrian@jobbasmart.com 
+2013-01-28 08:01:27 [INFO] Uppsägning 
+stdClass Object
+(
+    [fname] => Nils
+    [lname] => Nilsson
+    [phone] => 042-123456
+    [mobile] => 070-1234567
+    [street] => Gatan 12
+    [zip] => 12345
+    [city] => Staden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => Tack för denna tiden!
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op4
+    [customernbr] => 1234
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 08:01:27 [INFO] Skickar email: Uppsägning, till: adrian@jobbasmart.com 
+2013-01-28 08:01:58 [INFO] Uppsägning 
+stdClass Object
+(
+    [fname] => Nils
+    [lname] => Nilsson
+    [phone] => 042-123456
+    [mobile] => 070-1234567
+    [street] => Gatan 12
+    [zip] => 12345
+    [city] => Staden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => Tack för denna tiden!
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op4
+    [customernbr] => 1234
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 08:01:58 [INFO] Skickar email: Uppsägning, till: adrian@jobbasmart.com 
+2013-01-28 08:01:13 [INFO] Uppsägning 
+stdClass Object
+(
+    [fname] => ljl
+    [lname] => jljkj
+    [phone] => 
+    [mobile] => 
+    [street] => lkj
+    [zip] => lkjkl
+    [city] => jkljlklkj
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => jj
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op4
+    [customernbr] => lkjlk
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 08:01:13 [INFO] Skickar email: Uppsägning, till: adrian@jobbasmart.com 
+2013-01-28 09:01:51 [INFO] Uppsägning 
+stdClass Object
+(
+    [fname] => Nils
+    [lname] => Nilsson
+    [phone] => 042-123456
+    [mobile] => 070-1234567
+    [street] => Gatan 12
+    [zip] => 12345
+    [city] => Staden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => Tack för denna tiden!
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op4
+    [customernbr] => 1234
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 09:01:51 [INFO] Skickar email: Uppsägning, till: kundtjanst@eriksfonsterputs.se 
+2013-01-28 09:01:13 [INFO] Uppsägning 
+stdClass Object
+(
+    [fname] => Nils
+    [lname] => Nilsson
+    [phone] => 042-123456
+    [mobile] => 070-1234567
+    [street] => Gatan 12
+    [zip] => 12345
+    [city] => Staden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => Tack för denna tiden!
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op4
+    [customernbr] => 1234
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 09:01:13 [INFO] Skickar email: Uppsägning, till: kundtjanst@eriksfonsterputs.se 
+2013-01-28 09:01:33 [INFO] Ny registrering
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => d
+    [mobile] => d
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => d
+    [rut] => JA
+    [o2] => Ja
+    [o3] => Ja
+    [o4] => Ja
+    [comments] => d
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op5
+    [customernbr] => 
+    [rutchange] => 
+    [period] => 
+    [tillval] => 
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 09:01:33 [INFO] Skickar email: Ny registrering, till: kundtjanst@eriksfonsterputs.se 
+2013-01-28 09:01:33 [ERROR] Misslyckades att skicka email: Välkommen till Eriks Fönsterputs, till: d 
+2013-01-28 09:01:09 [INFO] Ny registrering
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => d
+    [mobile] => d
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => d
+    [rut] => JA
+    [o2] => Ja
+    [o3] => Ja
+    [o4] => Ja
+    [comments] => d
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op5
+    [customernbr] => 
+    [rutchange] => 
+    [period] => 
+    [tillval] => 
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 09:01:09 [INFO] Skickar email: Ny registrering, till: kundtjanst@eriksfonsterputs.se 
+2013-01-28 09:01:09 [ERROR] Misslyckades att skicka email: Välkommen till Eriks Fönsterputs, till: d 
+2013-01-28 10:01:56 [INFO] Ny registrering
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => adrian@wallenholm.se
+    [rut] => JA
+    [o2] => Ja
+    [o3] => Ja
+    [o4] => Ja
+    [comments] => xxxx
+    [ss] => 197909084019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op5
+    [customernbr] => 
+    [rutchange] => 
+    [period] => 
+    [tillval] => 
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 10:01:56 [INFO] Skickar email: Ny registrering, till: krillo@gmail.com 
+2013-01-28 10:01:56 [INFO] Skickar email: Ny registrering, till: adrian@wallenholm.se 
+2013-01-28 10:01:28 [INFO] Förändring - Detaljerat VARJE ÅR 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 042-333533
+    [mobile] => 0730888333
+    [street] => Gatan 1
+    [zip] => 26358
+    [city] => Strandbaden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => x
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op1
+    [customernbr] => 123456
+    [rutchange] => JA
+    [period] => 
+    [tillval] => tillval2
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 10:01:28 [INFO] Skickar email: Förändring - Detaljerat VARJE ÅR, till: krillo@gmail.com 
+2013-01-28 10:01:27 [INFO] Förändring - Permanent LÄGGER TILL 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Gatan 1
+    [zip] => 26358
+    [city] => Staden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => xxx
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op1
+    [customernbr] => 12345
+    [rutchange] => JA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 10:01:27 [INFO] Skickar email: Förändring - Permanent LÄGGER TILL, till: adrian@jobbasmart.com 
+2013-01-28 10:01:29 [INFO] Förändring - Permanent LÄGGER TILL 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Gatan 1
+    [zip] => 26358
+    [city] => Staden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => xxx
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op1
+    [customernbr] => 12345
+    [rutchange] => JA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 10:01:29 [INFO] Skickar email: Förändring - Permanent LÄGGER TILL, till: adrian@jobbasmart.com 
+2013-01-28 10:01:22 [INFO] Ändra uppgifter 
+stdClass Object
+(
+    [fname] => Namn Namnsson
+    [lname] => s
+    [phone] => 
+    [mobile] => 
+    [street] => sfdsfsdfsdfs
+    [zip] => 12345
+    [city] => Staden
+    [email] => adrian@wallenholm.se
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => x
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op3
+    [customernbr] => 12345
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 10:01:22 [INFO] Skickar email: Ändra uppgifter, till: adrian@jobbasmart.com 
+2013-01-28 10:01:33 [INFO] Ändra uppgifter 
+stdClass Object
+(
+    [fname] => Namn Namnsson
+    [lname] => s
+    [phone] => 
+    [mobile] => 
+    [street] => sfdsfsdfsdfs
+    [zip] => 12345
+    [city] => Staden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => x
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op3
+    [customernbr] => 12345
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 10:01:33 [INFO] Skickar email: Ändra uppgifter, till: adrian@jobbasmart.com 
+2013-01-28 10:01:47 [INFO] Ändra uppgifter 
+stdClass Object
+(
+    [fname] => Namn
+    [lname] => Namnsson
+    [phone] => 
+    [mobile] => 
+    [street] => sfdsfsdfsdfs
+    [zip] => 12345
+    [city] => Staden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => x
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op3
+    [customernbr] => 12345
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 10:01:47 [INFO] Skickar email: Ändra uppgifter, till: adrian@jobbasmart.com 
+2013-01-28 11:01:45 [INFO] Ändra uppgifter 
+stdClass Object
+(
+    [fname] => Namn
+    [lname] => Namnsson
+    [phone] => 
+    [mobile] => 
+    [street] => sfdsfsdfsdfs
+    [zip] => 12345
+    [city] => Staden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => x
+    [ss] => ÅÅÅÅMMDD-XXXX
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op3
+    [customernbr] => 12345
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => 
+    [from] => 
+    [to] => 
+)
+
+2013-01-28 11:01:45 [INFO] Skickar email: Ändra uppgifter, till: adrian@jobbasmart.com 
+2013-01-30 09:01:22 [INFO] Tillfällig avbokning 
+stdClass Object
+(
+    [fname] => Adrian
+    [lname] => Wallenholm
+    [phone] => 
+    [mobile] => 
+    [street] => Tärnvägen 4
+    [zip] => 263 58
+    [city] => Strandbaden
+    [email] => 
+    [rut] => 
+    [o2] => Nej
+    [o3] => Nej
+    [o4] => Nej
+    [comments] => 
+    [ss] => 19790908-4019
+    [ex_fname] => 
+    [ex_lname] => 
+    [ex_phone] => 
+    [ex_mobile] => 
+    [ex_street] => 
+    [ex_zip] => 
+    [ex_city] => 
+    [ex_email] => 
+    [option] => op2
+    [customernbr] => 1244
+    [rutchange] => SAMMA
+    [period] => 
+    [tillval] => tillval1
+    [avbokning] => Array
+        (
+            [0] => 1
+            [1] => 2
+            [2] => 3
+            [3] => 4
+            [4] => 5
+            [5] => 6
+            [6] => 7
+            [7] => 8
+        )
+
+    [from] => 2013-02-07
+    [to] => 2013-02-28
+)
+
+2013-01-30 09:01:22 [INFO] Skickar email: Tillfällig avbokning, till: adrian@jobbasmart.com 

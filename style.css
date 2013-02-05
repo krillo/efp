@@ -1,0 +1,1281 @@
+/*
+Theme Name: Eriks Fönsterputs
+Theme URI: http://www.eriksfonsterputs.se/
+Description: Eriks Fönsterputs
+Version: 1.0
+Author: Plucera Webbyrå
+Author URI: http://plucera.se/
+*/
+
+/* ----- STANDARD HTML ----- */
+BODY {
+	background: url("img/bg/body.png") left top;
+	font-family: 'Signika Negative', sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+}
+
+A,
+A:focus,
+A:active {
+ 	outline: none;
+ 
+	color: #00accd;
+}
+
+A:hover {
+	color: #222;
+}
+
+HR {
+	clear: both;
+	height: 1px;
+	border: none;
+	border-top: 1px dashed #ccc;
+}
+
+IMG {
+	border: none;
+}
+
+FORM, HR, OL, P, TABLE, UL {
+	/* margin: 0 0 15px 0; PLUCERA ORIGINAL */
+	margin: 0 0 10px 0;
+}
+
+.standard .grid_4 HR {
+	margin: 0 0 35px;
+	border-color: #fff;
+}
+
+
+H1 {
+	color: #00accd;
+	font-size: 19px;
+}
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+/* ----- STANDARD HTML ----- */
+
+
+/* ----- RUBRIKER ----- */
+H1 {
+	/* margin: 0 0 30px; PLUCERA ORIGINAL */
+	margin: 0 0 15px;
+	/* color: #3b3b3c; PLUCERA ORIGINAL */
+	color: #2b2b2c;
+	font-size: 28px;
+	font-weight: 400;
+}
+
+.putsomraden H1 {
+	position: relative;
+	display: inline-block;
+	margin: 65px 0 15px;
+	padding: 8px 14px 6px;
+	background-color: #222;
+	box-shadow: 0px 0px 6px #666;
+	z-index: 2;
+	color: #fff;
+	font-size: 23px;
+	font-weight: 300;
+}
+
+.standard H2, #terms H2, #rut-info H2 {
+	color: #00accd;
+	font-size: 18px;
+	/* font-weight: 300; PLUCERA ORIGINAL */
+	font-weight: 400;
+}
+
+.standard H3 {
+	margin: 0;
+	color: #00accd;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.order .grid_8 H2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+FOOTER .top H2 {
+	margin: 25px 0 15px;
+	/* margin: 30px 0 15px; PLUCERA ORIGINAL */
+	font-size: 18px;
+	font-weight: 400;
+}
+
+FOOTER .mid H2 {
+	/* margin: 35px 0 10px; PLUCERA ORIGINAL */
+	margin: 25px 0px 0px 0px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.standard .grid_4 H3 {
+	/* margin: 0 0 20px; PLUCERA ORIGINAL */
+	margin: 0 0 15px;
+	font-size: 28px;
+	font-weight: 600;
+	color:#fff;
+}
+
+H4 {
+
+}
+/* ----- RUBRIKER ----- */
+
+
+/* ----- FORMULÄR ----- */
+FIELDSET {
+	/* margin: 20px 0 0; PLUCERA ORIGINAL */
+	/* padding: 30px 0 0; PLUCERA ORIGINAL */
+	margin: 5px 0 0;
+	padding: 5px 0 0;
+	border: none;
+	/* border-top: 1px dashed #777; PLUCERA ORIGINAL */
+}
+
+LABEL {
+	display: inline-block;
+	margin: 0 0 1px;
+	font-size: 14px;
+	/* font-size: 12px; PLUCERA ORIGINAL */
+	/* font-weight: bold; PLUCERA ORIGINAL */
+}
+
+#panorama FORM, #panorama FORM UL {
+	margin: 0;
+	padding: 0;
+}
+
+#panorama FORM LI {
+	list-style-type: none;
+}
+
+#panorama INPUT, .standard INPUT, .standard TEXTAREA {
+	display: block;
+	width: 220px;
+	height: 50px;
+	/* height: 55px; PLUCERA ORIGINAL */
+	margin-bottom: 10px;
+	padding: 0 15px;
+	background-color: #fff;
+	border: none;
+	border-radius: 5px;
+	box-shadow: inset 0px 0px 5px #666;
+	
+	/*-webkit-appearance: none;
+*/
+	color: #444;
+	/* color: #888; PLUCERA ORIGINAL */
+	font-family: 'Signika Negative', sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+#panorama INPUT[type="submit"], .standard INPUT[type="submit"] {
+	width: 333px;
+	height: 74px;
+	margin: 0 0 0 -13px;
+	padding-left: 28px;
+	background: url("img/bg/input-submit.png") left top no-repeat;
+	border-radius: none;
+	box-shadow: none;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 300;
+	text-align: left;
+}
+
+#panorama INPUT[type="submit"]:hover {
+	text-decoration: underline;
+}
+
+.standard FORM, .standard FORM UL {
+	margin: 0;
+	padding: 0;
+}
+
+.standard FORM LI {
+	list-style-type: none;
+}
+
+.standard INPUT {
+	width: 230px;
+	height: 40px;
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+.grid_4 INPUT {
+	width: 200px;
+	height: 40px;
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+.standard INPUT[type="submit"],
+.standard INPUT[type="button"] {
+	width: 220px;
+	height: 40px;
+	margin: 0 0 35px;
+	padding: 0;
+	background: url("img/bg/input-submit.png") -16px -25px no-repeat;
+
+	font-size: 16px;
+	text-align: center;
+}
+
+.standard INPUT[type="submit"]:hover {
+	text-decoration: underline;
+}
+
+.standard TEXTAREA {
+	width: 580px;
+	height: 100px;
+	padding: 10px;
+	/* font-size: 14px; PLUCERA ORIGINAL */
+	font-size: 16px;
+}
+
+/* Formulärsida */
+.hidden {
+	display: none;
+}
+
+.invalid {
+	color: red;
+}
+
+.order INPUT {
+	display: inline-block;
+	/* width: 230px; PLUCERA ORIGINAL */
+	/* background-color: #f3f3f3; PLUCERA ORIGINAL */
+	background-color: #f9f9f9;
+	/* font-size: 14px; PLUCERA ORIGINAL  */
+	font-size: 16px;
+}
+
+.order INPUT[type="submit"],
+.order INPUT[type="button"] {
+	display: inline-block;
+	width: auto;
+	margin: 15px 0;
+	padding: 0 15px;
+	box-shadow: 0px 0px 5px #666;
+
+	color: #fff;
+}
+
+.order INPUT[type="submit"]#zip-button,
+.order INPUT[type="button"]#zip-button,
+.order INPUT[type="submit"]#ss-button,
+.order INPUT[type="button"]#ss-button {
+	margin: 0 0 10px 10px;
+	
+	text-transform: uppercase;
+}
+
+.order INPUT[type="checkbox"],
+.order INPUT[type="radio"] {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	margin: 1px 3px 3px 3px;
+	padding: 0;
+
+/*	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+*/	box-shadow: none;
+}
+
+#zip-ok, #zip-nok {
+	float: right;
+	height: 27px;
+	padding: 9px 15px 0;
+	background-color: #efefef;
+	border: 2px solid #00accd;
+
+	font-weight: bold;
+}
+
+#zip-nok {
+	border-color: red;
+}
+
+#ss-container {
+	position: relative;
+	/* margin-top: 20px;  PLUCERA ORIGINAL */
+	/* padding-top: 30px; PLUCERA ORIGINAL */
+	margin-top: 10px;
+	overflow: hidden;
+	/* border-top: 1px dashed #777; PLUCERA ORIGINAL */
+}
+
+LABEL.comments {
+	margin-top: 5px; 
+	/* margin-top: 20px; PLUCERA ORIGINAL */
+}
+
+#ss-progress {
+	position: absolute;
+	right: 230px;
+	bottom: 20px;
+	padding: 0;
+	box-shadow: none;
+}
+
+.order FORM A, #content A {
+	display: inline-block;
+	height: 22px;
+	margin: 10px 0;
+	padding: 5px 10px 0;
+	background: url("img/bg/form-a.png") left top repeat-x;
+	border-radius: 4px;
+	box-shadow: 1px 1px 4px #999;
+	
+	color: #fff;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+.order FORM A:hover, #content A:hover {
+	color: #00accd;
+	text-decoration: underline;
+}
+/* Formulärsida */
+/* ----- FORMULÄR ----- */
+
+
+/* ----- GRID SYSTEM ----- */
+SECTION {
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+SECTION SECTION {
+	display: inline-block;
+	width: auto;
+	margin: 0 -20px;
+}
+
+.column {
+	display: inline;
+	float: left;
+	min-height: 1px;
+	margin: 0 20px;
+	overflow: hidden;
+}
+
+.grid_1 { width: 40px; }
+.grid_2 { width: 120px; }
+.grid_3 { width: 200px; }
+.grid_4 { width: 280px; }
+.grid_5 { width: 360px; }
+.grid_6 { width: 440px; }
+.grid_7 { width: 520px; }
+.grid_8 { width: 600px; }
+.grid_9 { width: 680px; }
+.grid_10 { width: 760px; }
+.grid_11 { width: 840px; }
+.grid_12 { width: 920px; }
+/* ----- GRID SYSTEM ----- */
+
+
+/* ----- MENYER ----- */
+/* Huvudmeny */
+HEADER NAV UL {
+	position: absolute;
+	right: 20px;
+	bottom: 15px;
+	margin: 0;
+	padding: 0;
+}
+
+HEADER NAV LI {
+	float: left;
+	margin-left: 15px;
+}
+
+HEADER NAV LI:first-child {
+	margin-left: 0;
+}
+
+HEADER NAV UL A, HEADER NAV UL A:hover {
+	display: block;
+	/* height: 19px; PLUCERA ORIGINAL */
+	height: 22px;
+	padding: 6px 8px 0;
+	/*	background-color: #dee7eb; PLUCERA ORIGINAL */
+	border-radius: 4px;
+	color: #00accd;
+	/* font-size: 11px; PLUCERA ORIGINAL */
+	font-size: 14px;
+	font-weight:300;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+HEADER NAV UL A:hover {
+	background-color: #000;
+	color: #00accd;
+}
+
+HEADER NAV LI.current-menu-item A,
+HEADER NAV LI.current-menu-item A:hover,
+HEADER NAV LI.current-page-ancestor A,
+HEADER NAV LI.current-page-ancestor A:hover {
+	background-color: #00accd;
+	
+	color: #fff;
+}
+
+HEADER NAV LI.current-menu-item A:hover,
+HEADER NAV LI.current-page-ancestor A:hover {
+	background-color: #007783;
+}
+/* Huvudmeny */
+
+
+/* Undermeny */
+#main-head UL {
+	position: absolute;
+	left: 20px;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#main-head LI {
+	float: left;
+	margin-right: 12px;
+	padding-bottom: 18px;
+}
+
+#main-head LI A {
+	display: block;
+	height: 23px;
+	padding: 7px 10px 0;
+	background-color: #fff;
+	border-radius: 4px;
+	color: #00accd;
+	font-size: 13px;
+	font-weight: 300;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#main-head LI.current_page_item {
+	background: url("img/bg/main-head-current.png") center bottom no-repeat;
+}
+
+#main-head LI.current_page_item A {
+	background: #e3e8ec url("img/bg/main-head-a-current.png") left bottom repeat-x;
+
+	color: #fff;
+}
+
+#main-head LI A:hover {
+	text-decoration: underline;
+}
+/* Undermeny */
+
+
+/* Sidfotsmeny */
+FOOTER UL {
+	/* margin: 35px 0 0; PLUCERA ORIGINAL */
+	margin: 25px 0 0;
+	padding: 0;
+}
+
+FOOTER LI {
+	/* margin: 0 0 10px; PLUCERA ORIGINAL */
+	margin: 0px;
+}
+
+FOOTER LI A {
+	color: #758d99;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+FOOTER LI.current-menu-item A {
+	color: #fff;
+}
+
+FOOTER LI A:hover {
+	color: #00accd;
+}
+/* Sidfotsmeny */
+/* ----- MENYER ----- */
+
+
+/* ----- HEADER ----- */
+HEADER {
+	background-color: #fff;
+}
+	
+HEADER SECTION {
+	height: 120px;
+}
+
+#toplist {
+	position: absolute;
+	right: 20px;
+	top: 10px;	
+}
+
+#toplist LI {
+	float: left;
+	margin-left: 11px;
+	padding-top: 2px;
+	padding-left: 19px;
+	list-style-type: none;
+	background-position: left top;
+	background-repeat: no-repeat;
+	
+	color: #333;
+	font-size: 10px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+#toplist LI#kundtjanst {
+	background-image: url("img/bg/kundtjanst.png");
+}
+
+#toplist LI#chatt {
+	background-image: url("img/bg/chatt.png");
+	background-position: left 1px;
+}
+
+#toplist LI#facebook {
+	background-image: url("img/bg/facebook.png");
+}
+
+#toplist LI:first-child {
+	margin-left: 0;
+}
+
+#toplist A {
+	display: block;
+	height: 15px;
+}
+
+#toplist #chatt A {
+	color: #00accd;
+}
+
+#toplist #chatt A:hover {
+	color: #333;
+}
+
+#toplist #facebook A {
+	color: #333;
+	text-decoration: none;
+}
+
+#toplist #facebook A:hover {
+	color: #00accd;
+}
+
+#logo {
+	position: absolute;
+	left: 20px;
+	top: 10px;
+}
+/* ----- HEADER ----- */
+
+
+/* ----- MAIN ----- */
+#main {
+	/* padding-top: 1px; PLUCERA ORIGINAL */
+	background: #fff url("img/bg/main.png") left top repeat-x;
+}
+/* ----- MAIN ----- */
+
+
+/* ----- MAIN#panorama ----- */
+#panorama {
+	background: #fff url("img/bg/home-panorama.jpg") center top no-repeat;
+}
+
+#panorama .grid_8 {
+	height: 400px;
+	overflow: visible;
+}
+
+#panorama .grid_8 P {
+	margin-bottom: 15px;
+	color: #fff;
+	font-size: 28px;
+	font-weight: 400;
+}
+
+#panorama .grid_8 P:first-child {
+	margin: 40px 0 10px;
+	font-size: 44px;
+	font-weight: 300;
+	line-height: 46px;
+}
+
+#panorama .grid_8 P:first-child STRONG {
+	display: block;
+	font-weight: 600;
+}
+
+#panorama .grid_4 {
+	width: 230px;
+	height: 350px;
+	padding: 50px 25px 0;
+	/*  padding: 75px 25px 0; PLUCERA ORIGINAL */
+	background-color: rgba(0, 0, 0, 0.9);
+	
+	color: #fff;
+	text-align: center;
+}
+
+#panorama .grid_4 STRONG {
+	font-weight: 600;
+	color:#fff;
+}
+
+#slogan {
+	margin-bottom: 30px;
+	font-size: 28px;
+}
+
+#windows {
+	margin-bottom: 5px;
+
+	font-size: 38px;
+	font-weight: 600;
+}
+
+#since {
+	padding; 0px;
+	margin: 0 auto;
+	color: #00accd;
+	font-size: 16px;
+	font-weight:400;
+}
+/* ----- MAIN#panorama ----- */
+
+
+/* ----- MAIN.home ----- */
+#main.home SECTION,
+#main.home .grid_8 {
+	height: 390px;
+	overflow: visible;
+}
+
+#main.home .grid_4 {
+	padding-top: 40px;
+	text-align: center;
+}
+/* ----- MAIN.home ----- */
+
+
+/* ----- #slides ----- */
+#slides {
+	position: relative;
+	width: 580px;
+	height: 365px;
+	margin: -55px -12px 0;
+	padding: 25px 22px 0;
+	background: url("img/bg/slides.png") center top no-repeat;
+	
+	text-align: center;
+}
+
+.slides_control {
+	height: 340px !important;
+}
+
+.caption {
+	width: 540px;
+	padding: 8px 20px 0;
+
+	color: #222;
+	font-size: 14px;
+}
+
+.pagination {
+	display: inline-block;
+	margin: 15px 0 0;
+	padding: 0;
+}
+
+.pagination LI {
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin: 0 0 0 6px;
+	padding: 0;
+	background-color: #fff;
+	list-style-type: none;
+	box-shadow: inset 0 0 3px #333;
+	border-radius: 5px;
+	
+	text-indent: -10000px;
+}
+
+.pagination A {
+	display: block;
+	width: 10px;
+	height: 10px;
+}
+
+.pagination LI:first-child {
+	margin: 0;
+}
+
+.pagination LI.current {
+	background-color: #00accd;
+	box-shadow: inset 0 0 3px #60271a;
+}
+
+.prev, .next {
+	position: absolute;
+	top: 263px;
+	width: 20px;
+	height: 32px;
+	z-index: 100;
+	opacity: 0.3;
+	text-indent: -10000px;
+}
+
+.prev {
+	left: 27px;
+	background: url("img/bg/prev.png") left top no-repeat;
+}
+
+.next {
+	right: 27px;
+	background: url("img/bg/next.png") right top no-repeat;
+}
+
+.prev IMG, .next IMG {
+	
+}
+
+#slide-heading {
+	position: absolute;
+	left: 22px;
+	top: 55px;
+	padding: 8px 30px 6px;
+	background-color: rgba(0,0,0,0.7);
+	z-index: 100;
+	
+	color: #fff;
+	font-size: 22px;
+}
+/* ----- #slides ----- */
+
+
+/* ----- MAIN-HEAD ----- */
+#main-head {
+	background: #00accd url("img/bg/main-head.png") center bottom no-repeat;
+	
+	color: #fff;
+}
+
+#main-head .column {
+	min-height: 45px;
+	/* padding: 30px 0 60px; PLUCERA ORIGINAL */
+	padding: 20px 0 60px;
+}
+
+#main-head.omraden .column {
+	padding: 30px 0 15px;
+}
+
+#main-head P {
+	width: 610px;
+	/* width: 500px; PLUCERA ORIGINAL */
+	font-size: 14px;
+}
+
+#main-head .label {
+	display: inline-block;
+	width: auto;
+	height: 19px;
+	margin-bottom: 10px;
+	padding: 6px 8px 8px;
+	border-radius: 4px;
+	/* background-color: #000; PLUCERA ORIGINAL */
+	background-color: #FFF;
+	font-weight: 400;
+	/* font-weight: 300; PLUCERA ORIGINAL */
+	font-size: 18px;
+	/* font-size: 18px; PLUCERA ORIGINAL */
+	color: #000;
+	/*font-color: #fff; PLUCERA ORIGINAL */
+}
+/* ----- MAIN-HEAD ----- */
+
+
+/* ----- MAIN.standard ----- */
+.standard SECTION {
+	padding: 30px 0 15px;
+	background: url("img/bg/standard-grid-4.png") right top repeat-y;
+}
+
+.standard .grid_8 {
+	overflow: visible;
+}
+
+.standard .grid_8 IMG {
+	padding: 10px;
+	background-color: #fff;
+	box-shadow: 0 0 7px #aaa;
+}
+
+.standard .grid_4:last-child {
+	width: 220px;
+	padding: 0 30px;
+
+	color: #fff;
+}
+
+.standard .grid_4 P:first-child {
+	margin: 0 0 10px;
+
+	font-size: 36px;
+	font-weight: 300;
+	line-height: 38px;
+}
+
+.standard .grid_4 P:first-child STRONG {
+	display: block;
+	font-weight: 600;
+}
+
+.standard .grid_4 P:first-child + P {
+	margin-bottom: 25px;
+
+	color: #fff;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.rut {
+	margin-bottom: 35px;
+	
+	text-align: center;
+}
+/* ----- MAIN.standard ----- */
+
+
+/* ----- MAIN.employees ----- */
+.employee {
+	float: left;
+	width: 120px;
+	margin: 0 0 35px 40px;
+	overflow: hidden;
+}
+
+.employee:nth-child(4n+2) {
+	margin-left: 0;
+}
+
+.employees .grid_8 IMG {
+	display: block;
+	margin: 0 auto 4px;
+	padding: 0;
+	box-shadow: none;
+}
+
+.employees .grid_8 P {
+	margin: 0;
+
+	color: #333;
+	font-size: 11px;
+	line-height: 12px;
+}
+
+.employees .grid_8 STRONG {
+	color: #00accd;
+}
+/* ----- MAIN.employees ----- */
+
+
+/* ----- MAIN.putsomraden ----- */
+#container {
+	background: url("img/bg/container.png") center top no-repeat;
+}
+
+.putsomraden {
+	overflow: hidden;
+}
+
+.putsomraden SECTION {
+	height: 940px;
+	padding: 0;
+	overflow: visible;
+	position: relative;
+}
+
+.putsomraden .column {
+	height: 940px;
+	
+	text-align: center;
+}
+
+.putsomraden IMG {
+	position: absolute;
+	left: 20px;
+	top: 0;
+	z-index: 1;
+}
+
+.hands {
+	position: absolute;
+	height: 467px;
+	z-index: 2;
+}
+
+.left-hand {
+	left: -133px;
+	top: 200px;
+	width: 278px;
+	height: 442px;
+	background: url("img/bg/left-hand.png") left top no-repeat;
+}
+
+.right-hand {
+	right: -145px;
+	top: 232px;
+	width: 260px;
+	height: 435px;
+	background: url("img/bg/right-hand.png") right top no-repeat;
+}
+
+#content {
+	position: absolute;
+	right: 100px;
+	top: 670px;
+	width: 270px;
+	z-index: 2;
+
+	font-size: 15px;
+}
+
+#content P {
+	margin: 0 0 10px;
+}
+
+.instructions {
+	clear: both;
+	position: relative;
+	display: inline-block;
+	padding: 8px 14px 6px;
+	background-color: #fff;
+	box-shadow: 0px 0px 6px #666;
+	
+	color: #222;
+	font-size: 14px;
+	z-index: 2;
+}
+
+#bil {
+	position: absolute;
+	right: 100px;
+	top: 175px;
+	width: 330px;
+	height: 181px;
+	z-index: 2;
+}
+/* ----- MAIN.putsomraden ----- */
+
+
+/* ----- MAIN.putsschema ----- */
+#no-city {
+	/*min-height: 370px;*/
+}
+/*
+#area-list {
+	padding-left: 0;
+}
+
+#area-list LI {
+	padding: 5px;
+	list-style-type: none;
+}
+
+#area-list LI:nth-child(odd) {
+	background-color: #ddd;
+}*/
+
+#area-list P {
+	float: left;
+	width: 50%;
+	margin-bottom: 10px;
+}
+
+#area-list INPUT[type="radio"] {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	margin: 0 5px 0 0;
+	padding: 0;
+
+/*	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+*/	box-shadow: none;
+}
+
+div.choose-areas h2 {
+	margin-bottom: 15px;
+}
+
+.overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 1000;
+}
+
+.overlay IMG {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -200px;
+	margin-top: -140px;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 8px #000;
+	border-radius: 8px;
+}
+
+
+.text-overlay {
+    background-color: #FFFFFF;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 0 8px #000000;
+    height: 715px;
+    left: 50%;
+    margin-left: -450px;
+    margin-top: -377px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    width: 800px;
+/*	overflow-y: scroll;    */
+}
+
+.overlay #price-overlay-img{
+    background-color: #FFFFFF;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 0 8px #000000;
+    left: 50%;
+    margin-left: -322px;
+    margin-top: -381px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;  
+}
+
+
+.close {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 34px;
+	height: 34px;
+	margin-left: 182px;
+	margin-top: -152px;
+	background: #fff url("img/bg/close.png") center center no-repeat;
+	border-radius: 17px;
+	cursor: pointer;
+	
+	text-indent: -10000px;
+}
+
+.close-text-overlay {
+    background: url("img/bg/close.png") no-repeat scroll center center #FFFFFF;
+    border-radius: 17px 17px 17px 17px;
+    cursor: pointer;
+    display: block;
+    height: 34px;
+    left: 50%;
+    margin-left: 373px;
+    margin-top: -394px;
+    position: absolute;
+    text-indent: -10000px;
+    top: 50%;
+    width: 34px;
+}
+
+.close-price-overlay {
+    margin-left: 302px;
+}
+
+
+/* ----- MAIN.putsschema ----- */
+
+
+/* ----- overlay .order ----- */
+#terms #text, #rut-info #text, #price #text {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 500px;
+	height: 300px;
+	margin-top: -170px;
+	margin-left: -270px;
+	padding: 20px;
+	background-color: #fff;
+	overflow-y: scroll;
+}
+
+#price #text {
+	position: absolute;
+	width: 610px;
+	height: 440px;
+	margin-top: -240px;
+	margin-left: -325px;
+}
+
+#terms .close, #rut-info .close {
+	margin-left: 246px;
+	margin-top: -185px;
+}
+
+#price .close {
+	margin-left: 302px;
+	margin-top: -255px;
+}
+
+#terms UL, #rut-info UL {
+	padding-left: 25px;
+}
+
+#price IMG {
+	position: static;
+	left: auto;
+	top: auto;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	border-radius: none;
+}
+/* ----- overlay .order ----- */
+
+
+/* ----- FOOTER ----- */
+FOOTER {
+	background: url("img/bg/footer.png") left top repeat-x;
+}
+
+FOOTER .top .column {
+	height: 180px;
+	background: url("img/bg/footer-top-column.png") right top no-repeat;
+	overflow: visible;
+	
+	color: #fff;
+}
+
+FOOTER .top .column:last-child {
+	background: none;
+}
+
+FOOTER .top P {
+	margin-bottom: 20px;
+
+	font-size: 14px;
+}
+
+FOOTER .top A {
+	display: block;
+	width: 136px;
+	height: 22px;
+	padding: 4px 12px 0;
+	background: url("img/bg/footer-top-a.png") right top no-repeat;
+	border-radius: 5px;
+	box-shadow: 0 0 4px #005058;
+
+	color: #fff;
+	font-size: 13px;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+FOOTER .top A:hover {
+	text-decoration: underline;
+}
+
+FOOTER .mid {
+	/* margin-bottom: 25px; PLUCERA ORIGINAL */
+	margin-bottom: 20px;
+	color: #758d99;
+	/* font-size: 11px; PLUCERA ORIGINAL */
+	font-size: 14px;
+	
+}
+
+FOOTER .mid P A:hover {
+	color: #fff;
+}
+
+FOOTER .btm {
+	height: 30px;
+	
+	font-size: 12px;
+}
+
+
+FOOTER .btm P  {
+	float: left;
+	
+	color: #758d99;
+}
+
+#siteby {
+	float: right;
+}
+
+#siteby A {
+	color: #758d99;
+	text-decoration: none;
+}
+
+#siteby A:hover {
+	color: #fff;
+}
+/* ----- FOOTER ----- */
+
+
+
+
+/* Changes made by Kristian Erendi Reptilo, 2013-01-22 */
+.fieldset-address{width: 290px;float:left;}
+.clear{clear:both;}
+#extra-address{background-color: #eee; border-radius: 10px 10px;padding: 5px 0 10px 30px;width: 280px;}   /* JAG ÄNDRADE TILL: padding: 5 0 10 30 från 10 0 10 30 /Adrian */
+.invalid {border-color: red;}
+/* .order INPUT:disabled {color: #888;}    REPTILO ORIGINAL */
+.order INPUT:disabled {color: #222; background-color: #f7f7f7;}
+.order INPUT.invalid{border-color: red;  border-color: red;border-style: solid;border-width: 1px;}  
+.invalid[for="terms"]{float: left;text-align: right;width: 247px;}
+textarea#comments{height: 40px;width: 540px;}
+.tillval-table td{padding: 2px 6px;}
+select#uppsagning-op{padding:10px;}
+textarea#comments-op-1{height: 70px;width: 235px;float:left;}
+textarea#comments-op-2, textarea#comments-op-7{height: 70px;width: 520px;}
+#orderForm .extra-date{width:100px;float:left;margin-left: 40px;}
