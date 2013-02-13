@@ -18,7 +18,10 @@ function ratsit_scripts() {
   wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js');
   wp_enqueue_script('jquery');
   wp_register_script('validate', 'http://jzaefferer.github.com/jquery-validation/jquery.validate.js');
+  //wp_register_script('validate', 'https://raw.github.com/jzaefferer/jquery-validation/master/jquery.validate.js');
+  //wp_register_script('validate_additional', 'https://raw.github.com/jzaefferer/jquery-validation/master/additional-methods.js');
   wp_enqueue_script('validate');
+  //wp_enqueue_script('validate_additional');
 }
 
 add_action('wp_enqueue_scripts', 'ratsit_scripts');
@@ -218,8 +221,11 @@ function getTillvalTable($isKund = true) {
     </thead>
     <tbody>
 HTML;
+  $i = 1;
   foreach ($tillval as $key => $value) {
-    $output .= '<tr>';
+    $class = $i % 2 ? 'zebra': '';
+    $i++;
+    $output .= '<tr class="'.$class.'">';
     $output .= '  <td><strong>' . $value['name'] . '</strong> ' . $value['desc'] . '</td>';
     $output .= '  <td style="text-align:center;"><input name = "" id="id_' . $key . '_all" value="" type="checkbox" class="select-all"/></td>';
     $output .= '  <td><input name = "id_' . $key . '[]" id = "" value = "1" type = "checkbox" row="id_' . $key . '" /></td>';
@@ -237,6 +243,8 @@ HTML;
 
 function getTillvalTableForCustomerService() {
   global $tillval;
+    $data = print_r($_REQUEST['id_1'], true);
+    saveToLogFile(getLogFileName(), "Tillval: \n" . $data, 'INFO');  
   $output = <<<HTML
     <table border="1">
     <thead>
@@ -256,15 +264,15 @@ HTML;
   foreach ($tillval as $key => $value) {
     !empty($_REQUEST['id_' . $key]) ? $val = $_REQUEST['id_' . $key] : $val = '';
     $servicename = $value['servicename'];
-    $c1 = $c2 = $c3 = $c4 = $c5 = $c6 = $c7 = '';
+    $c1 = $c2 = $c3 = $c4 = $c5 = $c6 = $c7 = ' ';
     if ($val != '') {
-      $c1 = in_array('1', $val) ? 'x' : '';
-      $c2 = in_array('2', $val) ? 'x' : '';
-      $c3 = in_array('3', $val) ? 'x' : '';
-      $c4 = in_array('4', $val) ? 'x' : '';
-      $c5 = in_array('5', $val) ? 'x' : '';
-      $c6 = in_array('6', $val) ? 'x' : '';
-      $c7 = in_array('7', $val) ? 'x' : '';
+      $c1 = in_array('1', $val) ? 'x' : ' ';
+      $c2 = in_array('2', $val) ? 'x' : ' ';
+      $c3 = in_array('3', $val) ? 'x' : ' ';
+      $c4 = in_array('4', $val) ? 'x' : ' ';
+      $c5 = in_array('5', $val) ? 'x' : ' ';
+      $c6 = in_array('6', $val) ? 'x' : ' ';
+      $c7 = in_array('7', $val) ? 'x' : ' ';
     }
     $output .= '<tr>';
     $output .= '  <td>' . $servicename . '</td>';
@@ -310,16 +318,19 @@ function getCustomerExperienceTable() {
     </thead>
     <tbody>
 HTML;
+  $i = 1;  
   foreach ($customerExperience as $key => $value) {
-    $output .= '<tr>';
-    $output .= '  <td >' . $value['desc'] . '</td>';
-    $output .= '  <td style="text-align:center;"><input name="cust-exp_' . $key . '" id="1" value="1" type="radio" /></td>';
-    $output .= '  <td style="text-align:center;"><input name="cust-exp_' . $key . '" id="2" value="2" type="radio" /></td>';
-    $output .= '  <td style="text-align:center;"><input name="cust-exp_' . $key . '" id="3" value="3" type="radio" /></td>';
-    $output .= '  <td style="text-align:center;"><input name="cust-exp_' . $key . '" id="4" value="4" type="radio" /></td>';
-    $output .= '  <td style="text-align:center;"><input name="cust-exp_' . $key . '" id="5" value="5" type="radio" /></td>';
-    $output .= '  <td style="text-align:center;"><input name="cust-exp_' . $key . '" id="6" value="6" type="radio" /></td>';
-    $output .= '  <td style="text-align:center;"><input name="cust-exp_' . $key . '" id="7" value="7" type="radio" /></td>';
+    $class = $i % 2 ? 'zebra': '';
+    $i++;
+    $output .= '<tr class="'.$class.'">';
+    $output .= '  <td ><label for="cust_exp_' . $key . '"> ' . $value['desc'] . '</label></td>';
+    $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="1" value="1" type="radio" /></td>';
+    $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="2" value="2" type="radio" /></td>';
+    $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="3" value="3" type="radio" /></td>';
+    $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="4" value="4" type="radio" /></td>';
+    $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="5" value="5" type="radio" /></td>';
+    $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="6" value="6" type="radio" /></td>';
+    $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="7" value="7" type="radio" /></td>';
   }
   $output .= '</table>';
   return $output;
@@ -345,7 +356,7 @@ function getCustExpTableForCustomerService() {
     <tbody>
 HTML;
   foreach ($customerExperience as $key => $value) {
-    !empty($_REQUEST['cust-exp_' . $key]) ? $val = $_REQUEST['cust-exp_' . $key] : $val = '';
+    !empty($_REQUEST['cust_exp_' . $key]) ? $val = $_REQUEST['cust_exp_' . $key] : $val = '';
     $servicename = $value['desc'];
     $c1 = $c2 = $c3 = $c4 = $c5 = $c6 = $c7 = '';
     if ($val != '') {

@@ -32,7 +32,10 @@ the_post();
           <li>  
             <!--input name="zip1" id="zip1" value="" type="text" /-->
             <input name="zip1" id="zip1" type="text" value="Skriv ditt postnummer här" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />
-            <input type="submit" value="Testa" id="zip-button" name="zip-button">
+            <span id="zip-button-placeholder">
+              <input type="submit" value="TESTA"  name="zip-button" id="zip-button-submit" class="zip-button" />
+              <input type="button" value="TESTA"  name="zip-button" id="zip-button-button" class="zip-button" style="display:none;"/>
+            </span>
             <div id="zip-ok" class="hidden">Ja, vi putsar i <span></span>!</div>  
             <div id="zip-nok" class="hidden">Vi verkar inte putsa i detta postnummerområde. Kontakta gärna kundtjänst om du har frågor.</div>
           </li>
@@ -43,7 +46,10 @@ the_post();
             <p>Vi hämtar dina adressuppgifter från folkbokföringen för att säkerställa en korrekt beställning. Om du vill ändra faktureringsadressen i efterhand, vänligen kontakta kundtjänst. Dina personuppgifter kommer att hanteras hos oss i enlighet med personuppgiftslagen. OBS - 12 siffror.</p>
             <li>
               <input name="ss" id="ss" type="text" value="ÅÅÅÅMMDD-XXXX" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />
-              <input type="submit" value="HÄMTA" id="ss-button" name="ss-button">  
+              <span id="ss-button-placeholder">
+                <input type="submit" value="HÄMTA" id="ss-button-submit" name="ss-button" class="ss-button" />
+                <input type="button" value="HÄMTA" id="ss-button-button" name="ss-button" class="ss-button" style="display:none;"/>
+              </span>  
               <img id="ss-progress" src="<?php bloginfo('stylesheet_directory'); ?>/img/inline/ajax-loader.gif" alt="" />
             </li>  
           </div>
@@ -75,17 +81,17 @@ the_post();
               <li><input name="city" id="city" value="" type="hidden" /></li>
 
               <li><label for="phone">Telefon</label></li>
-              <li><input name="phone" id="phone" value="" type="text"/></li>
+              <li><input name="phone" id="phone" value="" type="text" class="tel"/></li>
 
               <li><label for="mobile">Mobiltelefon</label></li>
-              <li><input name="mobile" id="mobile" value="" type="text"/></li>		
+              <li><input name="mobile" id="mobile" value="" type="text" class="tel"/></li>		
 
               <li><label for="email">E-post</label></li>
               <li><input name="email" id="email" value="" type="text"/></li>
             </fieldset>
 
             <fieldset id="extra-address" class="fieldset-address">
-              <h2>Putsa på annan adress</h2>
+              <h2>Putsa på följande adress:</h2>
               <li><label for="ex_firstname">Förnamn <span>*</span></label></li>
               <li><input name="ex_firstname" id="ex_firstname" value="" type="text" /></li>
 
@@ -114,23 +120,24 @@ the_post();
 
             <fieldset>
               <h2>Övriga val</h2>
-              <p>För övriga tillval till ditt abonnemang kommer du ha möjlighet att beställa detta efteråt.</p>
+              <p><b>Ytterligare tillval kommer du att kunna beställa efteråt i ett separat formulär.</b></p>
               <li>
-                <input name="o2" id="o2" type="checkbox" value="Ja"/>
+                <input name="o2" id="o2" type="checkbox" value="JA"/>
                 <label for="o2"> Jag har fler än 20 fönsterrutor och är medveten om att det kostar extra. </label>
               </li>
               <li>
-                <input name="o3" id="o3" type="checkbox" value="Ja"/>
+                <input name="o3" id="o3" type="checkbox" value="JA"/>
                 <label for="o3"> Jag har spröjs på mina fönster och är medveten om att det kostar extra.</label>
               </li>
               <li>
-                <input name="o4" id="o4" type="checkbox" value="Ja"/>
+                <input name="o4" id="o4" type="checkbox" value="JA"/>
                 <label for="o4"> Jag vill även ha TILLVAL rengöring av fönsterbleck. </label>
               </li>
 
             </fieldset>
             <fieldset>
-              <li>
+              <p><b>Skattereduktion för husarbete (RUT-avdrag)</b></p>
+			  <li>
                 <input name="rut" id="rutYes" value="JA" type="radio" checked/>
                 <label for="rutYes">Ja, jag vill ha skattereduktion och känner till hur det fungerar.</label>
               </li>
@@ -138,27 +145,26 @@ the_post();
                 <input name="rut" id="rutNo" value="NEJ" type="radio" />
                 <label for="rutNo">Nej, jag vill <b>inte</b> ha skattereduktion och betalar fullt pris.</label>
               </li>
-              <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
+              
             </fieldset>			
 
             <fieldset>
               <li>
                 <label class="comments" for="comments">Ytterligare information:</label>
-                <textarea name="comments" id="comments" placeholder="Plats för mer info, tillval och övriga önskemål"></textarea>
+                <textarea name="comments" id="comments" placeholder="Plats för mer information till kundtjänst. Tillval gör du enklast i efterföljande formulär."></textarea>
               </li>
             </fieldset>
 
             <fieldset>				
-              <li>
+              <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
+			  <li>&nbsp;</li>
+			  <li>
                 <input name="terms" id="terms" type="checkbox" style="float:left;" value ="Ja"/>
-                <label for="terms"><b>Ja tack!</b> Jag vill abonnera på utvändig fönsterputsning av bottenvåning 6-7 gånger per år. </label>
-              </li>
-              <li>
-                Jag betalar inget i förskott, inget kontant. Jag får faktura efter utförd putsning. Jag har läst villkor och prislista.
-              </li>
-
+                <label for="terms"><b>Ja tack!</b></label> Jag vill abonnera på utvändig fönsterputsning av bottenvåning 6-7 gånger per år. Jag betalar inget i förskott, inget kontant. Jag får faktura efter utförd putsning. Jag har läst och godkänner villkor, prislista och övrig information.
+			  </li>
+			  <li>&nbsp;</li>
             </fieldset>
-
+			<p> </p>
             <li><input type="submit" value="Beställ"></li>
 
           </div>
@@ -177,6 +183,25 @@ the_post();
             $('#zip1').val(request_zip);
             checkValidZip(request_zip);
           }
+    
+    
+          //extend validator - add require_from_group  http://stackoverflow.com/a/9202684
+          jQuery.validator.addMethod("require_from_group", function(value, element, options){
+            var numberRequired = options[0],
+            selector = options[1],
+            $fields = $(selector, element.form),
+            validOrNot = $fields.filter(function() {
+              return $(this).val();
+            }).length >= numberRequired,
+            validator = this;
+            if(!$(element).data('being_validated')) {
+              $fields.data('being_validated', true).each(function(){
+                validator.valid(this);
+              }).data('being_validated', false);
+            }
+            return validOrNot;
+          }, jQuery.format("Please fill out at least {0} of these fields."));
+          
     
           // validate signup form on keyup and submit
           var validator = $("#orderForm").validate({
@@ -211,6 +236,8 @@ the_post();
                 minlength: 5
               },
               ex_city: "required",
+              phone: {require_from_group: [1,".tel"]},
+              mobile: {require_from_group: [1,".tel"]},              
               rut: "required",
               terms: "required"
             },
@@ -243,6 +270,8 @@ the_post();
                 minlength: ""
               },
               ex_city: "",
+              phone: "Ange minst ett telefonnummer",
+              mobile: "Ange minst ett telefonnummer",
               rut: "Välj om du vill ha skattereduktion eller inte!",
               terms: "Tacka ja för att genomföra beställningen!"
             },
@@ -257,6 +286,8 @@ the_post();
            * Ajax call to check for valid zip
            */
           function checkValidZip(zip){
+                $("#zip-button-submit").hide();
+                $("#zip-button-button").show();            
             var data = {
               action : 'check_zip',
               zip: zip
@@ -267,7 +298,18 @@ the_post();
                 $("#zip-ok span").html(response.city);
                 $("#ss-container").removeClass("hidden");
                 $("#zip-nok").addClass("hidden");
-                $("#zip-button").prop('type','button');
+                //ugly IE 8 fix
+                //IE8 doesn't allow changeing property from submit to button
+                // clone, modify, remove, add  
+                //$("#zip-button").prop('type','button');
+                //var zipButton = $(".zip-button").clone();
+                //zipButton.prop('type','button');
+                //$(".zip-button").remove();
+                //$("#zip-button-placeholder").html(zipButton);
+                
+
+                
+                
               }else{
                 $("#zip-nok").removeClass("hidden");
                 $("#zip-ok").addClass("hidden");
@@ -278,7 +320,7 @@ the_post();
           }    
 
 
-          $("#zip-button").click(function(event) {
+          $(".zip-button").click(function(event) {
             event.preventDefault();
             zip = $('#zip1').val();
             checkValidZip(zip);
@@ -298,7 +340,7 @@ the_post();
           /**
            * Do the persInfo lookup
            */        
-          $("#ss-button").click(function(event) {
+          $(".ss-button").click(function(event) {
             event.preventDefault();
             getPersInfo(event);
           });        
@@ -309,6 +351,9 @@ the_post();
            */        
           function getPersInfo(event){
             event.preventDefault();
+                $("#ss-button-submit").hide();
+                $("#ss-button-button").show();
+                
             $("#ss-progress").css("display", "block");    //show progress wheel
             ss = $('#ss').val();
             var data = {
@@ -319,7 +364,16 @@ the_post();
               $("#ss-progress").hide();  
               if(response.success == 1){
                 $("#pers-container").removeClass("hidden");
-                $("#ss-button").prop('type','button');          
+                
+                //ugly IE 8 fix
+                //IE8 doesn't allow changeing property from submit to button
+                // clone, modify, remove, add  
+                //$("#ss-button").prop('type','button'); 
+                //var ssButton = $(".ss-button").clone();
+                //ssButton.prop('type','button');
+                //$(".ss-button").remove();
+                //$("#ss-button-placeholder").html(ssButton);
+                         
                 $("#ss-error").addClass("hidden");
                 $("#firstname").val(response.fname);
                 $("#firstname_show").val(response.fname);
@@ -356,32 +410,6 @@ the_post();
     
     
     
-            /*** overlays ***/    
-            $("#terms-link").click(function(event) {
-              event.preventDefault();
-              $("#terms-overlay").show();
-            }); 
-    
-            $("#rut-info-link").click(function(event) {
-              event.preventDefault();
-              $("#rut-info-overlay").show();
-            }); 
-
-            $("#price-link").click(function(event) {
-              event.preventDefault();
-              $("#price-overlay").show();
-            }); 
-
-            function hideAllOverlays(){
-              $('#terms-overlay').hide('slow');
-              $('#rut-info-overlay').hide('slow');
-              $('#price-overlay').hide('slow');
-            } 
- 
-
-            $('.overlay').click(function(event) {
-              hideAllOverlays();
-            });
 
 
 
@@ -421,7 +449,7 @@ the_post();
 </div>
 
 <div id="price-overlay" class="hidden overlay">
-  <img id="price-overlay-img" src="http://ny.eriksfonsterputs.se/wp-content/uploads/prislista2013.png" alt="Prislista 2013" />
+  <img id="price-overlay-img" src="http://eriksfonsterputs.se/wp-content/uploads/prislista2013.png" alt="Prislista 2013" />
   <span class="close-text-overlay close-price-overlay">Stäng</span>
 </div>
 

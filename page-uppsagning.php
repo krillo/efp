@@ -21,6 +21,10 @@ the_post();
         <ul>
           <div id="pers-container" class="">
             <fieldset class="fieldset-address">
+
+
+
+
               <li><label for="firstname">Förnamn <span class="mandatory">*</span></label></li>
               <li><input name="firstname" id="firstname" value="" type="text" /></li>
               <!--li><input name="firstname" id="firstname" value="" type="hidden" /></li-->
@@ -39,9 +43,10 @@ the_post();
             </fieldset>
             <fieldset class="fieldset-address">
               <li><label for="phone">Telefon</label></li>
-              <li><input name="phone" id="phone" value="" type="text"/></li>
+              <li><input name="phone" id="phone" value="" type="text" class="tel"/></li>
               <li><label for="mobile">Mobiltelefon</label></li>
-              <li><input name="mobile" id="mobile" value="" type="text"/></li>		
+              <li><input name="mobile" id="mobile" value="" type="text" class="tel"/></li>		
+
               <li><label for="email">E-post</label></li>
               <li><input name="email" id="email" value="" type="text"/></li>
               <li><label for="customernbr">Kundnummer <span>*</span></label></li>
@@ -54,16 +59,15 @@ the_post();
 
 
           <fieldset id="uppsagning" class="tillval">
-            OBS! Uppsägning kan göras när som helst, dock ej under påbörjad putsperiod.
-            <h2>Jag vill säga upp mitt abonnemang på grund av</h2>
-            <select name="uppsagning" id="uppsagning-op">
+            <h2>Jag vill säga upp mitt abonnemang på grund av *</h2>
+            <select name="uppsagning" id="uppsagning-op" class="op">
               <option value="0">Välj...</option>
               <option value="1">Flytt</option>
-              <option value="2">Missnöjd med kvaliteten på utförandet</option>
-              <option value="3">Att det är för dyrt</option>
-              <option value="4">Ville bara testa hur det fungerade</option>
-              <option value="5">Personen är avliden</option>
-              <option value="6">Vi ska renovera under en period</option>
+              <option value="2">Missnöjd med utförandet</option>
+              <option value="3">Det blev för dyrt</option>
+              <option value="4">Ville bara testa</option>
+              <option value="5">Personen har avlidit</option>
+              <option value="6">Vi ska renovera</option>
               <option value="7">Annan anledning</option>
             </select>
           </fieldset>          
@@ -87,7 +91,7 @@ the_post();
               <p>Skulle du kunna tänka dig att bli kund hos oss igen, önskar vi dig varmt välkommen.</p>
             </li>
             <li class="hidden" id="uppsagning-op-5">
-              <p>Vill du istället skriva över abonnemanget på en annan person i hushållet?</p>
+              <p>Vill du skriva över abonnemanget på en annan person istället för att säga upp?</p>
               <a href="/bestallning/forandring/">Ändra uppgifter</a>
             </li>  
             <li class="hidden" id="uppsagning-op-6">
@@ -101,21 +105,34 @@ the_post();
           </fieldset>
 
 
-            <fieldset id="cancelation-datepicker" class="hidden">
-              <h2>Jag önskar att uppsägningen träder i kraft från och med..</h2>
-              <input type="text" id="cancelation-date" name="cancelation-date" style="width:100px;"/>
-              <p>Vi inte kan garantera att uppsägning är möjlig ifall putsperioden är påbörjad.</p>
-            </fieldset>
 
-            <fieldset id="customer-experience" class="hidden">
-              <h2>Vänligen gradera nedanstående frågor</h2>
-			  <p>Gradera så att siffran 1 motsvarar ett lågt omdöme och siffran 7 motsvarar ett högt omdöme
-              <?php echo getCustomerExperienceTable(); ?>
-              <li><input type="submit" value="Skicka"></li>
-            </fieldset>
-            <fieldset id="send" class="hidden">
+          <fieldset id="vem" class="tillval hidden">
+            <h2>Fönsterputsningen kommer istället att lösas såhär *</h2>
+            <select name="vem" id="vem-op" class="op">
+              <option value="0">Välj...</option>
+              <option value="1">Genom att putsa själva</option>
+              <option value="2">En städfirma gör det åt oss</option>
+              <option value="3">Ett annat fönsterputsföretag gör det åt oss</option>
+              <option value="4">Vi kommer inte att putsa våra fönster</option>
+            </select>
+          </fieldset>                 
 
-            </fieldset>          
+          <fieldset id="cancelation-datepicker" class="hidden">
+            <h2>Jag önskar att uppsägningen träder i kraft från och med *</h2>
+            <p>OBS! Vi inte kan garantera att din uppsägning kommer att gälla för påbörjad period.</p>
+            <input type="text" id="cancelation-date" name="cancelation-date" style="width:100px;"/>
+          </fieldset>
+
+          <fieldset id="customer-experience" class="hidden">
+            <h2>Gradera nedanstående frågor *</h2>
+            <p><b>Gradera så att siffran 1 motsvarar ett lågt omdöme och siffran 7 motsvarar ett högt omdöme.</b>
+              Dina rättframma svar betyder mycket för oss och vi vill gärna veta var vi kan bli bättre!</p>
+            <?php echo getCustomerExperienceTable(); ?>
+            <li><input type="submit" value="Säg upp"></li>
+          </fieldset>
+          <fieldset id="send" class="hidden">
+
+          </fieldset>          
 
         </ul>
       </form>
@@ -153,15 +170,17 @@ the_post();
               $( "#customer-experience" ).show('slow');
             }
           });
-    
-    
+
+
+
+
           // validate signup form on keyup and submit
           var validator = $("#orderForm").validate({
             errorClass: "invalid",
             validClass: "valid", 
-            rules: {
-              firstname: "required",
-              lastname: "required",
+            rules: {            
+              firstname: {required: true},
+              lastname: {required: true},
               street1:{
                 required: true,
                 minlength: 3
@@ -180,9 +199,15 @@ the_post();
                 required: true,
                 minlength: 4                
               },              
-              rut: "required",
-              terms: "required"
-            },
+              cust_exp_0: "required",
+              cust_exp_1: "required",
+              cust_exp_2: "required",
+              cust_exp_3: "required",
+              cust_exp_4: "required",
+              cust_exp_5: "required",
+              cust_exp_6: "required",
+              cust_exp_7: "required"               
+            },           
             messages:{
               firstname: "",
               lastname: "",
@@ -202,13 +227,23 @@ the_post();
                 maxlength: "Ange ett korrekt personnummer i formatet ÅÅÅÅMMDD-XXXX!"
               },
              
-              rut: "Välj om du vill ha skattereduktion eller inte!",
-              terms: "Tacka ja för att genomföra beställningen!"
+              cust_exp_0: "*",
+              cust_exp_1: "*",
+              cust_exp_2: "*",
+              cust_exp_3: "*",
+              cust_exp_4: "*",
+              cust_exp_5: "*",
+              cust_exp_6: "*",
+              cust_exp_7: "*"
             },
             success: function(label) {
               // set &nbsp; as text for IE
               label.html("&nbsp;").addClass("checked");
-            }
+            },
+            errorPlacement: function (error, element) { 
+              error.insertBefore(element);    
+            }           
+
           });
     
 
@@ -251,7 +286,8 @@ the_post();
           });    
     
     
-          $('#uppsagning-op').change(function(){
+          $('#uppsagning-op').change(function(){            
+            $('#vem').show('slow');
             $('#cancelation-datepicker').show('slow');
             value = $('#uppsagning-op option:checked').val();
             switch (value)

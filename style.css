@@ -167,7 +167,7 @@ LABEL {
 	width: 220px;
 	height: 50px;
 	/* height: 55px; PLUCERA ORIGINAL */
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	padding: 0 15px;
 	background-color: #fff;
 	border: none;
@@ -270,10 +270,9 @@ LABEL {
 .order INPUT[type="button"] {
 	display: inline-block;
 	width: auto;
-	margin: 15px 0;
+	margin: 0 0 5px 5px;
 	padding: 0 15px;
 	box-shadow: 0px 0px 5px #666;
-
 	color: #fff;
 }
 
@@ -282,7 +281,6 @@ LABEL {
 .order INPUT[type="submit"]#ss-button,
 .order INPUT[type="button"]#ss-button {
 	margin: 0 0 10px 10px;
-	
 	text-transform: uppercase;
 }
 
@@ -301,8 +299,8 @@ LABEL {
 
 #zip-ok, #zip-nok {
 	float: right;
-	height: 27px;
-	padding: 9px 15px 0;
+	height: 29px;
+	padding: 11px 12px 0;
 	background-color: #efefef;
 	border: 2px solid #00accd;
 
@@ -406,7 +404,7 @@ HEADER NAV UL {
 
 HEADER NAV LI {
 	float: left;
-	margin-left: 15px;
+	margin-left: 10px;
 }
 
 HEADER NAV LI:first-child {
@@ -416,13 +414,13 @@ HEADER NAV LI:first-child {
 HEADER NAV UL A, HEADER NAV UL A:hover {
 	display: block;
 	/* height: 19px; PLUCERA ORIGINAL */
-	height: 22px;
-	padding: 6px 8px 0;
+	/* height: 24px; */
+	padding: 6px 8px 6px;
 	/*	background-color: #dee7eb; PLUCERA ORIGINAL */
 	border-radius: 4px;
 	color: #00accd;
 	/* font-size: 11px; PLUCERA ORIGINAL */
-	font-size: 14px;
+	font-size: 16px;
 	font-weight:300;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -653,8 +651,8 @@ HEADER SECTION {
 }
 
 #slogan {
-	margin-bottom: 30px;
-	font-size: 28px;
+	margin-bottom: 20px;
+	font-size: 24px;
 }
 
 #windows {
@@ -665,11 +663,10 @@ HEADER SECTION {
 }
 
 #since {
-	padding; 0px;
-	margin: 0 auto;
+	padding: 1px;
 	color: #00accd;
-	font-size: 16px;
-	font-weight:400;
+	font-size: 24px;
+	font-weight:3f00;
 }
 /* ----- MAIN#panorama ----- */
 
@@ -677,7 +674,7 @@ HEADER SECTION {
 /* ----- MAIN.home ----- */
 #main.home SECTION,
 #main.home .grid_8 {
-	height: 390px;
+	height: 370px;
 	overflow: visible;
 }
 
@@ -812,16 +809,19 @@ HEADER SECTION {
 	display: inline-block;
 	width: auto;
 	height: 19px;
-	margin-bottom: 10px;
-	padding: 6px 8px 8px;
-	border-radius: 4px;
+	margin-bottom: 15px;
+	/* margin-bottom: 10px;  PLUCERA ORIGINAL */
+	/* padding: 6px 8px 8px; PLUCERA ORIGINAL */
+	/* padding: 6px 0px 8px; PLUCERA ORIGINAL */
+	/* border-radius: 4px; */
 	/* background-color: #000; PLUCERA ORIGINAL */
-	background-color: #FFF;
+	/* background-color: #FFF; ADRIAN ORIGINAL */
 	font-weight: 400;
 	/* font-weight: 300; PLUCERA ORIGINAL */
-	font-size: 18px;
+	font-size: 24px;
 	/* font-size: 18px; PLUCERA ORIGINAL */
-	color: #000;
+	color: #FFF;
+	/* color: #FFF; ADRIAN ORIGINAL */
 	/*font-color: #fff; PLUCERA ORIGINAL */
 }
 /* ----- MAIN-HEAD ----- */
@@ -1275,7 +1275,8 @@ FOOTER .btm P  {
 .invalid[for="terms"]{float: left;text-align: right;width: 247px;}
 textarea#comments{height: 40px;width: 540px;}
 .tillval-table td{padding: 2px 6px;}
-select#uppsagning-op{padding:10px;}
+select.op{padding:10px;}
 textarea#comments-op-1{height: 70px;width: 235px;float:left;}
 textarea#comments-op-2, textarea#comments-op-7{height: 70px;width: 520px;}
 #orderForm .extra-date{width:100px;float:left;margin-left: 40px;}
+.zebra{background-color:#f1f1f1;}

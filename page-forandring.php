@@ -344,21 +344,35 @@ the_post();
             if($('#avbokning1').attr('checked')){
               $('#avbokning1').prop('checked', true);
               $('#avbokning2').prop('checked', true);
+              $('#avbokning2').prop('disabled', true);
               $('#avbokning3').prop('checked', true);
+              $('#avbokning3').prop('disabled', true);
               $('#avbokning4').prop('checked', true);
+              $('#avbokning4').prop('disabled', true);
               $('#avbokning5').prop('checked', true);
+              $('#avbokning5').prop('disabled', true);
               $('#avbokning6').prop('checked', true);
+              $('#avbokning6').prop('disabled', true);
               $('#avbokning7').prop('checked', true);
+              $('#avbokning7').prop('disabled', true);
               $('#avbokning8').prop('checked', true);
+              $('#avbokning8').prop('disabled', true);
             }else{
               $('#avbokning1').prop('checked', false);
               $('#avbokning2').prop('checked', false);
+              $('#avbokning2').prop('disabled', false);
               $('#avbokning3').prop('checked', false);
+              $('#avbokning3').prop('disabled', false);
               $('#avbokning4').prop('checked', false);
+              $('#avbokning4').prop('disabled', false);
               $('#avbokning5').prop('checked', false);
+              $('#avbokning5').prop('disabled', false);
               $('#avbokning6').prop('checked', false);
+              $('#avbokning6').prop('disabled', false);
               $('#avbokning7').prop('checked', false);
+              $('#avbokning7').prop('disabled', false);
               $('#avbokning8').prop('checked', false);
+              $('#avbokning8').prop('disabled', false);
             }
           });
     

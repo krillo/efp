@@ -43,6 +43,7 @@ $order = new stdClass;
 !empty($_REQUEST['from']) ? $order->from = $_REQUEST['from'] : $order->from = '';
 !empty($_REQUEST['to']) ? $order->to = $_REQUEST['to'] : $order->to = '';
 !empty($_REQUEST['terms']) ? $order->terms = $_REQUEST['terms'] : $order->terms = 'Nej';
+!empty($_REQUEST['vem']) ? $order->vem = $_REQUEST['vem'] : $order->vem = '';
 
 //uppsagning
 !empty($_REQUEST['uppsagning']) ? $order->uppsagning = $_REQUEST['uppsagning'] : $order->uppsagning = '';
@@ -64,13 +65,13 @@ if ($order->option != '') {
     case 'op1':
       $title = 'FÖRÄNDRING - ';
       if ($order->tillval == 'tillval1') {
-        $title .= 'LÄGGER TILL';
+        $title .= 'Lägg till';
       }
       if ($order->tillval == 'tillval2') {
-        $title .= 'DETALJERAT VARJE ÅR';
+        $title .= 'Detaljerat varje år';
       }
       if ($order->tillval == 'tillval3') {
-        $title .= 'TAR BORT';
+        $title .= 'Ta bort';
       }
       saveToLogFile($logfile, $title . " \n" . $data, 'INFO');
       $message .= '<strong>' . $title . "</strong><br>";
@@ -90,18 +91,11 @@ if ($order->option != '') {
       $message .= efp_getKundnummer();
       $message .= efp_getAddress();
       $message .= 'Önskad avbokning mellan ' . $order->from . ' och ' . $order->to . '<br/>';
-      $message .= in_array('1', $order->avbokning) ? 'Hela putstillfället <br/>' : '';
-      $message .= in_array('2', $order->avbokning) ? 'Spröjs på<br/>' : '';
-      $message .= in_array('3', $order->avbokning) ? 'Rengöring spröjs<br/>' : '';
-      $message .= in_array('4', $order->avbokning) ? 'Bleck<br/>' : '';
-      $message .= in_array('5', $order->avbokning) ? 'Karmar<br/>' : '';
-      $message .= in_array('6', $order->avbokning) ? 'Uterum<br/>' : '';
-      $message .= in_array('7', $order->avbokning) ? 'Ovanvåning<br/>' : '';
-      $message .= in_array('8', $order->avbokning) ? 'Källare<br/>' : '';
+      $message .= efp_getAvbokninMsg();
       $message .= "<br/><br/>";
       $message .= "Egen kommentar: $order->comments<br/>";
       $message .= "<br/><br/>Klientinformation<br />";
-      $message .= efp_getDate();      
+      $message .= efp_getDate();
       preSendMail($title, $message, $order->email, $order->fname . " " . $order->lname, true);
       break;
     case 'op3':
@@ -152,13 +146,14 @@ if ($order->option != '') {
           break;
       }
       saveToLogFile($logfile, $title . " \n" . $data, 'INFO');
-      $message .= '<strong>' . $title . "</strong><br>";
+      $message .= '<strong>' . $title . "</strong><br/><br/>";
+      $message .= efp_getVem();
       $message .= efp_getKundnummer();
       $message .= efp_getAddress();
-      $message .= "Uppsägningdatum: $order->cancelationdate<br/>";      
+      $message .= "Uppsägningdatum: $order->cancelationdate<br/>";
       $message .= $extraDate;
       $message .= $kommentar;
-      $message .= getCustExpTableForCustomerService() . "<br><br>";      
+      $message .= getCustExpTableForCustomerService() . "<br><br>";
       $message .= "<br/><br/>Klientinformation<br />";
       $message .= efp_getDate();
       preSendMail($title, $message, $order->email, $order->fname . " " . $order->lname, true);
@@ -178,11 +173,12 @@ if ($order->option != '') {
       //send to customer
       $titleKund = 'Välkommen till Eriks Fönsterputs';
       $message = "Hej $order->fname,<br/><br/>";
-      $message .= "Välkommen som abonnent hos Eriks Fönsterputs!<br/><br/>";
-      $message .= "Vi har mottagit din beställning enligt nedanstående:<br/>";
+      $message .= "Välkommen som kund hos Eriks Fönsterputs!<br/><br/>";
+      $message .= "<b>Vi har mottagit din beställning av fönsterputsabonnemang enligt nedanstående:</b><br/>";
       $message .= efp_getAddress();
       $message .= efp_getNykundExtra();
-      $message .= "Har du ytterligare frågor, var vänlig och besök frågor och svar på vår hemsida alternativt kontakta kundtjänst på 0771-42 42 42.";
+      $message .= "- Vill du göra anpassningar av ditt abonnemang kan du göra det genom att <a href=\"http://eriksfonsterputs.se/abonnemang/forandring/\">klicka här</a><br />";
+      $message .= "- Har du ytterligare frågor, var vänlig och besök <a href=\"http://eriksfonsterputs.se/fragor-svar/allmanna-fragor/\">frågor och svar</a> på vår hemsida alternativt kontakta kundtjänst på 0771-42 42 42.";
       preSendMail($title, $message, $order->email, $order->fname . " " . $order->lname, false);
       break;
     default:
@@ -237,7 +233,48 @@ function efp_getNykundExtra() {
   $message .= "Fler än 20 fönster: $order->o2<br/>";
   $message .= "Godkänt kostnad för spröjs: $order->o3<br/>";
   $message .= "Fönsterbleck beställt: $order->o4<br/>";
-  $message .= "Avtal godkänt: $order->terms<br/><br/>";
+  $message .= "Villkor godkända: $order->terms<br/><br/>";
+  return $message;
+}
+
+function efp_getVem() {
+  global $order;
+  $msg = 'Vi kommer att lösa fönsterputsningen såhär: <br/> &nbsp;&nbsp;';
+  switch ($order->vem) {
+    case 1:
+      $msg .= 'Genom att putsa själva';
+      break;
+    case 2:
+      $msg .= 'En städfirma gör det åt oss';
+      break;
+    case 3:
+      $msg .= 'Ett annat fönsterputsföretag gör det åt oss';
+      break;
+    case 4:
+      $msg .= 'Vi kommer inte att putsa våra fönster';
+      break;
+    default:
+      $msg .= ' - ';
+      break;
+  }
+  $msg .= "<br/><br/>";
+  return $msg;
+}
+
+function efp_getAvbokninMsg() {
+  global $order;
+  $message = '';
+  if (in_array('1', $order->avbokning)) {
+    $message .= in_array('1', $order->avbokning) ? 'Hela putstillfället <br/>' : '';
+  } else {
+    $message .= in_array('2', $order->avbokning) ? 'Spröjs på<br/>' : '';
+    $message .= in_array('3', $order->avbokning) ? 'Rengöring spröjs<br/>' : '';
+    $message .= in_array('4', $order->avbokning) ? 'Bleck<br/>' : '';
+    $message .= in_array('5', $order->avbokning) ? 'Karmar<br/>' : '';
+    $message .= in_array('6', $order->avbokning) ? 'Uterum<br/>' : '';
+    $message .= in_array('7', $order->avbokning) ? 'Ovanvåning<br/>' : '';
+    $message .= in_array('8', $order->avbokning) ? 'Källare<br/>' : '';
+  }
   return $message;
 }
 ?>
@@ -257,7 +294,7 @@ the_post();
     <div class="column grid_8">
 
       <h1><?php the_title(); ?></h1>
-      <?php the_content(); ?>
+<?php the_content(); ?>
 
     </div>
 
@@ -283,7 +320,7 @@ the_post();
       <hr />
 
       <?php $p = array_shift(get_posts("post_type=template-content&p=90")); ?>
-      <?php echo $p->post_content; ?>
+<?php echo $p->post_content; ?>
 
     </div>
 
