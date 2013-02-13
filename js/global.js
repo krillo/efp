@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
     $('#slides').slides({
       generateNextPrev: true,
       preload: true,
-      preloadImage: 'img/inline/loading.gif',
+      preloadImage: '/wp-content/themes/eriksfonsterputs/img/inline/loading.gif',
       play: 7000,
       pause: 2500,
       slideSpeed: 500,
@@ -69,9 +69,6 @@ jQuery(document).ready(function($){
   $('.overlay').click(function(event) {
     hideAllOverlays();
   });
-
-
-
 
 
 });
