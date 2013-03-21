@@ -18,10 +18,10 @@ the_post();
       <p>Här kan du som är registrerad kund hos oss beställa tillval och förändra så att abonnemanget passar just dina behov.</p>
       <form action="/abonnemang/mottagen-forandring/" id="orderForm" name="orderForm" method="post" >
         <ul>
-          <h2>Välj vad det är du vill göra</h2>
-          <li><input name="option" id="op1" value="op1" type="radio" /><label for="op1">Beställa tillval eller förändra befintliga abonnemang</label></li>
-          <li><input name="option" id="op2" value="op2" type="radio" /><label for="op2">Göra en tillfällig avbokning på befintligt abonnemang</label></li>
-          <li><input name="option" id="op3" value="op3" type="radio" /><label for="op3">Ändra mina kunduppgifter</label></li>
+          <h2>Välj vilket sorts ärende du vill utföra</h2>
+          <li><input name="option" id="op1" value="op1" type="radio" /><label for="op1">Beställa <b>permanenta</b> tillval eller göra <b>tillfälliga</b> bokningar</label></li>
+          <li><input name="option" id="op2" value="op2" type="radio" /><label for="op2">Göra <b>tillfällig</b> avbokning av putstillfälle</label></li>
+          <li><input name="option" id="op3" value="op3" type="radio" /><label for="op3">Ändra dina kunduppgifter</label></li>
 
           <div id="basics" class="hidden">
             <h2>Grunduppgifter</h2>
@@ -70,10 +70,12 @@ the_post();
           </div>  
           <div class="clear"></div>
           <div>
-            <fieldset id="rut" class="hidden">
-              <li>
+            
+			<fieldset id="rut" class="hidden">
+              <h2>Ändra skattereduktion (RUT-avdrag)</h2>
+			  <li>
                 <input name="rutchange" id="rutSame" value="SAMMA" type="radio" checked/>
-                <label for="rutSame">Jag vill att ni lämnar detta oförändrat på mitt abonnemang.</label>
+                <label for="rutSame">Jag vill att ni lämnar detta oförändrat</label>
               </li>
               <li>
                 <input name="rutchange" id="rutYes" value="JA" type="radio" />
@@ -81,37 +83,37 @@ the_post();
               </li>
               <li>
                 <input name="rutchange" id="rutNo" value="NEJ" type="radio" />
-                <label for="rutNo">Jag vill <u>inte</u> ha RUT-avdrag.</label>
+                <label for="rutNo">Jag vill <u>inte</u> ha RUT-avdrag</label>
               </li>
-              <li><a href="<?php bloginfo('url'); ?>/bestall/rut-avdrag/" target="_blank">Läs om RUT-avdraget</a></li>
+              <li><a href="<?php bloginfo('url'); ?>/bestall/rut-avdrag/" target="_blank">Om RUT-avdraget</a></li>
             </fieldset>			
           </div>
           <div>
             <fieldset id="rut" class="hidden">
-              <li><a href="<?php bloginfo('url'); ?>/bestall/rut-avdrag/" target="_blank">Läs om RUT-avdraget</a></li>
+              <li><a href="<?php bloginfo('url'); ?>/bestall/rut-avdrag/" target="_blank">Om RUT-avdraget</a></li>
             </fieldset>			
           </div>
 
           <fieldset id="tillval" class="tillval hidden">
             <h2>Nedanstående val beskriver..</h2>
-            <li><input name="tillval" id="tillval1" value="tillval1" type="radio" checked/><label for="tillval1"> ..tjänster jag vill att ni permanent <u>LÄGGER TILL</u> i mitt abonnemang</label></li>
-            <li><input name="tillval" id="tillval2" value="tillval2" type="radio" /><label for="tillval2"> .. beskriver detaljerat hur jag vill att ni putsar mitt hus <u>VARJE ÅR</u></label></li>
-            <li><input name="tillval" id="tillval3" value="tillval3" type="radio" /><label for="tillval3"> ..vad jag vill att ni permanent <u>TAR BORT</u> från mitt abonnemang</label></li>
-            <li>(För tillfälliga avbokningar finns det ett val för detta ovan.)</li>
+            <li><input name="tillval" id="tillval1" value="tillval1" type="radio" checked/><label for="tillval1"> ..vad <u>LÄGGER TILL</u> permanent på mitt årliga abonnemang</label></li>
+            <li><input name="tillval" id="tillval2" value="tillval2" type="radio" /><label for="tillval2"> .. beskriver detaljerat hur ni <u>VARJE ÅR</u> ska putsa mitt hus</label></li>
+            <li><input name="tillval" id="tillval3" value="tillval3" type="radio" /><label for="tillval3"> ..vad ni <u>TAR BORT</u> permanent från mitt årliga abonnemang</label></li>
+			<br />
+			<li><input name="tillval" id="tillval4" value="tillval4" type="radio" /><label for="tillval4"> ..vad ni ska utföra vid ett <u>ENSTAKA TILLFÄLLE</u> utanför mitt årliga abonnemang</label></li>
             <br />
-            <?php echo getTillvalTable(); ?>
+			<?php echo getTillvalTable(); ?>
           </fieldset>
 
 
           <fieldset id="avbokning" class="tillval hidden">
-            Gäller tillfällig avbokning av kommande putstillfälle för abonnenter. För permanenta förändringar av hur vi årligen putsar ditt hus, gå istället till förändringsformuläret.
-            <h2>Välj ett datumintervall då du vill att vi avbokar nedanstående tjänster</h2>
-            <label for="from">Från datum: &nbsp;</label><input type="text" id="from" name="from" style="width:100px;"/>
+            
+            <h2>Välj ett datumintervall då du vill att vi avbokar:</h2>
+            För permanenta förändringar av hur vi årligen putsar ditt hus, gå istället till formuläret förändring. För att kunna tillgodose dina önskemål kan du välja <b>tidigast 7 dagar</b> från dagens datum och intervallet kan vara <b>maximalt 7 veckor</b> långt.</br>
+			</br>
+			<label for="from">Från datum: &nbsp;</label><input type="text" id="from" name="from" style="width:100px;"/>
             <label for="to">&nbsp;&nbsp; till datum: &nbsp;</label><input type="text" id="to" name="to" style="width:100px;"/>
-            <br />
-            OBS! Tidigast 7 dagar från dagens datum, intervallet får vara maximalt 7 veckor långt.
-            <br />
-            <br />
+            <br /><br />
             <li><input name="avbokning[]" id="avbokning1" value="1" type="checkbox" /><label for="avbokning1"> Hela putstillfället</label></li>
             <li><input name="avbokning[]" id="avbokning2" value="2" type="checkbox" /><label for="avbokning2"> Spröjs på</label></li>
             <li><input name="avbokning[]" id="avbokning3" value="3" type="checkbox" /><label for="avbokning3"> Rengöring spröjs</label></li>
@@ -120,7 +122,8 @@ the_post();
             <li><input name="avbokning[]" id="avbokning6" value="6" type="checkbox" /><label for="avbokning6"> Uterum</label></li>
             <li><input name="avbokning[]" id="avbokning7" value="7" type="checkbox" /><label for="avbokning7"> Ovanvåning</label></li>
             <li><input name="avbokning[]" id="avbokning8" value="8" type="checkbox" /><label for="avbokning8"> Källare</label></li>
-          </fieldset>
+			
+			</fieldset>
 
           <fieldset id="send" class="hidden">
             <li>

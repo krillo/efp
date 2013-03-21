@@ -8,6 +8,7 @@
 <html>
 <head>
 	<title><?php wp_title(''); ?></title>
+	<meta name="google-site-verification" content="2XDq2VQS1lf9KL8sPQR3r61WGJDdM1bOE78ERtBAOwI" />
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -29,8 +30,8 @@
 
 	<?php
 		if ( is_front_page() ) {
-			echo "<script src='http://ny.eriksfonsterputs.se/wp-content/themes/eriksfonsterputs/js/jquery.easing.1.3.js' type='text/javascript'></script>";
-			echo "<script src='http://ny.eriksfonsterputs.se/wp-content/themes/eriksfonsterputs/js/jquery.flipCounter.1.2.pack.js' type='text/javascript'></script>";
+			echo "<script src='/wp-content/themes/eriksfonsterputs/js/jquery.easing.1.3.js' type='text/javascript'></script>";
+			echo "<script src='/wp-content/themes/eriksfonsterputs/js/jquery.flipCounter.1.2.pack.js' type='text/javascript'></script>";
 		}
 	?>
 		<div id="fb-root"></div>

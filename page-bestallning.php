@@ -123,7 +123,7 @@ the_post();
               <p><b>Ytterligare tillval kommer du att kunna beställa efteråt i ett separat formulär.</b></p>
               <li>
                 <input name="o2" id="o2" type="checkbox" value="JA"/>
-                <label for="o2"> Jag har fler än 20 fönsterrutor och är medveten om att det kostar extra. </label>
+                <label for="o2"> Jag har fler än 20 fönsterrutor och är medveten om att det kostar extra. (1 fönsterruta = 1kvm glas)</label>
               </li>
               <li>
                 <input name="o3" id="o3" type="checkbox" value="JA"/>

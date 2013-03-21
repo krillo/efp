@@ -11,8 +11,9 @@ get_header(); the_post(); ?>
 
 		<div class="column grid_8">
 
-			<h1>Sidan du sökte kunde inte hittas</h1>
-			<p><a href="/">Till startsidan</a></p>
+			<h1>404 - Sidan du sökte kunde inte hittas</h1>
+			<p>Den 1 februari lade vi ut vår nya hemsida och vissa gamla adresser finns därför inte kvar.
+			<h2><a href="/">Klicka här för att gå till startsidan</a></h2>
 
 		</div>
 

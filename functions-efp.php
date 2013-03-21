@@ -387,9 +387,9 @@ HTML;
 
 function preSendMail($title, $message, $customer_email, $customer_name, $to_customer_service = true) {
 $kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
-//$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
+$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
 //$kundtjanst_email = "adrian@jobbasmart.com";
-$kundtjanst_email = "krillo@gmail.com";    
+//$kundtjanst_email = "krillo@gmail.com";    
 
   if ($customer_email == "") {
     $customer_name = "noreply-" . $customer_name;

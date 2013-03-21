@@ -14,7 +14,7 @@ get_header(); the_post(); ?>
 
 			<?php the_content(); ?>
 			
-			<form action="/abonnemang/bestallning" id="orderForm" name="orderForm" method="post" >
+			<form action="/abonnemang/bestallning/" id="orderForm" name="orderForm" method="post" >
 				<ul>
 					<!--li><label for="zip1">Postnr</label></li-->
 					<li>  
@@ -44,7 +44,7 @@ get_header(); the_post(); ?>
 			$incremented = $workdays*$dailyincrement; // hittils ökat under året
 			$clean_start = $startamount+$incremented; // antal vid början på arbetsdagen
 			$clean_end = $startamount+$incremented+$dailyincrement; // antal vid slutet på arbetsdagen
-			$speed = 28800000;  // 8h att räkna från start till slut
+			$speed = 21000000;  // 4h=14400000 8h = 28800000 att räkna från start till slut
 			if (date('N') > 5) $clean_end = $clean_start+1;
 			if (date('G') < 7) {     // före arbetstid
 				$clean_end = $clean_start+1; 
@@ -53,6 +53,7 @@ get_header(); the_post(); ?>
 				}
 			?>
 			<!-- SLUT PÅ RÄKNARE -->
+			<p id="since">Vi har putsat</p>
 			<p id="counter" style="padding;0px;"><input type="hidden" name="counter-value" value="100" /></p>
 			<script type="text/javascript">
 			/* <![CDATA[ */
@@ -68,7 +69,7 @@ get_header(); the_post(); ?>
 					        counterFieldName:"counter-value", // name of the hidden field
 					        digitHeight:30, // the height of each digit in the flipCounter-medium.png sprite image
 					        digitWidth:23, // the width of each digit in the flipCounter-medium.png sprite image
-					        imagePath:"http://ny.eriksfonsterputs.se/wp-content/themes/eriksfonsterputs/img/flipCounter-small.png", // the path to the sprite image relative to your html document
+					        imagePath:"/wp-content/themes/eriksfonsterputs/img/flipCounter-small.png", // the path to the sprite image relative to your html document
 					        easing: false, // the easing function to apply to animations, you can override this with a jQuery.easing method
 					        duration:<?=$speed?>, // duration of animations
 					        onAnimationStarted:false, // call back for animation upon starting
@@ -79,7 +80,7 @@ get_header(); the_post(); ?>
 			        });
 			/* ]]> */
 			</script>
-			<p id="since">putsade fönster sedan 1997</p>
+			<p id="since">fönster sedan 1997</p>
 
 		</div>
 

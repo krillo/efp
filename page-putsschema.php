@@ -12,29 +12,33 @@ the_post();
 ?>
 <input type="hidden" value="<?php echo $kommunid ?>" id="kommun-id"/>
 
-<div id="main-head" class="omraden">
+<?php get_template_part('include_main_head'); ?>
+
+<!-- <div id="main-head" class="omraden">
 
 	<section>
 
-		<div class="column grid_12">
+	<div class="column grid_12">
 
 			<p class="label">
-				<?php
+				<?php /*
 					$label = simple_fields_value("info_sidetikett");
-					echo $label;
+					echo $label;*/
 				?>
 			</p>
 
-			<?php
+			<?php/*
 				$text = simple_fields_value("info_text");
-				echo $text;
+				echo $text;*/
 			?>
 
 		</div>
 
-	</section> <!-- //section -->
+
+	</section> 
 	
-</div> <!-- //main-head -->
+<!-- </div> -->
+
 
 <script type="text/javascript">
   jQuery(document).ready(function($){
@@ -103,9 +107,9 @@ the_post();
 		<div class="column grid_8 hidden choose-areas">
 
 			<h1><?php echo get_the_title(); ?></h1>
-			Inför 2014 kommer vi att ta fram en annan indelning än den nedan som vi hoppas är mer överskådligt för dig som kund.
-				<p></p>
-			<h2>Välj ditt område i <span id="city"></span>, schemanummer visas inom parentes:</h2>
+			<p>Nedan visas de områden och orter där vi kan putsa dina fönster. Inför 2014 kommer vi jobba för en indelning som vi hoppas blir mer överskådlig för dig som kund.</p>
+			<p>Du kan ladda ner och skriva ut ditt putschema för 2013 som <a href="http://eriksfonsterputs.se/wp-content/uploads/Putsschema2013_A4.pdf">utskriftsvänlig PDF</a>.</p>
+			<h2>Schema för fönsterputsning i <span id="city"></span>, schemanummer inom parentes:</h2>
 			<div id="area-list"></div>
 
 		</div>
@@ -113,7 +117,8 @@ the_post();
 		<div class="column grid_8" id="no-city" class="hidden">
 
 			<h1><?php echo get_the_title(); ?></h1>
-			<a href="<?php home_url('/'); ?>/putsomraden/" >Vänligen välj en kommun först</a>
+			<p><a href="<?php home_url('/'); ?>/putsomraden/" >Vänligen välj en kommun först</a></p>
+			<p>Vet du redan vilket schema du har kan du du kan ladda ner och skriva ut ditt putschema <a href="http://eriksfonsterputs.se/wp-content/uploads/Putsschema2013_A4.pdf">här</a> (PDF).</p>
 
 		</div>
 

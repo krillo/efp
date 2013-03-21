@@ -1,0 +1,78 @@
+#panorama .grid_4 {
+	background: url("img/ie/opacity-black.png") left top;
+}
+
+.standard .grid_4 {
+	width: 220px !important;
+	padding: 0 30px !important;
+
+	color: #fff !important;
+}
+
+.standard .grid_4 H3 {
+    font-size: 26px !important;
+}
+
+.standard INPUT {
+	height: 29px !important;
+	padding-top: 10px !important;
+	border: 1px solid #999 !important;
+}
+
+.standard INPUT[type="submit"],
+.standard INPUT[type="button"] {
+	height: 40px !important;
+	padding-top: 0 !important;
+	border: none !important;
+}
+
+#panorama INPUT {
+	height: 38px !important;
+	padding-top: 12px !important;
+}
+
+#panorama INPUT[type="submit"] {
+	height: 74px !important;
+	padding-top: 0 !important;
+}
+
+.pagination LI {
+	background-color: #fff !important;
+	border: 1px solid #ccc !important;
+}
+
+.pagination LI.current {
+	background-color: #00accd !important;
+	border: 1px solid #005e70 !important;
+	
+}
+
+.order INPUT[type="checkbox"],
+.order INPUT[type="radio"] {
+	height: auto !important;
+	padding: 0 !important;
+	background: #fff !important;
+	border: none !important;
+}
+
+.overlay {
+	background: url("img/ie/opacity-black.png") left top;
+}
+
+.standard TEXTAREA {
+	border: 1px solid #999 !important;
+}
+
+#area-list INPUT[type="radio"] {
+	height: auto !important;
+	padding: 0 !important;
+	border: none !important;
+}
+
+.employee {
+	margin: 0 30px 35px 0 !important;
+}
+
+HTML>BODY #main-head .label {
+	*display: inline !important;
+}

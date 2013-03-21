@@ -73,6 +73,10 @@ if ($order->option != '') {
       if ($order->tillval == 'tillval3') {
         $title .= 'Ta bort';
       }
+	 //adrian lagt till nummer 4
+	  if ($order->tillval == 'tillval4') {
+        $title .= 'Tillfällig bokning';
+      }
       saveToLogFile($logfile, $title . " \n" . $data, 'INFO');
       $message .= '<strong>' . $title . "</strong><br>";
       $message .= efp_getKundnummer();
@@ -85,12 +89,12 @@ if ($order->option != '') {
       preSendMail($title, $message, $order->email, $order->fname . " " . $order->lname, true);
       break;
     case 'op2':
-      $title = 'FÖRÄNDRING - AVBOKNING';
+      $title = 'FÖRÄNDRING - Tillfällig avbokning';
       saveToLogFile($logfile, $title . " \n" . $data, 'INFO');
       $message .= '<strong>' . $title . "</strong><br>";
       $message .= efp_getKundnummer();
       $message .= efp_getAddress();
-      $message .= 'Önskad avbokning mellan ' . $order->from . ' och ' . $order->to . '<br/>';
+      $message .= 'Önskad bokning/avbokning mellan ' . $order->from . ' och ' . $order->to . '<br/>';
       $message .= efp_getAvbokninMsg();
       $message .= "<br/><br/>";
       $message .= "Egen kommentar: $order->comments<br/>";
@@ -99,7 +103,7 @@ if ($order->option != '') {
       preSendMail($title, $message, $order->email, $order->fname . " " . $order->lname, true);
       break;
     case 'op3':
-      $title = 'FÖRÄNDRING - UPPGIFTER';
+      $title = 'FÖRÄNDRING - Uppgifter';
       saveToLogFile($logfile, $title . " \n" . $data, 'INFO');
       $message .= '<strong>' . $title . "</strong><br>";
       $message .= efp_getDate();
