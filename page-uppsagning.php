@@ -60,7 +60,7 @@ the_post();
 
           <fieldset id="uppsagning" class="tillval">
             <h2>Jag vill säga upp mitt abonnemang på grund av *</h2>
-            <select name="uppsagning" id="uppsagning-op" class="op">
+            <select name="uppsagning" id="uppsagning-op">
               <option value="0">Välj...</option>
               <option value="1">Flytt</option>
               <option value="2">Missnöjd med utförandet</option>

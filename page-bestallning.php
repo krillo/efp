@@ -37,13 +37,13 @@ the_post();
               <input type="button" value="TESTA"  name="zip-button" id="zip-button-button" class="zip-button" style="display:none;"/>
             </span>
             <div id="zip-ok" class="hidden">Ja, vi putsar i <span></span>!</div>  
-            <div id="zip-nok" class="hidden">Vi verkar inte putsa i detta postnummerområde. Kontakta gärna kundtjänst om du har frågor.</div>
+            <div id="zip-nok" class="hidden">Vi verkar inte putsa i detta postnummerområde. Kontakta oss om du har frågor.</div>
           </li>
 
           <div id="ss-container" class="hidden">
             <!--li><label for="ss">Personnummer ÅÅÅÅMMDD-XXXX</label></li-->
             <h2>Fyll i personnummer för att hämta adressuppgifter</h2>
-            <p>Vi hämtar dina adressuppgifter från folkbokföringen för att säkerställa en korrekt beställning. Om du vill ändra faktureringsadressen i efterhand, vänligen kontakta kundtjänst. Dina personuppgifter kommer att hanteras hos oss i enlighet med personuppgiftslagen. OBS - 12 siffror.</p>
+            <p>Vi hämtar dina adressuppgifter från folkbokföringen för att säkerställa en korrekt beställning. Om du vill ändra faktureringsadressen i efterhand, vänligen kontakta kundtjänst. Dina personuppgifter kommer att hanteras hos oss i enlighet med personuppgiftslagen. OBS, 12 siffror: YYYYMMDD-XXXX</p>
             <li>
               <input name="ss" id="ss" type="text" value="ÅÅÅÅMMDD-XXXX" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />
               <span id="ss-button-placeholder">
@@ -88,6 +88,7 @@ the_post();
 
               <li><label for="email">E-post</label></li>
               <li><input name="email" id="email" value="" type="text"/></li>
+			  <br />
             </fieldset>
 
             <fieldset id="extra-address" class="fieldset-address">
@@ -117,10 +118,10 @@ the_post();
               <li><input name="ex_email" id="ex_email" value="" type="text"/></li>
             </fieldset>
             <div class="clear"></div>
-
-
+            
+            
             <fieldset style="float:left;">
-              <h2>Vad fick dig att beställa denna gången?</h2>
+              <h2>Vad fick dig att beställa av oss?</h2>
               <li>
                 <select class="" name="why" id="why">
                   <option label="Välj..." value="">Välj gärna en</option>
@@ -132,10 +133,10 @@ the_post();
                   <option label="" value="Närvaro på köpcentrum">Närvaro på köpcentrum</option>
                   <option label="" value="Närvaro på mässa">Närvaro på mässa</option>
                   <option label="" value="Våra bilar">Våra bilar</option>
-                  <option label="" value="Annat (ange gärna i textruta)">Annat (ange gärna i textrutan)</option>
+                  <option label="" value="Annat (ange gärna i textruta)">Annat (ange gärna i textruta)</option>
                 </select>
             </fieldset>
-
+            
             <fieldset style="float:left;margin-left:40px">
               <h2>Ange eventuell kampanjkod</h2>
               <li><input name="campaign_code" id="campaign_code" value="" type="text"/></li>
@@ -147,11 +148,11 @@ the_post();
               <p><b>Ytterligare tillval kommer du att kunna beställa efteråt i ett separat formulär.</b></p>
               <li>
                 <input name="o2" id="o2" type="checkbox" value="JA"/>
-                <label for="o2"> Jag har fler än 20 fönsterrutor och är medveten om att det kostar extra. (1 fönsterruta = 1kvm glas)</label>
+                <label for="o2"> Mitt hus har fler än 20 fönsterrutor och jag vet att det kostar extra. (1 fönsterruta = 1kvm glas)</label>
               </li>
               <li>
                 <input name="o3" id="o3" type="checkbox" value="JA"/>
-                <label for="o3"> Jag har spröjs på mina fönster och är medveten om att det kostar extra.</label>
+                <label for="o3"> Mina fönster har spröjs och jag vet att det kostar extra.</label>
               </li>
               <li>
                 <input name="o4" id="o4" type="checkbox" value="JA"/>
@@ -160,16 +161,16 @@ the_post();
 
             </fieldset>
             <fieldset>
-              <p><b>Skattereduktion för husarbete (RUT-avdrag)</b></p>
-              <li>
+              <p><b>Välj om du vill ha skattereduktion gällande husarbete (RUT-avdrag)</b></p>
+			  <li>
                 <input name="rut" id="rutYes" value="JA" type="radio" checked/>
                 <label for="rutYes">Ja, jag vill ha skattereduktion och känner till hur det fungerar.</label>
               </li>
               <li>
                 <input name="rut" id="rutNo" value="NEJ" type="radio" />
-                <label for="rutNo">Nej, jag vill <b>inte</b> ha skattereduktion och betalar fullt pris.</label>
+                <label for="rutNo">Nej, jag vill <b>inte</b> ha skattereduktion.</label>
               </li>
-
+              
             </fieldset>			
 
             <fieldset>
@@ -181,14 +182,14 @@ the_post();
 
             <fieldset>				
               <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
-              <li>&nbsp;</li>
-              <li>
+			  <li>&nbsp;</li>
+			  <li>
                 <input name="terms" id="terms" type="checkbox" style="float:left;" value ="Ja"/>
                 <label for="terms"><b>Ja tack!</b></label> Jag vill abonnera på utvändig fönsterputsning av bottenvåning 6-7 gånger per år. Jag betalar inget i förskott, inget kontant. Jag får faktura efter utförd putsning. Jag har läst och godkänner villkor, prislista och övrig information.
-              </li>
-              <li>&nbsp;</li>
+			  </li>
+			  <li>&nbsp;</li>
             </fieldset>
-            <p> </p>
+			<p> </p>
             <li><input type="submit" value="Beställ"></li>
 
           </div>
@@ -310,8 +311,8 @@ the_post();
            * Ajax call to check for valid zip
            */
           function checkValidZip(zip){
-            $("#zip-button-submit").hide();
-            $("#zip-button-button").show();            
+                $("#zip-button-submit").hide();
+                $("#zip-button-button").show();            
             var data = {
               action : 'check_zip',
               zip: zip
@@ -375,8 +376,8 @@ the_post();
            */        
           function getPersInfo(event){
             event.preventDefault();
-            $("#ss-button-submit").hide();
-            $("#ss-button-button").show();
+                $("#ss-button-submit").hide();
+                $("#ss-button-button").show();
                 
             $("#ss-progress").css("display", "block");    //show progress wheel
             ss = $('#ss').val();
@@ -423,21 +424,21 @@ the_post();
 
 
     
-          //company show or hide delicery address
-          $('#show_extra').click(function(event) {
-            if ($(this).is(':checked')) {
-              $('#extra-address').show('slow');
-            } else {
-              $('#extra-address').hide('slow');
-            }
-          }); 
+            //company show or hide delicery address
+            $('#show_extra').click(function(event) {
+              if ($(this).is(':checked')) {
+                $('#extra-address').show('slow');
+              } else {
+                $('#extra-address').hide('slow');
+              }
+            }); 
     
     
     
 
 
 
-        });
+          });
       </script>
 
       <!-- ////////// SLUT PÅ KODEN FRÅN REPTILO ////////// -->
@@ -449,6 +450,7 @@ the_post();
       <?php $p = array_shift(get_posts("post_type=template-content&p=90")); ?>
       <?php echo $p->post_content; ?>
 
+			
 
     </div>
 

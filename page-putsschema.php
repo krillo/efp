@@ -107,8 +107,9 @@ the_post();
 		<div class="column grid_8 hidden choose-areas">
 
 			<h1><?php echo get_the_title(); ?></h1>
-			<p>Nedan visas de områden och orter där vi kan putsa dina fönster. Inför 2014 kommer vi jobba för en indelning som vi hoppas blir mer överskådlig för dig som kund.</p>
+			<p>Nedan visas de områden och orter i din kommun där vi erbjuder fönsterputsning.</p>
 			<p>Du kan ladda ner och skriva ut ditt putschema för 2013 som <a href="http://eriksfonsterputs.se/wp-content/uploads/Putsschema2013_A4.pdf">utskriftsvänlig PDF</a>.</p>
+			
 			<h2>Schema för fönsterputsning i <span id="city"></span>, schemanummer inom parentes:</h2>
 			<div id="area-list"></div>
 

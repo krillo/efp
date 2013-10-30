@@ -180,13 +180,13 @@ function saveToLogFile($filename, $data, $type = 'INFO') {
 $tillval = array(
     array('name' => 'Bottenvåning', 'desc' => 'Påmontering av löstagbar spröjs', 'servicename' => 'BV Spröjs på'),
     array('name' => 'Bottenvåning', 'desc' => 'Rengöring av löstagbar spröjs', 'servicename' => 'BV Spröjsrengöring'),
-    array('name' => 'Bottenvåning', 'desc' => 'Fönsterbleck avtorkning', 'servicename' => 'BV Bleck'),
-    array('name' => 'Bottenvåning', 'desc' => 'Karmar & bågar avtorkning', 'servicename' => 'BV Karmar & bågar'),
+    array('name' => 'Bottenvåning', 'desc' => 'Fönsterbleck rengöring', 'servicename' => 'BV Bleck'),
+    array('name' => 'Bottenvåning', 'desc' => 'Karmar & bågar rengöring', 'servicename' => 'BV Karmar & bågar'),
     array('name' => 'Uterum', 'desc' => 'Uterum utvändigt', 'servicename' => 'Uterum utv'),
     array('name' => 'Uterum', 'desc' => 'Uterum invändigt och utvändigt', 'servicename' => 'Uterum utv/inv'),
     array('name' => 'Ovanvåning', 'desc' => 'normala fönster', 'servicename' => 'ÖV normala fönster'),
     array('name' => 'Ovanvåning', 'desc' => 'rengöring av löstagbar spröjs', 'servicename' => 'ÖV spröjsrengöring ÖV spröjsrengöring'),
-    array('name' => 'Ovanvåning', 'desc' => 'fönsterbleck avtorkning', 'servicename' => 'ÖV bleck'),
+    array('name' => 'Ovanvåning', 'desc' => 'fönsterbleck rengöring', 'servicename' => 'ÖV bleck'),
     array('name' => 'Ovanvåning', 'desc' => 'fönsterkarmar & fönsterbågar', 'servicename' => 'ÖV karmar & bågar'),
     array('name' => 'Källarfönster', 'desc' => '', 'servicename' => ' Källarfönster'),
     array('name' => 'Källarfönster', 'desc' => 'fönsterbleck', 'servicename' => 'Källare bleck'),
@@ -223,9 +223,9 @@ function getTillvalTable($isKund = true) {
 HTML;
   $i = 1;
   foreach ($tillval as $key => $value) {
-    $class = $i % 2 ? 'zebra' : '';
+    $class = $i % 2 ? 'zebra': '';
     $i++;
-    $output .= '<tr class="' . $class . '">';
+    $output .= '<tr class="'.$class.'">';
     $output .= '  <td><strong>' . $value['name'] . '</strong> ' . $value['desc'] . '</td>';
     $output .= '  <td style="text-align:center;"><input name = "" id="id_' . $key . '_all" value="" type="checkbox" class="select-all"/></td>';
     $output .= '  <td><input name = "id_' . $key . '[]" id = "" value = "1" type = "checkbox" row="id_' . $key . '" /></td>';
@@ -243,8 +243,8 @@ HTML;
 
 function getTillvalTableForCustomerService() {
   global $tillval;
-  $data = print_r($_REQUEST['id_1'], true);
-  saveToLogFile(getLogFileName(), "Tillval: \n" . $data, 'INFO');
+    $data = print_r($_REQUEST['id_1'], true);
+    saveToLogFile(getLogFileName(), "Tillval: \n" . $data, 'INFO');  
   $output = <<<HTML
     <table border="1">
     <thead>
@@ -292,12 +292,12 @@ HTML;
 $customerExperience = array(
     array('desc' => 'Nivån på vår skriftliga kommunikation? (Låg-Hög)', 'servicename' => ''),
     array('desc' => 'Kvaliteten på tjänsten? (Låg-Hög)', 'servicename' => ''),
-    array('desc' => 'Prislistans utformning och enkelhet? (Låg-Hög)', 'servicename' => ''),
-    array('desc' => 'Upplevelsen av våra fönsterputsare? (Låg-Hög)', 'servicename' => ''),
+	array('desc' => 'Prislistans utformning och enkelhet? (Låg-Hög)', 'servicename' => ''),
+	array('desc' => 'Upplevelsen av våra fönsterputsare? (Låg-Hög)', 'servicename' => ''),
     array('desc' => 'Upplevelsen av våra kundtjänstmedaretare? (Låg-Hög)', 'servicename' => ''),
-    array('desc' => 'Betydelsen av att företaget är välkänt? (Liten-Stor)', 'servicename' => ''),
-    array('desc' => 'Hur prisvärd tjänsten är (Litet-Mycket)', 'servicename' => ''),
-    array('desc' => 'Sannolikheten att du kan rekommendera oss? (Litet-Mycket)', 'servicename' => ''),
+	array('desc' => 'Betydelsen av att företaget är välkänt? (Liten-Stor)', 'servicename' => ''),
+	array('desc' => 'Hur prisvärd tjänsten är (Litet-Mycket)', 'servicename' => ''),
+	array('desc' => 'Sannolikheten att du kan rekommendera oss? (Litet-Mycket)', 'servicename' => ''),
 );
 
 function getCustomerExperienceTable() {
@@ -318,11 +318,11 @@ function getCustomerExperienceTable() {
     </thead>
     <tbody>
 HTML;
-  $i = 1;
+  $i = 1;  
   foreach ($customerExperience as $key => $value) {
-    $class = $i % 2 ? 'zebra' : '';
+    $class = $i % 2 ? 'zebra': '';
     $i++;
-    $output .= '<tr class="' . $class . '">';
+    $output .= '<tr class="'.$class.'">';
     $output .= '  <td ><label for="cust_exp_' . $key . '"> ' . $value['desc'] . '</label></td>';
     $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="1" value="1" type="radio" /></td>';
     $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="2" value="2" type="radio" /></td>';
@@ -386,10 +386,10 @@ HTML;
 }
 
 function preSendMail($title, $message, $customer_email, $customer_name, $to_customer_service = true) {
-  $kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
-//$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
+$kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
+$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
 //$kundtjanst_email = "adrian@jobbasmart.com";
-  $kundtjanst_email = "krillo@gmail.com";
+//$kundtjanst_email = "krillo@gmail.com";    
 
   if ($customer_email == "") {
     $customer_name = "noreply-" . $customer_name;
@@ -413,148 +413,30 @@ function preSendMail($title, $message, $customer_email, $customer_name, $to_cust
 function sendMail($title, $message, $to, $to_name, $from, $from_name) {
   if (filter_var($to, FILTER_VALIDATE_EMAIL)) {
     saveToLogFile(getLogFileName(), "Skickar email: " . $title . ", till: $to ", 'INFO');
+    
+/*
+    $headers = 'To: ' . $to_name . ' <' . $to . '>' . "\r\n";
+    $headers .= 'From: ' . $from_name . ' <' . $from . '>' . "\r\n";
+    $headers .= 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\r\n";
 
-    /*
-      $headers = 'To: ' . $to_name . ' <' . $to . '>' . "\r\n";
-      $headers .= 'From: ' . $from_name . ' <' . $from . '>' . "\r\n";
-      $headers .= 'MIME-Version: 1.0' . "\r\n";
-      $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\r\n";
+    $title_latin = utf8_decode($title);
+    $message_latin = utf8_decode($message);
+    $headers_latin = utf8_decode($headers);
+    $to_latin = utf8_decode($to);
 
-      $title_latin = utf8_decode($title);
-      $message_latin = utf8_decode($message);
-      $headers_latin = utf8_decode($headers);
-      $to_latin = utf8_decode($to);
-
-      $success = mail($to_latin, $title_latin, $message_latin, $headers_latin);
-     */
+    $success = mail($to_latin, $title_latin, $message_latin, $headers_latin);
+*/
 
     $headers = 'To: ' . $to_name . ' <' . $to . '>' . "\r\n";
     $headers .= 'From: ' . $from_name . ' <' . $from . '>' . "\r\n";
     $headers .= 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-    $success = mail($to, $title, $message, $headers);
+    $success = mail($to, $title , $message, $headers);
   } else {
     $success = false;
   }
   if (!$success) {
     saveToLogFile(getLogFileName(), "Misslyckades att skicka email: " . $title . ", till: $to ", 'ERROR');
-  }
-}
-
-global $apikey;
-global $timewave_base_url;
-$apikey = 'SgBblwxJcATK5cCj3ZqgOpQG';
-$timewave_base_url = 'http://efptest.timewave.se';
-
-/**
- * Do a GET from from Timewave, returns an array of objects 
- * Select by id or personnummer 
- * 
- * @global string $apikey
- * @global string $timewave_base_url
- * @param type $type - 'id' or 'persnbr'
- * @param type $arg - the id or presonnummer
- * @return string 
- */
-function getTimewave($type = 'id', $arg) {
-  global $apikey;
-  global $timewave_base_url;
-  $result = array();
-  switch ($type) {
-    case 'id':
-      $timewave_url = "$timewave_base_url/api/client?apikey=$apikey&id=$arg";
-      break;
-    case 'persnbr':
-      $timewave_url = "$timewave_base_url/api/client_by_persnbr?apikey=$apikey&persnbr=$arg";
-      break;
-    default:
-      $result['status'] = "error";
-      $result['error'] = "Error no matching type";
-      return $result;
-      break;
-  }
-  //echo $timewave_url . "\n";
-  $curl_handle = curl_init();
-  curl_setopt($curl_handle, CURLOPT_URL, $timewave_url);
-  curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
-  curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
-  $buffer = curl_exec($curl_handle);
-  curl_close($curl_handle);
-
-  if (empty($buffer)) {
-    $result['status'] = "error";
-    $result['error'] = "Error nothing returned";
-    return $result;
-  } else {
-    $result = json_decode($buffer);
-    if (empty($result)) {
-      $result['status'] = "error";
-      $result['error'] = "Error nothing returned";
-    } else{
-      $result['status'] = "ok";
-    }
-    return $result;
-  }
-}
-
-/**
- * do a POST to Timewave
- * i.e add a person
- * 
- * $order in this format:
- * $order = new stdClass();
- * $order->firstname = 'krillo';
- * $order->lastname = 'dillo';
- * $order->persnbr = '19670303-2222';
- * $order->phone = '042-393855';
- * $order->mobile = '0761-393855';
- * $order->email = 'monkey@apa.se';
- * 
- * 
- * 
- * 
- * 
- * 
- * $order->fname = $_REQUEST['firstname'] : $order->fname = '';
-!empty($_REQUEST['lastname']) ? $order->lname = $_REQUEST['lastname'] : $order->lname = '';
-!empty($_REQUEST['phone']) ? $order->phone = $_REQUEST['phone'] : $order->phone = '';
-!empty($_REQUEST['mobile']) ? $order->mobile = $_REQUEST['mobile'] : $order->mobile = '';
-!empty($_REQUEST['street1']) ? $order->street = $_REQUEST['street1'] : $order->street = '';
-!empty($_REQUEST['street2']) ? $order->street = $order->street . ' ;; ' . $_REQUEST['street2'] : null;
-!empty($_REQUEST['zip']) ? $order->zip = $_REQUEST['zip'] : $order->zip = '';
-!empty($_REQUEST['city']) ? $order->city =
- * 
- * 
- * 
- * 
- * @global string $apikey
- * @global string $timewave_base_url
- * @param type $order
- * @return string 
- */
-function putTimewave($order) {
-  global $apikey;
-  global $timewave_base_url;
-  $result = array();
-  $result['status'] = "error";
-  $static = "&clienttype_id=1&status=0&paymenttype=7&paymentterms=10";
-  $post_url = "$timewave_base_url/api/client?apikey=$apikey" . $static . "&firstname=$order->tw_fname&lastname=$order->tw_lname&persnbr=$order->tw_ss&phone=$order->tw_phone&mobile=$order->tw_mobile&email=$order->email&address=$order->tw_street&postalcode=$order->tw_zip&city=$order->tw_city";
-  saveToLogFile(getLogFileName(), $post_url, 'INFO');
-  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL, $post_url);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-//curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($usrJson));
-  $response = curl_exec($ch);
-  curl_close($ch);
-
-  if (empty($response)) {
-    $result['status'] = "error";
-    $result['error'] = "Error, unable to add new client";
-    return $result;
-  } else {
-    $result['id'] = json_decode($response)->id;
-    $result['status'] = "ok";
-    return $result;
   }
 }

@@ -16,6 +16,7 @@
 			)); 
 		?>
 		<?php if ( $getShortcuts->have_posts() ) : while ( $getShortcuts->have_posts() ) : $getShortcuts->the_post(); ?>
+		
 		<?php $shortcuts = simple_fields_get_post_group_values($post->ID, "Genvägar i sidfoten", true, 2); ?>
 		
 			<?php foreach($shortcuts as $info): ?>
@@ -67,15 +68,19 @@
 	<section class="btm">
 
 		<div class="column grid_12">
-			<p>&copy; <?php year(2012); ?> Eriks Fönsterputs. Alla rättigheter förbehålles.</p>
+		<p>&copy; <?php year(2012); ?> Eriks Fönsterputs. Alla rättigheter förbehålles.</p>
 			<p id="siteby"><a class="plucera" href="http://www.plucera.se" title=" Plucera Webbyrå ">plucera</a> <a href="http://www.plucera.se/plucera-webbyra/" title=" Plucera Webbyrå ">webbyrå</a></p>
-		</div>
+
+			<p>Du kan få Eriks Fönsterputs i Helsingborg, Malmö, Landskrona, Lomma, Lund, Ängelholm, Vellinge, Höganäs, Kungsbacka, Varberg, Falkenberg, Halmstad, Laholm, Båstad, Markaryd, Älmhult, Gislaved, Värnamo, Alvesta, Ljungby, Hylte, Växjö, Olofström, Bromölla, Sölvesborg, Simrishamn, Osby, Östra Göinge, Örkelljunga, Svalöv, Klippan, Åstorp, Bjuv, Perstorp, Höör, Hörby, Eslöv, Kävlinge, Sjöbo, Tomelilla, Ystad, Trelleborg, Svedala, Staffanstorp, Skurup, Burlöv och Hässleholm.</p>
+			</div>
 
 	</section>
 
 </footer>
 
 <?php wp_footer(); ?>
+ 
+
 
 </body>
 </html>

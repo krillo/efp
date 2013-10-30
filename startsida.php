@@ -37,11 +37,12 @@ get_header(); the_post(); ?>
 			</p -->
 			<!-- START PÅ RÄKNARE -->
 			<?php 
+			date_default_timezone_set('Europe/Stockholm');
 			$startamount = 12500000; //vid årets början, ca 500000*25
 			$yearlyincrement = 85000*25; // putsas under året
 			$dailyincrement = $yearlyincrement/220; //daglig ökning per arbetsdag
 			if (date('N') > 5) { $workdays = ((date('W')-1)*5)+5; } else { $workdays = ((date('W')-1)*5)+(date('N')); }
-			$incremented = $workdays*$dailyincrement; // hittils ökat under året
+			$incremented = $workdays*$dailyincrement; // hittills ökat under året
 			$clean_start = $startamount+$incremented; // antal vid början på arbetsdagen
 			$clean_end = $startamount+$incremented+$dailyincrement; // antal vid slutet på arbetsdagen
 			$speed = 21000000;  // 4h=14400000 8h = 28800000 att räkna från start till slut

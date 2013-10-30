@@ -18,13 +18,13 @@ the_post();
       <p>Här kan du som är registrerad kund hos oss beställa tillval och förändra så att abonnemanget passar just dina behov.</p>
       <form action="/abonnemang/mottagen-forandring/" id="orderForm" name="orderForm" method="post" >
         <ul>
-          <h2>Välj vilket sorts ärende du vill utföra</h2>
-          <li><input name="option" id="op1" value="op1" type="radio" /><label for="op1">Beställa <b>permanenta</b> tillval eller göra <b>tillfälliga</b> bokningar</label></li>
-          <li><input name="option" id="op2" value="op2" type="radio" /><label for="op2">Göra <b>tillfällig</b> avbokning av putstillfälle</label></li>
-          <li><input name="option" id="op3" value="op3" type="radio" /><label for="op3">Ändra dina kunduppgifter</label></li>
+          <h2>Välj här vad du önskar angående ditt putsabonnemang</h2>
+          <li><input name="option" id="op1" value="op1" type="radio" /><label for="op1">Beställa <b>permanenta</b> tillval eller göra <b>tillfälliga</b> bokningar av tillval</label></li>
+          <li><input name="option" id="op2" value="op2" type="radio" /><label for="op2">Göra <b>tillfällig</b> avbokning av putstillfälle eller enstaka tillval</label></li>
+          <li><input name="option" id="op3" value="op3" type="radio" /><label for="op3">Ändra kunduppgifter i vårt register samt beställa/avbeställa skattereduktion (RUT-avdrag)</label></li>
 
           <div id="basics" class="hidden">
-            <h2>Grunduppgifter</h2>
+            <h2>Kund och kontaktuppgifter</h2>
             <li><input name="show-ss" id="ss1" value="ss1" type="radio" checked/><label for="ss1">Jag vill själv ange namn och adressuppgifter</label></li>
             <li><input name="show-ss" id="ss2" value="ss2" type="radio" /><label for="ss2">Jag är skriven på putsadressen detta gäller och vill hämta personuppgifter automatiskt</label></li>
           </div>  
@@ -72,7 +72,7 @@ the_post();
           <div>
             
 			<fieldset id="rut" class="hidden">
-              <h2>Ändra skattereduktion (RUT-avdrag)</h2>
+              <h2>Ändra angående skattereduktion (RUT-avdrag)</h2>
 			  <li>
                 <input name="rutchange" id="rutSame" value="SAMMA" type="radio" checked/>
                 <label for="rutSame">Jag vill att ni lämnar detta oförändrat</label>
@@ -90,11 +90,11 @@ the_post();
 
           <fieldset id="tillval" class="tillval hidden">
             <h2>Nedanstående val beskriver..</h2>
-            <li><input name="tillval" id="tillval1" value="tillval1" type="radio" checked/><label for="tillval1"> ..vad <u>LÄGGER TILL</u> permanent på mitt årliga abonnemang</label></li>
-            <li><input name="tillval" id="tillval2" value="tillval2" type="radio" /><label for="tillval2"> .. beskriver detaljerat hur ni <u>VARJE ÅR</u> ska putsa mitt hus</label></li>
-            <li><input name="tillval" id="tillval3" value="tillval3" type="radio" /><label for="tillval3"> ..vad ni <u>TAR BORT</u> permanent från mitt årliga abonnemang</label></li>
+            <li><input name="tillval" id="tillval1" value="tillval1" type="radio" checked/><label for="tillval1"> ..vad ni ska <u>LÄGGA TILL</u> permanent på mitt abonnemang</label></li>
+            <li><input name="tillval" id="tillval2" value="tillval2" type="radio" /><label for="tillval2"> ..  detaljerat hur ni <u>VARJE ÅR</u> ska putsa mitt hus</label></li>
+            <li><input name="tillval" id="tillval3" value="tillval3" type="radio" /><label for="tillval3"> ..vad ni ska <u>TA BORT</u> permanent från mitt årliga abonnemang</label></li>
 			<br />
-			<li><input name="tillval" id="tillval4" value="tillval4" type="radio" /><label for="tillval4"> ..vad ni ska utföra vid ett <u>ENSTAKA TILLFÄLLE</u> utanför mitt årliga abonnemang</label></li>
+			<li><input name="tillval" id="tillval4" value="tillval4" type="radio" /><label for="tillval4"> ..vad ni ska utföra vid ett <u>ENSTAKA TILLFÄLLE</u></label></li>
             <br />
 			<?php echo getTillvalTable(); ?>
           </fieldset>
@@ -102,8 +102,8 @@ the_post();
 
           <fieldset id="avbokning" class="tillval hidden">
             
-            <h2>Välj ett datumintervall då du vill att vi avbokar:</h2>
-            För permanenta förändringar av hur vi årligen putsar ditt hus, gå istället till formuläret förändring. För att kunna tillgodose dina önskemål kan du välja <b>tidigast 7 dagar</b> från dagens datum och intervallet kan vara <b>maximalt 7 veckor</b> långt.</br>
+            <h2>Välj en putsperiod då du vill att vi avbokar hela eller en del av ett putstillfälle</h2>
+            För permanenta förändringar av hur vi årligen putsar ditt hus, gå istället till formuläret som avser permanenta ändringar. För att kunna tillgodose dina önskemål kan du välja <b>tidigast 7 dagar</b> från dagens datum och intervallet kan vara <b>maximalt 7 veckor</b> långt.</br>
 			</br>
 			<label for="from">Från datum: &nbsp;</label><input type="text" id="from" name="from" style="width:100px;"/>
             <label for="to">&nbsp;&nbsp; till datum: &nbsp;</label><input type="text" id="to" name="to" style="width:100px;"/>
@@ -128,10 +128,9 @@ the_post();
           
           <fieldset id="send" class="hidden">
               <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
-              <li>&nbsp;</li>
               <li>
                 <input name="terms" id="terms" type="checkbox" style="float:left;" value ="Ja"/>
-                <label for="terms"><b>Ja tack!</b></label> Jag har läst och godkänner villkor, prislista och övrig information.
+                <label for="terms"><b>Ja</b></label> - jag har tagit del av beställningsvillkor och prislista samt godkänner dessa!
               </li>
               <li>&nbsp;</li>
               <li><input type="submit" value="Skicka"></li>
@@ -294,13 +293,13 @@ the_post();
                 $('#tillval').show('slow');
                 $('#send').show('slow');
                 $('#avbokning').hide('slow');
-                $('#rut').show('slow');
+                $('#rut').hide('slow');
                 break;
               case 'op2':
                 $('#avbokning').show('slow');
                 $('#send').show('slow');
                 $('#tillval').hide('slow');
-                $('#rut').show('slow');
+                $('#rut').hide('slow');
                 break;
               case 'op3':
                 $('#avbokning').hide('slow');

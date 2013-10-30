@@ -33,12 +33,10 @@ get_header(); the_post(); ?>
 				</ul>
 			</form>
 
-			<!--hr />
-			
-			<p class="rut"><img src="<?php bloginfo('template_directory'); ?>/img/inline/halva-priset.png" /></p-->
-			
 			<hr />
-
+			<!-- p class="rut"><img src="<?php bloginfo('template_directory'); ?>/img/inline/halva-priset.png" /></p-->
+			
+			
 			<?php $p = array_shift(get_posts("post_type=template-content&p=90")); ?>
 			<?php echo $p->post_content; ?>
 

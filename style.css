@@ -75,12 +75,12 @@ H1 {
 }
 
 .putsomraden H1 {
-	position: relative;
 	display: inline-block;
-	margin: 65px 0 15px;
+	position: relative;
+	margin: 50px 0 15px;
 	padding: 8px 14px 6px;
 	background-color: #222;
-	box-shadow: 0px 0px 6px #666;
+	box-shadow: 0 0 6px #666;
 	z-index: 2;
 	color: #fff;
 	font-size: 23px;
@@ -101,6 +101,15 @@ H1 {
 	font-weight: 400;
 }
 
+#orter {
+	display:none;
+}
+
+.standard H6 {
+	color: #fefefe;
+	
+}
+	
 .order .grid_8 H2 {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -211,10 +220,21 @@ LABEL {
 }
 
 .standard INPUT {
-	width: 230px;
+	width: 220px;
 	height: 40px;
 	padding: 0 10px;
 	font-size: 18px;
+}
+
+.standard SELECT {
+	width: 240px;
+	height: 40px;
+	padding: 5px;
+	font-size: 16px;
+	border-radius: 5px;
+	box-shadow: inset 0px 0px 5px #666;
+	color: #444;
+	font-family: 'Signika Negative', sans-serif;
 }
 
 .grid_4 INPUT {
@@ -623,7 +643,7 @@ HEADER SECTION {
 }
 
 #panorama .grid_8 P:first-child {
-	margin: 40px 0 10px;
+	margin: 30px 0 20px;
 	font-size: 44px;
 	font-weight: 300;
 	line-height: 46px;
@@ -633,6 +653,21 @@ HEADER SECTION {
 	display: block;
 	font-weight: 600;
 }
+
+#panorama .grid_8 H1:first-child {
+	margin: 40px 0 10px;
+	color: #FFF;
+	font-size: 44px;
+	font-weight: 300;
+	line-height: 46px;
+	
+}
+
+#panorama .grid_8 H1:first-child STRONG {
+	display: block;
+	font-weight: 600;
+}
+
 
 #panorama .grid_4 {
 	width: 230px;
@@ -963,13 +998,13 @@ HEADER SECTION {
 	background: url("img/bg/right-hand.png") right top no-repeat;
 }
 
+
 #content {
 	position: absolute;
 	right: 100px;
-	top: 670px;
+	top: 680px;
 	width: 270px;
 	z-index: 2;
-
 	font-size: 15px;
 }
 
@@ -992,11 +1027,15 @@ HEADER SECTION {
 
 #bil {
 	position: absolute;
-	right: 100px;
-	top: 175px;
+	right: 60px;
+	top: 140px;
 	width: 330px;
 	height: 181px;
 	z-index: 2;
+}
+
+#bil IMG {
+	position: static;
 }
 /* ----- MAIN.putsomraden ----- */
 
@@ -1275,7 +1314,7 @@ FOOTER .btm P  {
 .invalid[for="terms"]{float: left;text-align: right;width: auto;}
 textarea#comments{height: 40px;width: 540px;}
 .tillval-table td{padding: 2px 6px;}
-select.op{padding:10px;}
+/* select.op{padding:10px;} ADRIAN TAGIT BORT */
 textarea#comments-op-1{height: 70px;width: 235px;float:left;}
 textarea#comments-op-2, textarea#comments-op-7{height: 70px;width: 520px;}
 #orderForm .extra-date{width:100px;float:left;margin-left: 40px;}
