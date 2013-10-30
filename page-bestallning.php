@@ -118,6 +118,30 @@ the_post();
             </fieldset>
             <div class="clear"></div>
 
+
+            <fieldset style="float:left;">
+              <h2>Vad fick dig att beställa denna gången?</h2>
+              <li>
+                <select class="" name="why" id="why">
+                  <option label="Välj..." value="">Välj gärna en</option>
+                  <option label="" value="Direktreklam">Direktreklam i brevlådan</option>
+                  <option label="" value="Rekommendation">Rekommendation</option>
+                  <option label="" value="Tidningsannons">Tidningsannons</option>
+                  <option label="" value="Radioreklam">Radioreklam</option>
+                  <option label="" value="TV-reklam">TV-reklam</option>
+                  <option label="" value="Närvaro på köpcentrum">Närvaro på köpcentrum</option>
+                  <option label="" value="Närvaro på mässa">Närvaro på mässa</option>
+                  <option label="" value="Våra bilar">Våra bilar</option>
+                  <option label="" value="Annat (ange gärna i textruta)">Annat (ange gärna i textrutan)</option>
+                </select>
+            </fieldset>
+
+            <fieldset style="float:left;margin-left:40px">
+              <h2>Ange eventuell kampanjkod</h2>
+              <li><input name="campaign_code" id="campaign_code" value="" type="text"/></li>
+            </fieldset>
+            <div class="clear"></div>
+
             <fieldset>
               <h2>Övriga val</h2>
               <p><b>Ytterligare tillval kommer du att kunna beställa efteråt i ett separat formulär.</b></p>
@@ -137,7 +161,7 @@ the_post();
             </fieldset>
             <fieldset>
               <p><b>Skattereduktion för husarbete (RUT-avdrag)</b></p>
-			  <li>
+              <li>
                 <input name="rut" id="rutYes" value="JA" type="radio" checked/>
                 <label for="rutYes">Ja, jag vill ha skattereduktion och känner till hur det fungerar.</label>
               </li>
@@ -145,7 +169,7 @@ the_post();
                 <input name="rut" id="rutNo" value="NEJ" type="radio" />
                 <label for="rutNo">Nej, jag vill <b>inte</b> ha skattereduktion och betalar fullt pris.</label>
               </li>
-              
+
             </fieldset>			
 
             <fieldset>
@@ -157,14 +181,14 @@ the_post();
 
             <fieldset>				
               <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
-			  <li>&nbsp;</li>
-			  <li>
+              <li>&nbsp;</li>
+              <li>
                 <input name="terms" id="terms" type="checkbox" style="float:left;" value ="Ja"/>
                 <label for="terms"><b>Ja tack!</b></label> Jag vill abonnera på utvändig fönsterputsning av bottenvåning 6-7 gånger per år. Jag betalar inget i förskott, inget kontant. Jag får faktura efter utförd putsning. Jag har läst och godkänner villkor, prislista och övrig information.
-			  </li>
-			  <li>&nbsp;</li>
+              </li>
+              <li>&nbsp;</li>
             </fieldset>
-			<p> </p>
+            <p> </p>
             <li><input type="submit" value="Beställ"></li>
 
           </div>
@@ -286,8 +310,8 @@ the_post();
            * Ajax call to check for valid zip
            */
           function checkValidZip(zip){
-                $("#zip-button-submit").hide();
-                $("#zip-button-button").show();            
+            $("#zip-button-submit").hide();
+            $("#zip-button-button").show();            
             var data = {
               action : 'check_zip',
               zip: zip
@@ -351,8 +375,8 @@ the_post();
            */        
           function getPersInfo(event){
             event.preventDefault();
-                $("#ss-button-submit").hide();
-                $("#ss-button-button").show();
+            $("#ss-button-submit").hide();
+            $("#ss-button-button").show();
                 
             $("#ss-progress").css("display", "block");    //show progress wheel
             ss = $('#ss').val();
@@ -399,21 +423,21 @@ the_post();
 
 
     
-            //company show or hide delicery address
-            $('#show_extra').click(function(event) {
-              if ($(this).is(':checked')) {
-                $('#extra-address').show('slow');
-              } else {
-                $('#extra-address').hide('slow');
-              }
-            }); 
+          //company show or hide delicery address
+          $('#show_extra').click(function(event) {
+            if ($(this).is(':checked')) {
+              $('#extra-address').show('slow');
+            } else {
+              $('#extra-address').hide('slow');
+            }
+          }); 
     
     
     
 
 
 
-          });
+        });
       </script>
 
       <!-- ////////// SLUT PÅ KODEN FRÅN REPTILO ////////// -->

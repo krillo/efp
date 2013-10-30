@@ -15,7 +15,7 @@ $order = new stdClass;
 !empty($_REQUEST['phone']) ? $order->phone = $_REQUEST['phone'] : $order->phone = '';
 !empty($_REQUEST['mobile']) ? $order->mobile = $_REQUEST['mobile'] : $order->mobile = '';
 !empty($_REQUEST['street1']) ? $order->street = $_REQUEST['street1'] : $order->street = '';
-!empty($_REQUEST['street2']) ? $order->street = $order->street . ' ;; ' . $_REQUEST['street2'] : null;
+!empty($_REQUEST['street2']) ? $order->street = $order->street . ' ' . $_REQUEST['street2'] : null;
 !empty($_REQUEST['zip']) ? $order->zip = $_REQUEST['zip'] : $order->zip = '';
 !empty($_REQUEST['city']) ? $order->city = $_REQUEST['city'] : $order->city = '';
 !empty($_REQUEST['email']) ? $order->email = $_REQUEST['email'] : $order->email = '';
@@ -44,6 +44,8 @@ $order = new stdClass;
 !empty($_REQUEST['to']) ? $order->to = $_REQUEST['to'] : $order->to = '';
 !empty($_REQUEST['terms']) ? $order->terms = $_REQUEST['terms'] : $order->terms = 'Nej';
 !empty($_REQUEST['vem']) ? $order->vem = $_REQUEST['vem'] : $order->vem = '';
+!empty($_REQUEST['why']) ? $order->why = $_REQUEST['why'] : $order->why = '';
+!empty($_REQUEST['campaign_code']) ? $order->campaign_code = $_REQUEST['campaign_code'] : $order->campaign_code = '';
 
 //uppsagning
 !empty($_REQUEST['uppsagning']) ? $order->uppsagning = $_REQUEST['uppsagning'] : $order->uppsagning = '';
@@ -53,6 +55,22 @@ $order = new stdClass;
 !empty($_REQUEST['comments1']) ? $order->comments1 = $_REQUEST['comments1'] : $order->comments1 = '';
 !empty($_REQUEST['comments2']) ? $order->comments2 = $_REQUEST['comments2'] : $order->comments2 = '';
 !empty($_REQUEST['comments7']) ? $order->comments7 = $_REQUEST['comments7'] : $order->comments7 = '';
+
+//Timewave
+$order->id = 0;
+$order->clientnbr = 0;
+$order->tw_status = '-';
+$order->tw_msg = '-';
+$order->tw_fname = urlencode($order->fname);
+$order->tw_lname = urlencode($order->lname);
+$order->tw_phone = urlencode($order->phone);
+$order->tw_mobile = urlencode($order->mobile);
+$order->tw_street = urlencode($order->street);
+$order->tw_zip = urlencode($order->zip);
+$order->tw_city = urlencode($order->city);
+$order->tw_ss = urlencode($order->ss);
+
+
 
 
 
@@ -73,8 +91,8 @@ if ($order->option != '') {
       if ($order->tillval == 'tillval3') {
         $title .= 'Ta bort';
       }
-	 //adrian lagt till nummer 4
-	  if ($order->tillval == 'tillval4') {
+      //adrian lagt till nummer 4
+      if ($order->tillval == 'tillval4') {
         $title .= 'Tillfällig bokning';
       }
       saveToLogFile($logfile, $title . " \n" . $data, 'INFO');
@@ -166,9 +184,12 @@ if ($order->option != '') {
       $title = 'BESTÄLLNING';
       saveToLogFile($logfile, $title . "\n" . $data, 'INFO');
       $message .= '<strong>' . $title . "</strong><br>";
+      $message .= efp_timewave();      
       $message .= efp_getKundnummer();
       $message .= efp_getAddress();
       $message .= efp_getNykundExtra();
+      $message .= "Vad fick dig att beställa: $order->why<br/>";
+      $message .= "Kampanjkod: $order->campaign_code<br/>";
       $message .= "Egen kommentar: $order->comments<br/>";
       $message .= "<br/><br/>Klientinformation<br />";
       $message .= efp_getDate();
@@ -178,6 +199,7 @@ if ($order->option != '') {
       $titleKund = 'Välkommen till Eriks Fönsterputs';
       $message = "Hej $order->fname,<br/><br/>";
       $message .= "Välkommen som kund hos Eriks Fönsterputs!<br/><br/>";
+      $message .= "Ditt kundnummer är: $order->clientnbr<br/>";
       $message .= "<b>Vi har mottagit din beställning av fönsterputsabonnemang enligt nedanstående:</b><br/>";
       $message .= efp_getAddress();
       $message .= efp_getNykundExtra();
@@ -189,6 +211,47 @@ if ($order->option != '') {
       saveToLogFile($logfile, "Tacksidan visas utan att skicka mail, data saknas!? \n" . $data, 'ERROR');
       break;
   }
+}
+
+function efp_timewave() {
+  global $order;
+  $result = getTimewave('persnbr', $order->ss);
+  if ($result['status'] == 'ok') {
+    //old client found 
+    //print_r($result);
+    $order->clientnbr = $result[0]->clientnbr;
+    $order->tw_status = 'ok';
+    $order->tw_msg = 'Tidigare kund';
+    echo $order->clientnbr . "\n";
+  } else {
+    //no existing client found create a new one
+    $result = putTimewave($order);
+    if ($result['status'] == 'ok') {
+      $order->id = $result['id'];
+      $order->tw_status = 'ok';
+      $order->tw_msg = 'Ny kund skapad i TimeWave';
+      //echo $order->id . "\n";
+      //get the new clientnumber
+      $result = getTimewave('id', $order->id);
+      if ($result['status'] == 'ok') {
+        //print_r($result);
+        $order->clientnbr = $result[0]->clientnbr;
+        echo $order->clientnbr . "\n";
+      } else {
+        $order->tw_status = 'error';
+        $order->tw_msg = $result['error'];
+      }
+    } else {
+      $order->tw_status = 'error';
+      $order->tw_msg = $result['error'];
+    }
+  }
+  if($order->tw_status == 'ok'){
+    $msg = "$order->tw_msg <br/>Kundnummer: $order->clientnbr ";
+  } else{
+    $msg = "TimeWave: $order->tw_status, $order->tw_msg";
+  }
+return $msg . "<br/>";
 }
 
 /**
@@ -298,7 +361,7 @@ the_post();
     <div class="column grid_8">
 
       <h1><?php the_title(); ?></h1>
-<?php the_content(); ?>
+      <?php the_content(); ?>
 
     </div>
 
@@ -324,7 +387,7 @@ the_post();
       <hr />
 
       <?php $p = array_shift(get_posts("post_type=template-content&p=90")); ?>
-<?php echo $p->post_content; ?>
+      <?php echo $p->post_content; ?>
 
     </div>
 

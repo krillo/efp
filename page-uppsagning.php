@@ -128,10 +128,18 @@ the_post();
             <p><b>Gradera så att siffran 1 motsvarar ett lågt omdöme och siffran 7 motsvarar ett högt omdöme.</b>
               Dina rättframma svar betyder mycket för oss och vi vill gärna veta var vi kan bli bättre!</p>
             <?php echo getCustomerExperienceTable(); ?>
+            
+            
+              <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
+              <li>&nbsp;</li>
+              <li>
+                <input name="terms" id="terms" type="checkbox" style="float:left;" value ="Ja"/>
+                <label for="terms"><b>Ja tack!</b></label> Jag har läst och godkänner villkor, prislista och övrig information.
+              </li>
+              <li>&nbsp;</li>            
             <li><input type="submit" value="Säg upp"></li>
           </fieldset>
           <fieldset id="send" class="hidden">
-
           </fieldset>          
 
         </ul>
@@ -206,7 +214,8 @@ the_post();
               cust_exp_4: "required",
               cust_exp_5: "required",
               cust_exp_6: "required",
-              cust_exp_7: "required"               
+              cust_exp_7: "required",
+              terms: "required"
             },           
             messages:{
               firstname: "",
@@ -234,7 +243,8 @@ the_post();
               cust_exp_4: "*",
               cust_exp_5: "*",
               cust_exp_6: "*",
-              cust_exp_7: "*"
+              cust_exp_7: "*",
+              terms: "Tacka ja!"
             },
             success: function(label) {
               // set &nbsp; as text for IE
@@ -352,5 +362,27 @@ the_post();
   </section> <!-- //section -->
 
 </div> <!-- //main -->
+
+
+<div id="terms-overlay" class="hidden overlay">
+  <div class ="text-overlay">
+    <?php $terms = array_shift(get_posts("post_type=template-content&p=568")); ?>
+    <?php echo $terms->post_content; ?>
+  </div>
+  <span class="close-text-overlay">Stäng</span>
+</div>
+
+<div id="rut-info-overlay" class="hidden overlay">
+  <div class="text-overlay">
+    <?php $rut = array_shift(get_posts("post_type=template-content&p=583")); ?>
+    <?php echo $rut->post_content; ?>
+  </div>
+  <span class="close-text-overlay">Stäng</span>
+</div>
+
+<div id="price-overlay" class="hidden overlay">
+  <img id="price-overlay-img" src="http://eriksfonsterputs.se/wp-content/uploads/prislista2013.png" alt="Prislista 2013" />
+  <span class="close-text-overlay close-price-overlay">Stäng</span>
+</div>
 
 <?php get_footer(); ?>

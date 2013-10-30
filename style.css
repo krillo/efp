@@ -1272,7 +1272,7 @@ FOOTER .btm P  {
 /* .order INPUT:disabled {color: #888;}    REPTILO ORIGINAL */
 .order INPUT:disabled {color: #222; background-color: #f7f7f7;}
 .order INPUT.invalid{border-color: red;  border-color: red;border-style: solid;border-width: 1px;}  
-.invalid[for="terms"]{float: left;text-align: right;width: 247px;}
+.invalid[for="terms"]{float: left;text-align: right;width: auto;}
 textarea#comments{height: 40px;width: 540px;}
 .tillval-table td{padding: 2px 6px;}
 select.op{padding:10px;}
