@@ -17,7 +17,8 @@ function ratsit_scripts() {
   wp_deregister_script('jquery');
   wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js');
   wp_enqueue_script('jquery');
-  wp_register_script('validate', 'http://jzaefferer.github.com/jquery-validation/jquery.validate.js');
+  //wp_register_script('validate', 'http://jzaefferer.github.com/jquery-validation/jquery.validate.js');
+  wp_register_script('validate', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js');
   //wp_register_script('validate', 'https://raw.github.com/jzaefferer/jquery-validation/master/jquery.validate.js');
   //wp_register_script('validate_additional', 'https://raw.github.com/jzaefferer/jquery-validation/master/additional-methods.js');
   wp_enqueue_script('validate');
@@ -386,10 +387,10 @@ HTML;
 }
 
 function preSendMail($title, $message, $customer_email, $customer_name, $to_customer_service = true) {
-$kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
-$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
+//$kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
+//$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
 //$kundtjanst_email = "adrian@jobbasmart.com";
-//$kundtjanst_email = "krillo@gmail.com";    
+$kundtjanst_email = "krillo@gmail.com";    
 
   if ($customer_email == "") {
     $customer_name = "noreply-" . $customer_name;

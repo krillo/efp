@@ -16,46 +16,27 @@ the_post();
     <div class="column grid_8">
       <h1>Tillval eller förändring av ditt abonnemang</h1>
       <p>Här kan du som är registrerad kund hos oss beställa tillval och förändra så att abonnemanget passar just dina behov.</p>
+      <h2>Välj här vad du önskar angående ditt putsabonnemang</h2>
+
       <form action="/abonnemang/mottagen-forandring/" id="orderForm" name="orderForm" method="post" >
         <ul>
-          <h2>Välj här vad du önskar angående ditt putsabonnemang</h2>
           <li><input name="option" id="op1" value="op1" type="radio" /><label for="op1">Beställa <b>permanenta</b> tillval eller göra <b>tillfälliga</b> bokningar av tillval</label></li>
           <li><input name="option" id="op2" value="op2" type="radio" /><label for="op2">Göra <b>tillfällig</b> avbokning av putstillfälle eller enstaka tillval</label></li>
           <li><input name="option" id="op3" value="op3" type="radio" /><label for="op3">Ändra kunduppgifter i vårt register samt beställa/avbeställa skattereduktion (RUT-avdrag)</label></li>
 
-          <div id="basics" class="hidden">
-            <h2>Kund och kontaktuppgifter</h2>
-            <li><input name="show-ss" id="ss1" value="ss1" type="radio" checked/><label for="ss1">Jag vill själv ange namn och adressuppgifter</label></li>
-            <li><input name="show-ss" id="ss2" value="ss2" type="radio" /><label for="ss2">Jag är skriven på putsadressen detta gäller och vill hämta personuppgifter automatiskt</label></li>
-          </div>  
-
-          <div id="ss-container" class="hidden">
-            <h2>Fyll i personnummer för att hämta adressuppgifter (OBS! 12 siffror)</h2>
-            <li>
-              <input name="ss" id="ss" type="text" value="ÅÅÅÅMMDD-XXXX" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />
-              <input type="submit" value="HÄMTA" id="ss-button">  
-              <img id="ss-progress" src="<?php bloginfo('stylesheet_directory'); ?>/img/inline/ajax-loader.gif" alt="" />
-            </li>  
-          </div>
-          <div id="ss-error" class="hidden invalid">Personnumret verkar vara felaktigt.</div>
 
           <div id="pers-container" class="hidden">
             <fieldset class="fieldset-address">
               <li><label for="firstname">Förnamn <span class="mandatory">*</span></label></li>
               <li><input name="firstname" id="firstname" value="" type="text" /></li>
-              <!--li><input name="firstname" id="firstname" value="" type="hidden" /></li-->
               <li><label for="lastname">Efternamn <span>*</span></label></li>
               <li><input name="lastname" id="lastname" value="" type="text" /></li>
-              <!--li><input name="lastname" id="lastname" value="" type="hidden" /></li-->
-              <li><label for="street1">Adress <span>*</span></label></li>
+              <li><label for="street1">Gatuadress <span>*</span></label></li>
               <li><input name="street1" id="street1" value="" type="text" /></li>
-              <!--li><input name="street1" id="street1" value="" type="hidden" /></li-->
               <li><label for="zip">Postnr <span>*</span></label></li>
               <li><input name="zip" id="zip" value="" type="text" /></li>
-              <!--li><input name="zip" id="zip" value="" type="hidden" /></li-->
               <li><label for="city">Ort <span>*</span></label></li>
-              <li><input name="city" id="city" value="" type="text" /></li>
-              <!--li><input name="city" id="city" value="" type="hidden" /></li-->              
+              <li><input name="city" id="city" value="" type="text" /></li>        
             </fieldset>
             <fieldset class="fieldset-address">
               <li><label for="phone">Telefon</label></li>
@@ -69,11 +50,11 @@ the_post();
             </fieldset>
           </div>  
           <div class="clear"></div>
+
           <div>
-            
-			<fieldset id="rut" class="hidden">
+            <fieldset id="rut" class="hidden">
               <h2>Ändra angående skattereduktion (RUT-avdrag)</h2>
-			  <li>
+              <li>
                 <input name="rutchange" id="rutSame" value="SAMMA" type="radio" checked/>
                 <label for="rutSame">Jag vill att ni lämnar detta oförändrat</label>
               </li>
@@ -93,19 +74,19 @@ the_post();
             <li><input name="tillval" id="tillval1" value="tillval1" type="radio" checked/><label for="tillval1"> ..vad ni ska <u>LÄGGA TILL</u> permanent på mitt abonnemang</label></li>
             <li><input name="tillval" id="tillval2" value="tillval2" type="radio" /><label for="tillval2"> ..  detaljerat hur ni <u>VARJE ÅR</u> ska putsa mitt hus</label></li>
             <li><input name="tillval" id="tillval3" value="tillval3" type="radio" /><label for="tillval3"> ..vad ni ska <u>TA BORT</u> permanent från mitt årliga abonnemang</label></li>
-			<br />
-			<li><input name="tillval" id="tillval4" value="tillval4" type="radio" /><label for="tillval4"> ..vad ni ska utföra vid ett <u>ENSTAKA TILLFÄLLE</u></label></li>
             <br />
-			<?php echo getTillvalTable(); ?>
+            <li><input name="tillval" id="tillval4" value="tillval4" type="radio" /><label for="tillval4"> ..vad ni ska utföra vid ett <u>ENSTAKA TILLFÄLLE</u></label></li>
+            <br />
+            <?php echo getTillvalTable(); ?>
           </fieldset>
 
 
           <fieldset id="avbokning" class="tillval hidden">
-            
+
             <h2>Välj en putsperiod då du vill att vi avbokar hela eller en del av ett putstillfälle</h2>
             För permanenta förändringar av hur vi årligen putsar ditt hus, gå istället till formuläret som avser permanenta ändringar. För att kunna tillgodose dina önskemål kan du välja <b>tidigast 7 dagar</b> från dagens datum och intervallet kan vara <b>maximalt 7 veckor</b> långt.</br>
-			</br>
-			<label for="from">Från datum: &nbsp;</label><input type="text" id="from" name="from" style="width:100px;"/>
+            </br>
+            <label for="from">Från datum: &nbsp;</label><input type="text" id="from" name="from" style="width:100px;"/>
             <label for="to">&nbsp;&nbsp; till datum: &nbsp;</label><input type="text" id="to" name="to" style="width:100px;"/>
             <br /><br />
             <li><input name="avbokning[]" id="avbokning1" value="1" type="checkbox" /><label for="avbokning1"> Hela putstillfället</label></li>
@@ -121,35 +102,34 @@ the_post();
               <label class="comments" for="comments">Ytterligare information till kundtjänst:</label>
               <textarea name="comments" id="comments" placeholder="Plats för mer meddelanden och övriga önskemål"></textarea>
             </li>              
-            
-			</fieldset>
+          </fieldset>
 
-          
-          
+
           <fieldset id="send" class="hidden">
-              <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
-              <li>
-                <input name="terms" id="terms" type="checkbox" style="float:left;" value ="Ja"/>
-                <label for="terms"><b>Ja</b></label> - jag har tagit del av beställningsvillkor och prislista samt godkänner dessa!
-              </li>
-              <li>&nbsp;</li>
-              <li><input type="submit" value="Skicka"></li>
-            </fieldset>
-          
-
+            <li><a href="#" target="_blank" id="terms-link">Läs villkoren</a> <a href="#" target="_blank" id="price-link">Se prislista 2013</a> <a href="#" target="_blank" id="rut-info-link">Om RUT-avdrag</a></li>
+            <li>
+              <input name="terms" id="terms" type="checkbox" style="float:left;" value ="Ja"/>
+              <label for="terms"><b>Ja</b></label> - jag har tagit del av beställningsvillkor och prislista samt godkänner dessa!
+            </li>
+            <li>&nbsp;</li>
+            <li><input type="submit" value="Skicka" id="submit-data"></li>
+          </fieldset>
         </ul>
-      </form>
+      </form>            
+
+
       <script type="text/javascript">
-        jQuery(document).ready(function($){   
+        jQuery(document).ready(function($) {
           $("#ss-progress").hide();
           $("#tillval").hide();
           var toDateMin;
           var toDateMax;
-    
-          $( "#from" ).datepicker({
+          var option;
+          
+          $("#from").datepicker({
             firstDay: 1,
-            monthNames: ['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'],
-            dayNamesMin: [ 'sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
+            monthNames: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+            dayNamesMin: ['sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
             dateFormat: 'yy-mm-dd',
             showWeek: true,
             weekHeader: "v",
@@ -157,109 +137,96 @@ the_post();
             minDate: "+1w",
             changeMonth: true,
             numberOfMonths: 1,
-            onClose: function( selectedDate ) {
+            onClose: function(selectedDate) {
               //min date
-              toDateMin = $( "#from" ).val();
+              toDateMin = $("#from").val();
               $("#to").datepicker('option', "minDate", toDateMin);
-              
               //calc new maxDate, add 7 weeks 
               var date = new Date(toDateMin);
               var d = date.getDate();
               var m = date.getMonth();
               var y = date.getFullYear();
-              var toDateMax = new Date(y, m, d+49);  //add 7 weeks
-              $("#to").datepicker( "option", "maxDate", toDateMax);
+              var toDateMax = new Date(y, m, d + 49); //add 7 weeks
+              $("#to").datepicker("option", "maxDate", toDateMax);
             }
           });
-          
-          
-          $( "#to" ).datepicker({
+          $("#to").datepicker({
             defaultDate: "+1w",
             firstDay: 1,
-            monthNames: ['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'],
-            dayNamesMin: [ 'sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
+            monthNames: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+            dayNamesMin: ['sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
             dateFormat: 'yy-mm-dd',
             showWeek: true,
             weekHeader: "v",
             changeMonth: true,
             numberOfMonths: 1
-          });   
-    
-    
-          // validate signup form on keyup and submit
-          var validator = $("#orderForm").validate({
+          });
+          
+          
+          $("#orderForm").validate({
             errorClass: "invalid",
-            validClass: "valid", 
+            validClass: "valid",
             rules: {
               firstname: "required",
               lastname: "required",
-              street1:{
+              street1: {
                 required: true,
                 minlength: 3
               },
-              zip:{
+              zip: {
                 required: true,
                 minlength: 5
               },
               city: "required",
-              ss:{
+              customernbr: {
                 required: true,
-                minlength: 12,
-                maxlength: 13
+                minlength: 4
               },
-              customernbr:{
-                required: true,
-                minlength: 4                
-              },              
-              rut: "required",
-              terms: "required"
+              terms: "required",
             },
-            messages:{
+            messages: {
               firstname: "",
               lastname: "",
               customernbr: "",
-              street1:{
+              street1: {
                 required: "",
                 minlength: ""
               },
-              zip:{
+              zip: {
                 required: "",
                 minlength: ""
               },
               city: "",
-              ss:{
-                required: "Ange personnummer!",
-                minlength: "Ange ett korrekt personnummer i formatet ÅÅÅÅMMDD-XXXX!",
-                maxlength: "Ange ett korrekt personnummer i formatet ÅÅÅÅMMDD-XXXX!"
-              },
-             
-              rut: "Välj om du vill ha skattereduktion eller inte!",
-              terms: "Tacka ja!"
+              terms: ""
             },
             success: function(label) {
+              //console.log("validation success");
               // set &nbsp; as text for IE
               label.html("&nbsp;").addClass("checked");
+            },
+            submitHandler: function(form) {
+              //console.log("validation submit handler");
+              form.submit();
             }
           });
-    
 
 
           /**
            * Ajax call to get peronal info
-           */        
+           */
           $("#ss-button").click(function(event) {
             event.preventDefault();
-            $("#ss-progress").css("display", "block");    //show progress wheel
+            $("#ss-progress").css("display", "block"); //show progress wheel
             ss = $('#ss').val();
             var data = {
-              action : 'get_pers_info',
+              action: 'get_pers_info',
               ss: ss
             };
             $.post('/wp-admin/admin-ajax.php', data, function(response) {
-              $("#ss-progress").hide();  
-              if(response.success == 1){
+              $("#ss-progress").hide();
+              if (response.success == 1) {
                 $("#pers-container").removeClass("hidden");
-                $("#ss-button").prop('type','button');          
+                $("#ss-button").prop('type', 'button');
                 $("#ss-error").addClass("hidden");
                 $("#firstname").val(response.fname);
                 $("#firstname").val(response.fname);
@@ -273,41 +240,49 @@ the_post();
                 $("#city").val(response.city);
                 $("#city").val(response.city);
                 $("#phone").val(response.phone);
-                $("#email").val(response.email);          
-              }else{
+                $("#email").val(response.email);
+              } else {
                 $("#ss-error").removeClass("hidden");
                 $("#pers-container").addClass("hidden");
-              }        
+              }
             });
-          });    
-    
-    
-          $('input[name=option]').change(function(){
-            $('#basics').show('slow');
-            $('#pers-container').show('slow');                        
-            $('#send').show('slow');            
+          });
+          
+          
+          $('input[name=option]').change(function() {
+            option = $('input:radio[name=option]:checked').val();
+            showOptions();
+          });
+          
+          
+          function showOptions() {
+            $('#send').show('slow');
             radio = $('input:radio[name=option]:checked').val();
             switch (radio)
             {
               case 'op1':
+                persContainer(false);
                 $('#tillval').show('slow');
                 $('#send').show('slow');
                 $('#avbokning').hide('slow');
                 $('#rut').hide('slow');
                 break;
               case 'op2':
+                persContainer(false);
                 $('#avbokning').show('slow');
                 $('#send').show('slow');
                 $('#tillval').hide('slow');
                 $('#rut').hide('slow');
                 break;
               case 'op3':
+                persContainer(true);
                 $('#avbokning').hide('slow');
                 $('#send').show('slow');
                 $('#tillval').hide('slow');
                 $('#rut').show('slow');
                 break;
               case 'op4':
+                persContainer(true);
                 $('#avbokning').hide('slow');
                 $('#send').show('slow');
                 $('#tillval').hide('slow');
@@ -315,40 +290,65 @@ the_post();
                 $('#uppsagning').show('slow');
                 break;
             }
-          });
+          }
 
 
-
-
-
-
-
-          $('input[name=show-ss]').change(function(){
-            radio = $('input:radio[name=show-ss]:checked').val();
-            if(radio == 'ss1'){
-              $('#ss-container').hide('slow');
+          function persContainer(full) {
+            if (full) {
+              $("#firstname").show();
+              $("#lastname").show();
+              $("#phone").show();
+              $("#mobile").show();
+              $("#street1").show();
+              $("#zip").show();
+              $("#city").show();
+              $("#email").show();
+              $("#customernbr").show();
+              $('label[for=firstname]').show();
+              $('label[for=lastname]').show();
+              $('label[for=phone]').show();
+              $('label[for=mobile]').show();
+              $('label[for=street1]').show();
+              $('label[for=zip]').show();
+              $('label[for=city]').show();
+              $('label[for=email]').show();
+              $('label[for=customernbr]').show();
             } else {
-              $('#ss-container').show('slow');
-            }            
-          });
+              $("#firstname").hide();
+              $("#lastname").hide();
+              $("#phone").hide();
+              $("#mobile").hide();
+              $("#street1").show();
+              $("#zip").hide();
+              $("#city").hide();
+              $("#email").hide();
+              $("#customernbr").show();
+              $('label[for=firstname]').hide();
+              $('label[for=lastname]').hide();
+              $('label[for=phone]').hide();
+              $('label[for=mobile]').hide();
+              $('label[for=street1]').show();
+              $('label[for=zip]').hide();
+              $('label[for=city]').hide();
+              $('label[for=email]').hide();
+              $('label[for=customernbr]').show();
+            }
+            $('#pers-container').show('slow');
+          }
 
 
-
-          $('.select-all').change(function(){
+          $('.select-all').change(function() {
             var check = $(this);
             var id = check.attr('id');
             id = id.replace('_all', '');
-            if(check.attr('checked')){
-              $('input:checkbox[row='+id+']').prop('checked', true);
-            }else{
-              $('input:checkbox[row='+id+']').prop('checked', false);
+            if (check.attr('checked')) {
+              $('input:checkbox[row=' + id + ']').prop('checked', true);
+            } else {
+              $('input:checkbox[row=' + id + ']').prop('checked', false);
             }
           });
-
-
-
-          $('#avbokning1').change(function(){
-            if($('#avbokning1').attr('checked')){
+          $('#avbokning1').change(function() {
+            if ($('#avbokning1').attr('checked')) {
               $('#avbokning1').prop('checked', true);
               $('#avbokning2').prop('checked', true);
               $('#avbokning2').prop('disabled', true);
@@ -364,7 +364,7 @@ the_post();
               $('#avbokning7').prop('disabled', true);
               $('#avbokning8').prop('checked', true);
               $('#avbokning8').prop('disabled', true);
-            }else{
+            } else {
               $('#avbokning1').prop('checked', false);
               $('#avbokning2').prop('checked', false);
               $('#avbokning2').prop('disabled', false);
@@ -382,7 +382,9 @@ the_post();
               $('#avbokning8').prop('disabled', false);
             }
           });
-    
+          
+
+
         });
       </script>
 
@@ -393,7 +395,7 @@ the_post();
       <?php echo $p->post_content; ?>
 
       <!--hr />
-
+    
       <p class="rut"><img src="<?php bloginfo('template_directory'); ?>/img/inline/halva-priset.png" /></p-->
 
     </div>
