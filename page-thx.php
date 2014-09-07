@@ -186,7 +186,8 @@ if ($order->option != '') {
       $message .= efp_getAddress();
       $message .= efp_getNykundExtra();
       $message .= "- Vill du göra anpassningar av ditt abonnemang kan du göra det genom att <a href=\"http://eriksfonsterputs.se/abonnemang/forandring/\">klicka här</a><br />";
-      $message .= "- Har du ytterligare frågor, var vänlig och besök <a href=\"http://eriksfonsterputs.se/fragor-svar/allmanna-fragor/\">frågor och svar</a> på vår hemsida alternativt kontakta kundtjänst på 0771-42 42 42.";
+	  $message .= "- Vi erbjuder e-faktura till alla våra kunder, anmäl dig redan nu via din internetbank!<br />";
+	  $message .= "- Har du ytterligare frågor, var vänlig och besök <a href=\"http://eriksfonsterputs.se/fragor-svar/allmanna-fragor/\">frågor och svar</a> på vår hemsida alternativt kontakta kundtjänst på 0771-42 42 42.";
       preSendMail($title, $message, $order->email, $order->fname . " " . $order->lname, false);
       break;
     default:

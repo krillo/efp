@@ -46,7 +46,7 @@
 					)
 				);
 			?>
-
+			<a href="http://eriksfonsterputs.se/?am_force_theme_layout=mobile">Mobil version</a>
 		</div>
 
 		<div class="column grid_3">

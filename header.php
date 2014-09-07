@@ -34,18 +34,33 @@
 			echo "<script src='/wp-content/themes/eriksfonsterputs/js/jquery.flipCounter.1.2.pack.js' type='text/javascript'></script>";
 		}
 	?>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-	
+		
 	
 </head>
 <body>
+<!-- /* BidTheatre Retargeting Invocation Script v1.1 */ -->
+<!-- /* Place this checkpoint script as the first element in the body tag on the page you want to track. */ -->
+<!-- Retargeting 2014-08-22 -->
+
+<script type="text/javascript">
+var protocol = ('https:' == document.location.protocol ? 'https' : 'http');
+var ref = encodeURIComponent(window.location.href);
+var uri = protocol + '://adsby.bidtheatre.com/checkpoint?c=393&output=javascript&rnd=' + new String (Math.random()).substring (2, 11) + '&ref='+ref;
+var base = document.getElementsByTagName('script')[0];
+var script = document.createElement('script');
+script.setAttribute('src', uri);
+base.parentNode.insertBefore(script, base.nextSibling);
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/sv_SE/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
 
 <header>
 	<section>
@@ -54,10 +69,12 @@
 
 			<a id="logo" href="<?php bloginfo('url'); ?>/" title=" Till startsidan "><img src="<?php bloginfo('template_directory'); ?>/img/inline/eriks-fonsterputs-logotype.png" alt="Eriks Fönsterputs - logotype" /></a>
 
-			<ul id="toplist">
-				<li id="kundtjanst">Kundtjänst: 0771-42 42 42</li>
+			<ul id="toplist" align="right">
+				<!-- <li id="kundtjanst">Kundtjänst: 0771-42 42 42</li> -->
 				<!--li id="chatt"><a href="/">Chatta med kundtjänst</a></li>-->
-				<li id="facebook"><a href="http://www.facebook.com/eriksfonsterputs" target="_blank">Facebook</a></li>
+				<div class="fb-like" data-href="https://facebook.com/eriksfonsterputs" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+				<!-- <li id="facebook"><a href="http://www.facebook.com/eriksfonsterputs" target="_blank">Facebook</a></li> -->
 			</ul>
 
 			<?php

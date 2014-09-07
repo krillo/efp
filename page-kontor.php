@@ -21,7 +21,7 @@ get_header(); the_post(); ?>
 				<?php echo wp_get_attachment_image($person["Bild"], "full"); ?>
 				<p>
 					<strong><?php echo $person["Namn"]; ?></strong><br />
-					Avdelning: <?php echo $person["Avdelning"]; ?><br />
+					<?php echo $person["Avdelning"]; ?><br />
 					Telefon: <?php echo $person["Telefon"]; ?><br />
 					E-post: <a href="mailto:<?php echo $person["E-post"]; ?>">Skicka</a>
 				</p>

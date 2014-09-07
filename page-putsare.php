@@ -21,7 +21,7 @@ get_header(); the_post(); ?>
 				<?php echo wp_get_attachment_image($person["Bild"], "full"); ?>
 				<p>
 					<strong><?php echo $person["Namn"]; ?></strong><br />
-					Bilnummer: <?php echo $person["Bilnummer"]; ?>
+					Bil <?php echo $person["Bilnummer"]; ?>
 				</p>
 			</div>
 			<?php endforeach; ?>

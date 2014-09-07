@@ -108,7 +108,7 @@ the_post();
 
 			<h1><?php echo get_the_title(); ?></h1>
 			<p>Nedan visas de områden och orter i din kommun där vi erbjuder fönsterputsning.</p>
-			<p>Du kan ladda ner och skriva ut ditt putschema för 2013 som <a href="http://eriksfonsterputs.se/wp-content/uploads/Putsschema2013_A4.pdf">utskriftsvänlig PDF</a>.</p>
+			<p>Du kan ladda ner och skriva ut putsschema för 2014 som <a href="http://eriksfonsterputs.se/wp-content/uploads/Putsschema2014.pdf">utskriftsvänlig PDF</a>.</p>
 			
 			<h2>Schema för fönsterputsning i <span id="city"></span>, schemanummer inom parentes:</h2>
 			<div id="area-list"></div>
@@ -119,7 +119,7 @@ the_post();
 
 			<h1><?php echo get_the_title(); ?></h1>
 			<p><a href="<?php home_url('/'); ?>/putsomraden/" >Vänligen välj en kommun först</a></p>
-			<p>Vet du redan vilket schema du har kan du du kan ladda ner och skriva ut ditt putschema <a href="http://eriksfonsterputs.se/wp-content/uploads/Putsschema2013_A4.pdf">här</a> (PDF).</p>
+			<p>Vet du redan vilket schema du har kan du du kan ladda ner och skriva ut ditt putschema <a href="http://eriksfonsterputs.se/wp-content/uploads/Putsschema2014.pdf">här</a> (PDF).</p>
 
 		</div>
 
