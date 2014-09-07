@@ -75,8 +75,8 @@ if ($order->option != '') {
       if ($order->tillval == 'tillval3') {
         $title .= 'Ta bort';
       }
-	 //adrian lagt till nummer 4
-	  if ($order->tillval == 'tillval4') {
+      //adrian lagt till nummer 4
+      if ($order->tillval == 'tillval4') {
         $title .= 'Tillfällig bokning';
       }
       saveToLogFile($logfile, $title . " \n" . $data, 'INFO');
@@ -166,11 +166,12 @@ if ($order->option != '') {
       break;
     case 'op5':
       $title = 'BESTÄLLNING';
+      efp_updateUppslagTable();
       saveToLogFile($logfile, $title . "\n" . $data, 'INFO');
       $message .= '<strong>' . $title . "</strong><br>";
       $message .= efp_getKundnummer();
       $message .= efp_getAddress();
-      $message .= efp_getNykundExtra();      
+      $message .= efp_getNykundExtra();
       $message .= "Vad fick dig att beställa: $order->why<br/>";
       $message .= "Kampanjkod: $order->campaign_code<br/>";
       $message .= "Egen kommentar: $order->comments<br/>";
@@ -186,13 +187,28 @@ if ($order->option != '') {
       $message .= efp_getAddress();
       $message .= efp_getNykundExtra();
       $message .= "- Vill du göra anpassningar av ditt abonnemang kan du göra det genom att <a href=\"http://eriksfonsterputs.se/abonnemang/forandring/\">klicka här</a><br />";
-	  $message .= "- Vi erbjuder e-faktura till alla våra kunder, anmäl dig redan nu via din internetbank!<br />";
-	  $message .= "- Har du ytterligare frågor, var vänlig och besök <a href=\"http://eriksfonsterputs.se/fragor-svar/allmanna-fragor/\">frågor och svar</a> på vår hemsida alternativt kontakta kundtjänst på 0771-42 42 42.";
+      $message .= "- Vi erbjuder e-faktura till alla våra kunder, anmäl dig redan nu via din internetbank!<br />";
+      $message .= "- Har du ytterligare frågor, var vänlig och besök <a href=\"http://eriksfonsterputs.se/fragor-svar/allmanna-fragor/\">frågor och svar</a> på vår hemsida alternativt kontakta kundtjänst på 0771-42 42 42.";
       preSendMail($title, $message, $order->email, $order->fname . " " . $order->lname, false);
       break;
     default:
       saveToLogFile($logfile, "Tacksidan visas utan att skicka mail, data saknas!? \n" . $data, 'ERROR');
       break;
+  }
+}
+
+/**
+ * Update the status in db wp_ep_uppslag to 3
+ * Which means that the user has made a purchase - all is well!
+ *   
+ * @global type $wpdb
+ */
+function efp_updateUppslagTable() {
+  $_COOKIE['SSN'] != '' ? $guid = $_COOKIE['SSN'] : $guid = '';
+  if ($guid != '') {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'ep_uppslag';
+    $wpdb->update($table_name, array('status' => 3), array('guid' => $guid));
   }
 }
 
@@ -303,7 +319,7 @@ the_post();
     <div class="column grid_8">
 
       <h1><?php the_title(); ?></h1>
-<?php the_content(); ?>
+      <?php the_content(); ?>
 
     </div>
 
@@ -316,7 +332,9 @@ the_post();
         <ul>
           <!--li><label for="zip">Postnr</label></li-->
           <li>  
-            <input name="zip" id="zip" value="Skriv ditt postnummer här" type="text" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />
+            <input name="zip" id="zip" value="Skriv ditt postnummer här" type="text" onfocus="if (this.value == this.defaultValue)
+                  this.value = ''" onblur="if (this.value == '')
+                  this.value = this.defaultValue" />
             <input type="submit" value="Testa om vi putsar där du bor" id="zip-button">
           </li>
         </ul>
@@ -329,7 +347,7 @@ the_post();
       <hr />
 
       <?php $p = array_shift(get_posts("post_type=template-content&p=90")); ?>
-<?php echo $p->post_content; ?>
+      <?php echo $p->post_content; ?>
 
     </div>
 

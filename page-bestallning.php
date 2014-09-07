@@ -79,7 +79,11 @@ if ($zip == '') {
           <div id="pers-container" class="hidden">
 
             <fieldset class="fieldset-address">
+
               <h2>Adress</h2>
+              <li><label for="email">E-post</label></li>
+              <li><input name="email" id="email" value="" type="text"/></li>
+
               <li><label for="firstname_show">Förnamn <span class="mandatory">*</span></label></li>
               <li><input name="firstname_show" id="firstname_show" value="" type="text" disabled/></li>
               <li><input name="firstname" id="firstname" value="" type="hidden" /></li>
@@ -106,8 +110,6 @@ if ($zip == '') {
               <li><label for="mobile">Mobiltelefon</label></li>
               <li><input name="mobile" id="mobile" value="" type="text" class="tel"/></li>		
 
-              <li><label for="email">E-post</label></li>
-              <li><input name="email" id="email" value="" type="text"/></li>
               <br />
             </fieldset>
 
@@ -217,6 +219,8 @@ if ($zip == '') {
         </ul>
 
       </form>
+
+
 
       <script type="text/javascript">
               jQuery(document).ready(function($) {
@@ -392,7 +396,7 @@ if ($zip == '') {
 
 
                 /**
-                 * if enter is pressed in hte #ss input box, do the persInfo lookup
+                 * if enter is pressed in the #ss input box, do the persInfo lookup
                  */
                 $('#ss').keypress(function(event) {
                   if (event.which == 13 && $(this).val().length >= 10) {
@@ -473,8 +477,20 @@ if ($zip == '') {
                 });
 
 
+                // read email as soon as it is entered and store it in db   
+                $("#email").focusout(function() {
+                  var email = $(this).val();
+                  var data = {
+                    action: 'updateEmailUppslag',
+                    email: email
+                  };
+                  $.post('/wp-admin/admin-ajax.php', data, function(response) {
+                    if (response.success == 1) {
+                    } else {
 
-
+                    }
+                  });
+                });
 
 
               });

@@ -50,6 +50,114 @@ function init_zip_table() {
   }
 }
 
+add_action('init', 'create_daily_hook');
+
+/**
+ * Create a hook that fires once a day
+ */
+function create_daily_hook() {
+  //wp_schedule_event(current_time( 'timestamp' ), 'daily', 'efpsenddailyhook');
+  wp_schedule_event(current_time('timestamp'), 'daily', 'efpsenddailyhook');
+}
+
+add_action('init', 'init_uppslag_table');
+
+/**
+ * This function creates a db table if it does not already exist, or updates it if version is higher.
+ * The table is for storing personnummer uppslag
+ * @global type $wpdb
+ */
+function init_uppslag_table() {
+  $version = 7;
+  global $wpdb;
+  $installed_ver = get_option("ep_uppslag");
+  if ($installed_ver != $version) {
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    $table_name = $wpdb->prefix . 'ep_uppslag';
+    $sql = "CREATE TABLE `" . $table_name . "` (
+            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+            `ssn` varchar(32) DEFAULT NULL COMMENT 'Personnummer',
+            `status` int(2) NOT NULL DEFAULT '1',
+            `ip` varchar(64) NOT NULL DEFAULT '',
+            `email` varchar(64) DEFAULT NULL,
+            `guid` varchar(128) DEFAULT NULL,
+            `create_date` datetime DEFAULT NULL,
+            `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`)
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+    dbDelta($sql);
+//echo $sql;
+    update_option("ep_uppslag", $version);
+  }
+}
+
+/**
+ * Add initial data to the table wp_ep_uppslag
+ * Initial status is 1
+ * 
+ * @global type $wpdb
+ * @param type $person
+ */
+function initUppslag($person) {
+  $ssn = $person['ss'];
+  $ip = $_SERVER['REMOTE_ADDR'];
+  $date = date("Y-m-d H:i:s");
+  $guid = $guid = strtoupper(md5(uniqid(rand(), true)));
+  setcookie("SSN", $guid, time() + (3600*24*2), '/');
+  global $wpdb;
+  $table_name = $wpdb->prefix . 'ep_uppslag';
+  $wpdb->insert($table_name, array('ssn' => $ssn, 'ip' => $ip, 'guid' => $guid, 'create_date' => $date));
+}
+
+add_action('wp_ajax_updateEmailUppslag', 'updateEmailUppslag_callback');
+add_action('wp_ajax_nopriv_updateEmailUppslag', 'updateEmailUppslag_callback');
+
+function updateEmailUppslag_callback() {
+  $response['success'] = 1;
+  $response['error'] = '';
+  !empty($_REQUEST['email']) ? $email = $_REQUEST['email'] : $email = '';
+  $_COOKIE['SSN'] != '' ? $guid = $_COOKIE['SSN'] : $guid = '';
+  if ($email != '') {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'ep_uppslag';
+    $wpdb->update($table_name, array('email' => $email), array('guid' => $guid));
+  } else {
+    $response['success'] = 0;
+    $response['error'] = 'cookie not set';
+  }
+  $response['query'] = $wpdb->get_results($sql);
+  $response = json_encode($response);
+  header('Cache-Control: no-cache, must-revalidate');
+  header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+  header('Content-type: application/json');
+  echo $response;
+  die(); // this is required to return a proper result
+}
+
+add_action('efpsenddailyhook', 'send_daily_email_to_kundtjanst');
+
+/**
+ * On the scheduled action hook, run the function.
+ * Get all records from uppslag db with status 1 and send them to kundtjänst.
+ * Update the status to 2 = no buy but sent to kundtjänst 
+ */
+function send_daily_email_to_kundtjanst() {
+  global $wpdb;
+  $table_name = $wpdb->prefix . 'ep_uppslag';
+  $result = $wpdb->get_results('SELECT * FROM ' . $table_name . ' WHERE status = 1', 'OBJECT_K');
+  print_r($result);
+  $title .= 'Personer som har gjort uppslag men inte köp';
+  $message .= '<strong>Personer som har gjort uppslag men inte köp</strong><br>';
+  foreach ($result as $id => $record) {
+    $message .= "<br/>Email: ".$record->email."<br/>";
+    $message .= "Personnummer: ".$record->ssn."<br/>";
+    $message .= "Datum: ".$record->create_date."<br/>";
+    $message .= "IP-nummer: ".$record->ip."<br/><br/>";
+  }
+  preSendMail($title, $message, '', '', true);  //send to kundservice
+  $wpdb->update($table_name, array('status' => 2), array('status' => 1));  //update the status to 2
+}
+
 add_action('wp_ajax_check_zip', 'zip_callback');
 add_action('wp_ajax_nopriv_check_zip', 'zip_callback');
 
@@ -142,6 +250,7 @@ function ratsit($ss) {
         'stacktrace' => $e,
     );
   }
+  initUppslag($person);
   return $person;
 }
 
@@ -224,9 +333,9 @@ function getTillvalTable($isKund = true) {
 HTML;
   $i = 1;
   foreach ($tillval as $key => $value) {
-    $class = $i % 2 ? 'zebra': '';
+    $class = $i % 2 ? 'zebra' : '';
     $i++;
-    $output .= '<tr class="'.$class.'">';
+    $output .= '<tr class="' . $class . '">';
     $output .= '  <td><strong>' . $value['name'] . '</strong> ' . $value['desc'] . '</td>';
     $output .= '  <td style="text-align:center;"><input name = "" id="id_' . $key . '_all" value="" type="checkbox" class="select-all"/></td>';
     $output .= '  <td><input name = "id_' . $key . '[]" id = "" value = "1" type = "checkbox" row="id_' . $key . '" /></td>';
@@ -244,8 +353,8 @@ HTML;
 
 function getTillvalTableForCustomerService() {
   global $tillval;
-    $data = print_r($_REQUEST['id_1'], true);
-    saveToLogFile(getLogFileName(), "Tillval: \n" . $data, 'INFO');  
+  $data = print_r($_REQUEST['id_1'], true);
+  saveToLogFile(getLogFileName(), "Tillval: \n" . $data, 'INFO');
   $output = <<<HTML
     <table border="1">
     <thead>
@@ -293,12 +402,12 @@ HTML;
 $customerExperience = array(
     array('desc' => 'Nivån på vår skriftliga kommunikation? (Låg-Hög)', 'servicename' => ''),
     array('desc' => 'Kvaliteten på tjänsten? (Låg-Hög)', 'servicename' => ''),
-	array('desc' => 'Prislistans utformning och enkelhet? (Låg-Hög)', 'servicename' => ''),
-	array('desc' => 'Upplevelsen av våra fönsterputsare? (Låg-Hög)', 'servicename' => ''),
+    array('desc' => 'Prislistans utformning och enkelhet? (Låg-Hög)', 'servicename' => ''),
+    array('desc' => 'Upplevelsen av våra fönsterputsare? (Låg-Hög)', 'servicename' => ''),
     array('desc' => 'Upplevelsen av våra kundtjänstmedaretare? (Låg-Hög)', 'servicename' => ''),
-	array('desc' => 'Betydelsen av att företaget är välkänt? (Liten-Stor)', 'servicename' => ''),
-	array('desc' => 'Hur prisvärd tjänsten är (Litet-Mycket)', 'servicename' => ''),
-	array('desc' => 'Sannolikheten att du kan rekommendera oss? (Litet-Mycket)', 'servicename' => ''),
+    array('desc' => 'Betydelsen av att företaget är välkänt? (Liten-Stor)', 'servicename' => ''),
+    array('desc' => 'Hur prisvärd tjänsten är (Litet-Mycket)', 'servicename' => ''),
+    array('desc' => 'Sannolikheten att du kan rekommendera oss? (Litet-Mycket)', 'servicename' => ''),
 );
 
 function getCustomerExperienceTable() {
@@ -319,11 +428,11 @@ function getCustomerExperienceTable() {
     </thead>
     <tbody>
 HTML;
-  $i = 1;  
+  $i = 1;
   foreach ($customerExperience as $key => $value) {
-    $class = $i % 2 ? 'zebra': '';
+    $class = $i % 2 ? 'zebra' : '';
     $i++;
-    $output .= '<tr class="'.$class.'">';
+    $output .= '<tr class="' . $class . '">';
     $output .= '  <td ><label for="cust_exp_' . $key . '"> ' . $value['desc'] . '</label></td>';
     $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="1" value="1" type="radio" /></td>';
     $output .= '  <td style="text-align:center;"><input name="cust_exp_' . $key . '" id="2" value="2" type="radio" /></td>';
@@ -387,10 +496,10 @@ HTML;
 }
 
 function preSendMail($title, $message, $customer_email, $customer_name, $to_customer_service = true) {
-$kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
-$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
+  $kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
+//  $kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
 //$kundtjanst_email = "adrian@jobbasmart.com";
-//$kundtjanst_email = "krillo@gmail.com";    
+  $kundtjanst_email = "krillo@gmail.com";
 
   if ($customer_email == "") {
     $customer_name = "noreply-" . $customer_name;
@@ -414,26 +523,26 @@ $kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
 function sendMail($title, $message, $to, $to_name, $from, $from_name) {
   if (filter_var($to, FILTER_VALIDATE_EMAIL)) {
     saveToLogFile(getLogFileName(), "Skickar email: " . $title . ", till: $to ", 'INFO');
-    
-/*
-    $headers = 'To: ' . $to_name . ' <' . $to . '>' . "\r\n";
-    $headers .= 'From: ' . $from_name . ' <' . $from . '>' . "\r\n";
-    $headers .= 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\r\n";
 
-    $title_latin = utf8_decode($title);
-    $message_latin = utf8_decode($message);
-    $headers_latin = utf8_decode($headers);
-    $to_latin = utf8_decode($to);
+    /*
+      $headers = 'To: ' . $to_name . ' <' . $to . '>' . "\r\n";
+      $headers .= 'From: ' . $from_name . ' <' . $from . '>' . "\r\n";
+      $headers .= 'MIME-Version: 1.0' . "\r\n";
+      $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\r\n";
 
-    $success = mail($to_latin, $title_latin, $message_latin, $headers_latin);
-*/
+      $title_latin = utf8_decode($title);
+      $message_latin = utf8_decode($message);
+      $headers_latin = utf8_decode($headers);
+      $to_latin = utf8_decode($to);
+
+      $success = mail($to_latin, $title_latin, $message_latin, $headers_latin);
+     */
 
     $headers = 'To: ' . $to_name . ' <' . $to . '>' . "\r\n";
     $headers .= 'From: ' . $from_name . ' <' . $from . '>' . "\r\n";
     $headers .= 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-    $success = mail($to, $title , $message, $headers);
+    $success = mail($to, $title, $message, $headers);
   } else {
     $success = false;
   }
