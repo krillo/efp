@@ -56,8 +56,7 @@ add_action('init', 'create_daily_hook');
  * Create a hook that fires once a day
  */
 function create_daily_hook() {
-  //wp_schedule_event(current_time( 'timestamp' ), 'daily', 'efpsenddailyhook');
-  wp_schedule_event(current_time('timestamp'), 'daily', 'efpsenddailyhook');
+  wp_schedule_event(strtotime("2014-09-10 18:12:00"), 'daily', 'efpsenddailyhook');
 }
 
 add_action('init', 'init_uppslag_table');
@@ -86,7 +85,7 @@ function init_uppslag_table() {
             PRIMARY KEY (`id`)
           ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
     dbDelta($sql);
-//echo $sql;
+    //echo $sql;
     update_option("ep_uppslag", $version);
   }
 }
@@ -103,7 +102,7 @@ function initUppslag($person) {
   $ip = $_SERVER['REMOTE_ADDR'];
   $date = date("Y-m-d H:i:s");
   $guid = $guid = strtoupper(md5(uniqid(rand(), true)));
-  setcookie("SSN", $guid, time() + (3600*24*2), '/');
+  setcookie("SSN", $guid, time() + (3600 * 24 * 2), '/');
   global $wpdb;
   $table_name = $wpdb->prefix . 'ep_uppslag';
   $wpdb->insert($table_name, array('ssn' => $ssn, 'ip' => $ip, 'guid' => $guid, 'create_date' => $date));
@@ -145,17 +144,20 @@ function send_daily_email_to_kundtjanst() {
   global $wpdb;
   $table_name = $wpdb->prefix . 'ep_uppslag';
   $result = $wpdb->get_results('SELECT * FROM ' . $table_name . ' WHERE status = 1', 'OBJECT_K');
-  print_r($result);
-  $title .= 'Personer som har gjort uppslag men inte köp';
-  $message .= '<strong>Personer som har gjort uppslag men inte köp</strong><br>';
-  foreach ($result as $id => $record) {
-    $message .= "<br/>Email: ".$record->email."<br/>";
-    $message .= "Personnummer: ".$record->ssn."<br/>";
-    $message .= "Datum: ".$record->create_date."<br/>";
-    $message .= "IP-nummer: ".$record->ip."<br/><br/>";
+  //print_r($result);
+  if (count($result) > 0) {
+    $title .= 'Personer som har gjort uppslag men inte köp';
+    $message .= '<strong>Personer som har gjort uppslag men inte köp</strong><br>';
+    foreach ($result as $id => $record) {
+      !empty($record->email) ? $email = $record->email : $email = 'saknas';
+      $message .= "<br/>Email: " . $record->email . "<br/>";
+      $message .= "Personnummer: " . $record->ssn . "<br/>";
+      $message .= "Datum: " . $record->create_date . "<br/>";
+      $message .= "IP-nummer: " . $record->ip . "<br/><br/>";
+    }
+    preSendMail($title, $message, '', '', true);  //send to kundservice
+    $wpdb->update($table_name, array('status' => 2), array('status' => 1));  //update the status to 2
   }
-  preSendMail($title, $message, '', '', true);  //send to kundservice
-  $wpdb->update($table_name, array('status' => 2), array('status' => 1));  //update the status to 2
 }
 
 add_action('wp_ajax_check_zip', 'zip_callback');
@@ -497,9 +499,9 @@ HTML;
 
 function preSendMail($title, $message, $customer_email, $customer_name, $to_customer_service = true) {
   $kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
-//  $kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
-//$kundtjanst_email = "adrian@jobbasmart.com";
-  $kundtjanst_email = "krillo@gmail.com";
+  //$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
+  $kundtjanst_email = "adrian@jobbasmart.com";
+  //$kundtjanst_email = "krillo@gmail.com";
 
   if ($customer_email == "") {
     $customer_name = "noreply-" . $customer_name;
