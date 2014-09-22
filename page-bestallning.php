@@ -479,10 +479,29 @@ if ($zip == '') {
 
                 // read email as soon as it is entered and store it in db   
                 $("#email").focusout(function() {
-                  var email = $(this).val();
+                  updateUppslag();
+                });
+
+                // read phone as soon as it is entered and store it in db   
+                $("#phone").focusout(function() {
+                  updateUppslag();
+                });
+
+                // read mobile as soon as it is entered and store it in db   
+                $("#mobile").focusout(function() {
+                  updateUppslag();
+                });
+
+                // read email, mobile and phone as soon as it is entered and store it in db   
+                function updateUppslag() {
+                  var email = $('#email').val();
+                  var mobile = $('#mobile').val();
+                  var phone = $('#phone').val();
                   var data = {
-                    action: 'updateEmailUppslag',
-                    email: email
+                    action: 'updateUppslag',
+                    email: email,
+                    mobile: mobile,
+                    phone: phone,
                   };
                   $.post('/wp-admin/admin-ajax.php', data, function(response) {
                     if (response.success == 1) {
@@ -490,7 +509,7 @@ if ($zip == '') {
 
                     }
                   });
-                });
+                }
 
 
               });

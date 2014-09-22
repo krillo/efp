@@ -45,9 +45,17 @@ function init_zip_table() {
               PRIMARY KEY (`id`)
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
     dbDelta($sql);
-//echo $sql;
+    //echo $sql;
     update_option("ep_zip", $version);
   }
+}
+
+add_filter('cron_schedules', 'new_interval');
+
+// add once 5 minute interval to wp schedules
+function new_interval($interval) {
+  $interval['minutes_5'] = array('interval' => 5 * 60, 'display' => 'Once every 5 minutes');
+  return $interval;
 }
 
 add_action('init', 'create_daily_hook');
@@ -56,7 +64,11 @@ add_action('init', 'create_daily_hook');
  * Create a hook that fires once a day
  */
 function create_daily_hook() {
-  wp_schedule_event(strtotime("2014-09-10 18:12:00"), 'daily', 'efpsenddailyhook');
+  //wp_clear_scheduled_hook( 'efpsenddailyhook' );
+  if (!wp_next_scheduled('efpsenddailyhook')) {
+    wp_schedule_event(time(), 'daily', 'efpsenddailyhook');
+    //wp_schedule_event(time(), 'minutes_5', 'efpsenddailyhook');
+  }
 }
 
 add_action('init', 'init_uppslag_table');
@@ -67,7 +79,7 @@ add_action('init', 'init_uppslag_table');
  * @global type $wpdb
  */
 function init_uppslag_table() {
-  $version = 7;
+  $version = 8;
   global $wpdb;
   $installed_ver = get_option("ep_uppslag");
   if ($installed_ver != $version) {
@@ -78,12 +90,19 @@ function init_uppslag_table() {
             `ssn` varchar(32) DEFAULT NULL COMMENT 'Personnummer',
             `status` int(2) NOT NULL DEFAULT '1',
             `ip` varchar(64) NOT NULL DEFAULT '',
-            `email` varchar(64) DEFAULT NULL,
             `guid` varchar(128) DEFAULT NULL,
+            `email` varchar(64) DEFAULT NULL,
+            `fname` varchar(64) DEFAULT NULL,
+            `ename` varchar(64) DEFAULT NULL,
+            `address` varchar(64) DEFAULT NULL,
+            `zip` varchar(16) DEFAULT NULL,
+            `city` varchar(64) DEFAULT NULL,
+            `phone` varchar(32) DEFAULT NULL,
+            `mobile` varchar(32) DEFAULT NULL,            
             `create_date` datetime DEFAULT NULL,
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY (`id`)
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+          ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;";
     dbDelta($sql);
     //echo $sql;
     update_option("ep_uppslag", $version);
@@ -98,31 +117,55 @@ function init_uppslag_table() {
  * @param type $person
  */
 function initUppslag($person) {
-  $ssn = $person['ss'];
-  $ip = $_SERVER['REMOTE_ADDR'];
-  $date = date("Y-m-d H:i:s");
-  $guid = $guid = strtoupper(md5(uniqid(rand(), true)));
-  setcookie("SSN", $guid, time() + (3600 * 24 * 2), '/');
+  $ip_stoplist = array('127.0.0.1');
   global $wpdb;
   $table_name = $wpdb->prefix . 'ep_uppslag';
-  $wpdb->insert($table_name, array('ssn' => $ssn, 'ip' => $ip, 'guid' => $guid, 'create_date' => $date));
+  $ip = $_SERVER['REMOTE_ADDR'];
+  if(!in_array($ip, $ip_stoplist)){
+    $_COOKIE['SSN'] != '' ? $guid = $_COOKIE['SSN'] : $guid = '';
+    if ($guid == '') { //new customer
+      $ssn = $person['ss'];
+      $fname = $person['fname'];
+      $ename = $person['lname'];
+      $address = $person['street1'] . '  ' . $person['street2'];
+      $zip = $person['zip'];
+      $city = $person['city'];
+      $phone = $person['phone'];
+      $date = date("Y-m-d H:i:s");
+      $guid = $guid = strtoupper(md5(uniqid(rand(), true)));
+      setcookie("SSN", $guid, time() + (3600 * 24 * 2), '/'); //48h
+      $wpdb->insert($table_name, array('ssn' => $ssn, 'fname' => $fname, 'ename' => $ename, 'address' => $address, 'zip' => $zip, 'city' => $city, 'phone' => $phone, 'ip' => $ip, 'guid' => $guid, 'create_date' => $date));
+    } else {
+      $status = $wpdb->update($table_name, array('ip' => $ip), array('guid' => $guid));
+    }
+  }
 }
 
-add_action('wp_ajax_updateEmailUppslag', 'updateEmailUppslag_callback');
-add_action('wp_ajax_nopriv_updateEmailUppslag', 'updateEmailUppslag_callback');
+add_action('wp_ajax_updateUppslag', 'updateUppslag_callback');
+add_action('wp_ajax_nopriv_updateUppslag', 'updateUppslag_callback');
 
-function updateEmailUppslag_callback() {
+/**
+ * Update email, mobile and phone fields in db
+ * @global type $wpdb
+ */
+function updateUppslag_callback() {
   $response['success'] = 1;
   $response['error'] = '';
   !empty($_REQUEST['email']) ? $email = $_REQUEST['email'] : $email = '';
+  !empty($_REQUEST['phone']) ? $phone = $_REQUEST['phone'] : $phone = '';
+  !empty($_REQUEST['mobile']) ? $mobile = $_REQUEST['mobile'] : $mobile = '';
   $_COOKIE['SSN'] != '' ? $guid = $_COOKIE['SSN'] : $guid = '';
-  if ($email != '') {
+  if ($guid != '') {
     global $wpdb;
     $table_name = $wpdb->prefix . 'ep_uppslag';
-    $wpdb->update($table_name, array('email' => $email), array('guid' => $guid));
+    $status = $wpdb->update($table_name, array('email' => $email, 'mobile' => $mobile, 'phone' => $phone), array('guid' => $guid));
+    if ($status != 1) {
+      $response['success'] = 0;
+      $response['error'] = 'db not updated';
+    }
   } else {
     $response['success'] = 0;
-    $response['error'] = 'cookie not set';
+    $response['error'] = 'no cookie on client';
   }
   $response['query'] = $wpdb->get_results($sql);
   $response = json_encode($response);
@@ -149,13 +192,21 @@ function send_daily_email_to_kundtjanst() {
     $title .= 'Personer som har gjort uppslag men inte köp';
     $message .= '<strong>Personer som har gjort uppslag men inte köp</strong><br>';
     foreach ($result as $id => $record) {
-      !empty($record->email) ? $email = $record->email : $email = 'saknas';
-      $message .= "<br/>Email: " . $record->email . "<br/>";
-      $message .= "Personnummer: " . $record->ssn . "<br/>";
-      $message .= "Datum: " . $record->create_date . "<br/>";
-      $message .= "IP-nummer: " . $record->ip . "<br/><br/>";
+      if ($record->ssn != '') {
+        !empty($record->email) ? $email = $record->email : $email = 'saknas';
+        $message .= "<br/>" . $record->fname . " " . $record->ename . "<br/>";
+        $message .= $record->address . "<br/>";
+        $message .= $record->zip . ' ' . $record->city . "<br/>";
+        $message .= "<br/>" . $record->mobile . "<br/>";
+        $message .= $record->phone . "<br/>";
+        $message .= $email . "<br/>";
+        $message .= $record->ssn . "<br/>";
+        $message .= "Datum: " . $record->create_date . "<br/>";
+        $message .= "IP-nummer: " . $record->ip . "<br/><br/>";
+      }
     }
-    preSendMail($title, $message, '', '', true);  //send to kundservice
+    //preSendMail($title, $message, '', '', true);  //send to kundservice
+    preSendMail($title, $message, 'adrian@jobbasmart.com', '', false);
     $wpdb->update($table_name, array('status' => 2), array('status' => 1));  //update the status to 2
   }
 }
@@ -498,9 +549,9 @@ HTML;
 }
 
 function preSendMail($title, $message, $customer_email, $customer_name, $to_customer_service = true) {
-  $kundtjanst_name = "Kundtjänst Eriks Fönsterputs";
-  //$kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
-  $kundtjanst_email = "adrian@jobbasmart.com";
+  $kundtjanst_name = "kundtjanst@eriksfonsterputs.se";
+  $kundtjanst_email = "kundtjanst@eriksfonsterputs.se";
+  //$kundtjanst_email = "adrian@jobbasmart.com";
   //$kundtjanst_email = "krillo@gmail.com";
 
   if ($customer_email == "") {
@@ -513,10 +564,11 @@ function preSendMail($title, $message, $customer_email, $customer_name, $to_cust
   }
 
   if ($to_customer_service) {
-    sendMail($title, $message, $kundtjanst_email, $kundtjanst_name, $customer_email, $customer_name);
+    $status = sendMail($title, $message, $kundtjanst_email, $kundtjanst_name, $customer_email, $customer_name);
   } else {
-    sendMail($title, $message, $customer_email, $customer_name, $kundtjanst_email, $kundtjanst_name);
+    $status = sendMail($title, $message, $customer_email, $customer_name, $kundtjanst_email, $kundtjanst_name);
   }
+  return $status;
 }
 
 /**

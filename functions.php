@@ -342,5 +342,6 @@ function top_level_parent(){
 }
 
 /******  Reptilo does Ratsit 2012-12-06 ******/
-include 'functions-efp.php';
+include get_theme_root().'/eriksfonsterputs/functions-efp.php';
+
 ?>
