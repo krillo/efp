@@ -111,13 +111,15 @@ function init_uppslag_table() {
 
 /**
  * Add initial data to the table wp_ep_uppslag
- * Initial status is 1
+ * 1 = Initial status
+ * 2 = no buy, but email sent to kundtjänst
+ * 3 = have made a buy
  * 
  * @global type $wpdb
  * @param type $person
  */
 function initUppslag($person) {
-  $ip_stoplist = array('127.0.0.1');
+  $ip_stoplist = array('89.233.255.69'); //eriksfönsterputs-ip //array('127.0.0.1');
   global $wpdb;
   $table_name = $wpdb->prefix . 'ep_uppslag';
   $ip = $_SERVER['REMOTE_ADDR'];
